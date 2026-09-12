@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Bookmark Tab Manager",
+    "shortname": "BTM",
+    "description": "A browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.",
+    "category": "Browser Extension",
+    "icon": "🔖",
+    "github": "https://github.com/yashwanthramsomireddy",
+    "store": "https://chrome.google.com/webstore",
+    "status": "live"
+  },
+  {
+    "id": 2,
+    "name": "DebloatKit",
+    "shortname": "DebloatKit",
+    "description": "Open-source Android debloater tool for Samsung devices. Remove pre-installed bloatware and improve device performance.",
+    "category": "Android Tool",
+    "icon": "📱",
+    "github": "https://github.com/yashwanthramsomireddy",
+    "store": null,
+    "status": "live"
+  },
+  {
+    "id": 3,
+    "name": "PurgeKit",
+    "shortname": "PurgeKit",
+    "description": "Windows utility to clear cache, remove junk files, and keep your software updated — all in one lightweight tool.",
+    "category": "Windows Tool",
+    "icon": "🧹",
+    "github": "https://github.com/yashwanthramsomireddy",
+    "store": null,
+    "status": "live"
+  },
+  {
+    "id": 4,
+    "name": "QuickOff",
+    "shortname": "QuickOff",
+    "description": "Portable power menu widget for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.",
+    "category": "Windows Tool",
+    "icon": "⚡",
+    "github": "https://github.com/yashwanthramsomireddy",
+    "store": null,
+    "status": "live"
+  }
+]

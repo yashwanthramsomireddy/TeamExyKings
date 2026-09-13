@@ -1,64 +1,82 @@
-# TeamExyKings
+# TeamExyKings — Official Website
 
-Official brand website for **TeamExyKings** — a developer collective building tools, apps, and utilities across Android, Windows, and the Web.
-
-🌐 **Live site:** [teamexykings.in](https://teamexykings.in)
+**teamexykings.in** · GitHub Pages · Single-file HTML
 
 ---
 
-## About
+## What this is
 
-TeamExyKings started as a Samsung Galaxy ROM/kernel development team (~2014–2020), shipping custom builds for the Galaxy S5 through S10/Note10 series. The team has since evolved into building modern tools and apps under the same brand.
-
-**Current projects:**
-- [Bookmark Tab Manager (BTM)](https://teamexykings.in/#projects) — Browser extension
-- [DebloatKit](https://teamexykings.in/#projects) — Samsung Android debloater
-- [PurgeKit](https://teamexykings.in/#projects) — Windows cache cleaner & software updater
-- [QuickOff](https://teamexykings.in/#projects) — Windows power tool
-- [QuickOff Watch](https://teamexykings.in/#projects) — Wear OS app for Galaxy Watch
-- [RecruitLens](https://teamexykings.in/#projects) — AI-powered resume screener
-- [Device Care Plus](https://teamexykings.in/#projects) — Android app-lock for Samsung
+The official website of TeamExyKings — a developer collective building free tools, browser extensions, and apps, with a legacy archive of custom Samsung ROMs & kernels from 2014–2020.
 
 ---
 
-## Repository
+## Stack
 
-This repo contains the source for the TeamExyKings brand website — a single-file, framework-free site built with plain HTML, CSS, and JavaScript. No build tools, no dependencies, no npm.
+| Layer | Choice |
+|---|---|
+| HTML / CSS / JS | Vanilla — no frameworks, no npm, no build step |
+| 3D / WebGL | Three.js r128 (CDN) |
+| Animations | GSAP 3.12.5 + ScrollTrigger (CDN) |
+| 3D card tilt | Vanilla Tilt 1.8.1 (CDN) |
+| Fonts | Google Fonts — Anton, Inter, Space Grotesk, JetBrains Mono |
+| Hosting | GitHub Pages |
+| Domain | GoDaddy → `teamexykings.in` |
 
-```
-TeamExyKings/
-├── index.html        ← The entire site (single file)
-├── projects.json     ← Project data
-├── CHANGELOG.md      ← Version history
-└── README.md         ← This file
-```
-
-### Hosting
-
-Hosted free on **GitHub Pages** with a custom domain (`teamexykings.in`).
+Everything ships in a **single `index.html`** file. No bundler, no dependencies to install.
 
 ---
 
-## Tech Stack
+## Development
 
-- Plain HTML / CSS / JS — no framework
-- Google Fonts: Anton, Inter, Space Grotesk, JetBrains Mono
-- SVG-based logo system (inline, no image files)
-- `localStorage` for theme persistence
-- GitHub Pages for hosting
+Open `index.html` directly in a browser — no server required for local preview.
+
+All CDN scripts are loaded from `cdnjs.cloudflare.com` (allowlisted by GitHub Pages CSP).
 
 ---
 
-## Versioning
+## Adding Links (Placeholders)
+
+Search the file for `/* TODO */` (JS data) or `<!-- PLACEHOLDER -->` (HTML) to find every spot waiting for a real URL:
+
+- **PROJECTS** — `store`, `firefoxStore`, `github` fields for unreleased projects
+- **TEAM** — `github`, `linkedin`, `paypal`, `upi` for each team member
+- **LEGACY** — `link` field on every `builds` entry (ROM/kernel download URLs)
+- **Community section** — WhatsApp, Telegram, YouTube links
+
+Replace `"#"` with the real URL string; the UI updates automatically.
+
+---
+
+## Sections
+
+| # | Section | Notes |
+|---|---|---|
+| 01 | Projects | Tab-filtered grid + "All" marquee |
+| 02 | Legacy Archive | ROM/kernel accordion, tab-switched with CSS animation |
+| 03 | Community | Right-to-left card marquee |
+| 04 | Team | 16-member flip-card marquee (hover = flip, tap = donate) |
+| 05 | About | Team history |
+| 06 | FAQ | Expandable `<details>` accordion |
+| 07 | Credits | Right-to-left card marquee |
+
+---
+
+## Theme
+
+Site is **permanently AMOLED black** — no light/white theme. Color tokens live in `[data-theme="black"]` CSS block.
+
+---
+
+## Changelog
 
 See [CHANGELOG.md](./CHANGELOG.md) for full version history.
 
-Current version: **v1.0.0**
-
 ---
 
-## License
+## License & Copyright
 
-© 2026 TeamExyKings. All rights reserved.
+© 2014–2026 TeamExyKings · All Rights Reserved · Chennai, India
 
-This repository is public for transparency. The site content, brand assets, logo, and design are proprietary and may not be reused or redistributed without permission.
+Website content is the intellectual property of TeamExyKings. No content may be copied or redistributed without written permission.
+
+Tools and source code released via GitHub are subject to their respective open-source licences.

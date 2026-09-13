@@ -1305,34 +1305,111 @@ function setupMarqueeNav(wrapEl, animName, stepPx) {
   wrapEl.parentNode.insertBefore(outer, wrapEl);
   outer.appendChild(wrapEl);
 
-  function nudge(dir) {
-    const cs = window.getComputedStyle(trackEl);
-    const curX = new DOMMatrix(cs.transform).m41;
-    const halfW = trackEl.scrollWidth / 2;
-    if(!halfW) return; // hidden or not yet laid out
+  const DRIFT_PX = 2.4; // pixels per rAF frame while hovering (~144 px/s at 60 fps)
+  let drifting    = false;
+  let driftDir    = 0;
+  let driftX      = 0;
+  let rafId       = null;
+  let isOverWrap  = false; // mouse is currently hovering the marquee cards area
 
-    // Duration: prefer inline style (legacy pages set it), fall back to computed
-    const dur = parseFloat(trackEl.style.animationDuration) || parseFloat(cs.animationDuration) || 38;
+  function getHalfW() { return trackEl.scrollWidth / 2; }
+  function getDur() {
+    return parseFloat(trackEl.style.animationDuration)
+        || parseFloat(window.getComputedStyle(trackEl).animationDuration)
+        || 38;
+  }
+  function getLiveX() {
+    return new DOMMatrix(window.getComputedStyle(trackEl).transform).m41;
+  }
+  function resumeAnim() {
+    // Resume CSS animation from driftX, then honour isOverWrap pause state
+    const halfW = getHalfW();
+    const dur   = getDur();
+    trackEl.style.transition = 'none';
+    trackEl.style.transform  = '';
+    trackEl.offsetWidth; // reflow
+    if(halfW) {
+      const delay = (driftX / halfW) * dur; // negative → starts mid-cycle
+      trackEl.style.animation = `${animName} ${dur}s ${delay.toFixed(2)}s linear infinite`;
+    } else {
+      trackEl.style.animation = '';
+    }
+    // If mouse is still over the cards, keep it paused (CSS :hover can't override inline style)
+    trackEl.style.animationPlayState = isOverWrap ? 'paused' : 'running';
+  }
+
+  // ── Hover: continuous drift (desktop) ──────────────────────────────
+  function startDrift(dir) {
+    if(drifting) return;
+    drifting = true;
+    driftDir = dir;
+    driftX = getLiveX();
+    trackEl.style.animation  = 'none';
+    trackEl.style.transition = 'none';
+    trackEl.style.transform  = `translateX(${driftX}px)`;
+
+    function frame() {
+      if(!drifting) return;
+      const halfW = getHalfW();
+      if(halfW) {
+        driftX += driftDir * DRIFT_PX;
+        if(driftX > 0)      driftX -= halfW;
+        if(driftX < -halfW) driftX += halfW;
+        trackEl.style.transform = `translateX(${driftX}px)`;
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function stopDrift() {
+    if(!drifting) return;
+    drifting = false;
+    driftDir = 0;
+    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    resumeAnim();
+  }
+
+  // ── Marquee card area: pause on hover (replaces broken CSS :hover) ──
+  wrapEl.addEventListener('mouseenter', () => {
+    isOverWrap = true;
+    if(drifting) {
+      stopDrift(); // stopDrift → resumeAnim → sees isOverWrap=true → pauses
+    } else {
+      trackEl.style.animationPlayState = 'paused';
+    }
+  });
+  wrapEl.addEventListener('mouseleave', () => {
+    isOverWrap = false;
+    if(!drifting) {
+      trackEl.style.animationPlayState = 'running';
+    }
+  });
+
+  // ── Click: single nudge (mobile / tap) ────────────────────────────
+  function nudge(dir) {
+    const curX  = drifting ? driftX : getLiveX();
+    const halfW = getHalfW();
+    if(!halfW) return;
+    const dur = getDur();
 
     let newX = curX + dir * stepPx;
-    // Wrap to keep within [-halfW, 0]
-    if(newX > 0) newX -= halfW;
+    if(newX > 0)      newX -= halfW;
     if(newX < -halfW) newX += halfW;
 
-    // Freeze → slide to new position → resume animation from that offset
-    trackEl.style.animation = 'none';
-    trackEl.style.transform = `translateX(${curX}px)`;
-    trackEl.offsetWidth; // force reflow
+    trackEl.style.animation  = 'none';
+    trackEl.style.transition = 'none';
+    trackEl.style.transform  = `translateX(${curX}px)`;
+    trackEl.offsetWidth;
     trackEl.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1)';
-    trackEl.style.transform = `translateX(${newX}px)`;
+    trackEl.style.transform  = `translateX(${newX}px)`;
 
     setTimeout(() => {
+      driftX = newX; // keep driftX in sync for resumeAnim
       trackEl.style.transition = 'none';
-      trackEl.style.transform = '';
-      trackEl.offsetWidth; // force reflow
-      // Negative delay = how far into the animation cycle to start
-      const delay = (newX / halfW) * dur; // negative value
-      trackEl.style.animation = `${animName} ${dur}s ${delay.toFixed(2)}s linear infinite`;
+      trackEl.style.transform  = '';
+      trackEl.offsetWidth;
+      resumeAnim();
     }, 380);
   }
 
@@ -1341,7 +1418,18 @@ function setupMarqueeNav(wrapEl, animName, stepPx) {
     btn.className = `mq-nav-btn mq-nav-${type}`;
     btn.setAttribute('aria-label', type === 'prev' ? 'Previous' : 'Next');
     btn.innerHTML = type === 'prev' ? '&#8249;' : '&#8250;';
-    btn.addEventListener('click', e => { e.stopPropagation(); nudge(type === 'prev' ? 1 : -1); });
+    const dir = type === 'prev' ? 1 : -1;
+
+    // Desktop: hover = continuous scroll
+    btn.addEventListener('mouseenter', () => startDrift(dir));
+    btn.addEventListener('mouseleave', stopDrift);
+
+    // Click = single nudge (mobile only; desktop hover already scrolls continuously)
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if(!drifting) nudge(dir);
+    });
+
     outer.appendChild(btn);
   });
 }

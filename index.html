@@ -47,29 +47,6 @@
   --section-num-color:rgba(255,255,255,0.02);
 }
 
-/* WHITE */
-[data-theme="white"]{
-  --hero-accent:#7ab3ff;
-  --bg:#f4f4f8;
-  --bg2:#ffffff;
-  --bg3:#eaeaf0;
-  --text:#12121e;
-  --text-muted:#55557a;
-  --text-dim:#9999b8;
-  --border:rgba(0,0,0,0.08);
-  --border-hover:rgba(0,0,0,0.22);
-  --accent:#2563eb;
-  --accent-rgb:37,99,235;
-  --accent2-rgb:124,58,237;
-  --card-bg:rgba(255,255,255,0.9);
-  --card-shadow:0 1px 0 rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
-  --card-hover-shadow:0 0 0 1px rgba(var(--accent-rgb),0.25),0 20px 60px rgba(0,0,0,0.12),0 0 30px rgba(var(--accent-rgb),0.08);
-  --nav-bg:rgba(244,244,248,0.85);
-  --hero-bg:#0d0d20;
-  --glow:rgba(37,99,235,0.12);
-  --particle-color:0x60a5fa;
-  --section-num-color:rgba(0,0,0,0.03);
-}
 
 
 html{scroll-behavior:smooth}
@@ -108,8 +85,6 @@ nav{
 }
 .bw-1{color:#fff;-webkit-text-stroke:1.5px #000;paint-order:stroke fill}
 .bw-2{color:#C81C12;-webkit-text-stroke:1.5px #000;paint-order:stroke fill}
-[data-theme="white"] .bw-1{color:#12121e;-webkit-text-stroke:0px;paint-order:stroke fill}
-[data-theme="white"] .bw-2{color:#C81C12;-webkit-text-stroke:0px}
 
 .nav-links{display:flex;gap:2px;list-style:none;align-items:center}
 .nav-links a{
@@ -122,28 +97,20 @@ nav{
 .nav-links a.active{color:var(--accent)}
 
 .nav-right{display:flex;align-items:center;gap:10px}
-.theme-cycle-btn{
-  width:32px;height:32px;padding:0;
-  border-radius:50%;border:1px solid var(--border);
-  background:var(--card-bg);
-  cursor:pointer;
-  display:inline-flex;align-items:center;justify-content:center;
-  transition:all 0.2s;flex-shrink:0;
-}
-.theme-cycle-btn:hover{border-color:var(--border-hover);transform:scale(1.1)}
-.theme-dot{
-  width:14px;height:14px;border-radius:50%;
-  flex-shrink:0;display:block;transition:background 0.3s,box-shadow 0.3s;
-}
-[data-theme="black"] .theme-dot{background:#4f8ef7;box-shadow:0 0 8px rgba(79,142,247,0.8)}
-[data-theme="white"] .theme-dot{background:#f0f0f8;box-shadow:0 0 0 2px rgba(0,0,0,0.2)}
 
 .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:20px;cursor:pointer;padding:6px}
 
 @media(max-width:768px){
-  .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:flex-start;padding:16px;gap:4px;background:var(--bg2);border-bottom:1px solid var(--border);z-index:199}
-  .nav-links.open{display:flex}
-  .nav-links a{width:100%;padding:10px 14px}
+  .nav-brand{flex-grow:1}
+  .nav-links{
+    display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+    grid-template-columns:1fr 1fr;
+    padding:8px 10px 12px;gap:2px;
+    background:var(--bg2);border-bottom:1px solid var(--border);z-index:199;
+    align-items:flex-start;
+  }
+  .nav-links.open{display:grid}
+  .nav-links a{width:100%;padding:9px 12px}
   .nav-toggle{display:block}
   .t-label{display:none}
 }
@@ -183,12 +150,12 @@ nav{
 .hero h1{
   font-family:'Space Grotesk',sans-serif;
   font-size:clamp(36px,6vw,64px);font-weight:700;
-  color:#fff;line-height:1.1;margin-bottom:16px;
+  color:#ffffff;line-height:1.1;margin-bottom:16px;
   letter-spacing:-0.02em;
-  text-shadow:0 2px 24px rgba(0,0,0,0.95),0 0 60px rgba(0,0,0,0.7);
+  text-shadow:0 2px 32px rgba(0,0,0,1),0 0 80px rgba(0,0,0,0.9);
 }
-.hero h1 .accent{color:var(--hero-accent);text-shadow:0 0 30px rgba(79,142,247,0.5),0 2px 24px rgba(0,0,0,0.95)}
-.hero h1 .dim-word{opacity:0.88;text-shadow:0 2px 24px rgba(0,0,0,0.95)}
+.hero h1 .accent{color:var(--hero-accent) !important;text-shadow:0 0 40px rgba(79,142,247,0.55),0 2px 32px rgba(0,0,0,1)}
+.hero h1 .dim-word{color:#ffffff !important;text-shadow:0 2px 32px rgba(0,0,0,1),0 0 60px rgba(0,0,0,0.9)}
 
 .hero-sub{
   font-size:16px;color:rgba(255,255,255,0.5);
@@ -232,7 +199,6 @@ nav{
   overflow:hidden;
 }
 .stat-item{flex:1;text-align:center;padding:18px 10px;border-right:1px solid rgba(255,255,255,0.07)}
-[data-theme="white"] .stat-item{border-right-color:rgba(255,255,255,0.07)}
 .stat-item:last-child{border-right:none}
 .stat-num{
   font-family:'Space Grotesk',sans-serif;
@@ -427,32 +393,47 @@ nav{
 .legacy-nav-btn:not(.active) .legacy-count-badge{background:var(--bg3);color:var(--text-dim)}
 
 .legacy-page{display:none}
-.legacy-page.active{display:block}
-.device-entry{
+.legacy-page.active{display:block;animation:legacyFadeIn 0.38s cubic-bezier(0.4,0,0.2,1)}
+@keyframes legacyFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Legacy device card marquee */
+.legacy-marquee-wrap{
+  overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
+}
+.legacy-marquee{display:flex;gap:14px;width:max-content;animation:legacy-dev-scroll linear infinite}
+.legacy-marquee:hover{animation-play-state:paused}
+@keyframes legacy-dev-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Legacy device card — project-card style */
+.legacy-device-card{
+  width:230px;flex-shrink:0;
   background:var(--card-bg);border:1px solid var(--border);
-  border-radius:var(--radius-sm);margin-bottom:8px;
-  box-shadow:var(--card-shadow);overflow:hidden;
+  border-radius:var(--radius);padding:20px;
+  box-shadow:var(--card-shadow);
+  position:relative;overflow:hidden;
+  transition:border-color 0.3s,box-shadow 0.3s;
 }
-details.device-entry summary{
-  list-style:none;cursor:pointer;padding:13px 16px;
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
+.legacy-device-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(135deg,rgba(var(--accent-rgb),0.1) 0%,transparent 55%);
+  opacity:0;transition:opacity 0.3s;pointer-events:none;
 }
-details.device-entry summary::-webkit-details-marker{display:none}
-.device-entry-title{font-size:13.5px;font-weight:600;color:var(--text)}
-.device-model{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-left:6px}
-.device-build-count{font-size:11px;color:var(--text-dim);background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:999px;flex-shrink:0}
-.device-builds{padding:0 16px 14px;display:flex;flex-wrap:wrap;gap:7px}
+.legacy-device-card:hover{border-color:rgba(var(--accent-rgb),0.35);box-shadow:var(--card-hover-shadow)}
+.legacy-device-card:hover::after{opacity:1}
+.legacy-dc-icon{font-size:26px;margin-bottom:10px;display:block}
+.legacy-dc-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.legacy-dc-model{font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:12px}
+.legacy-dc-builds{display:flex;flex-direction:column;gap:6px}
 .build-chip{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:11.5px;color:var(--text-muted);
-  padding:5px 12px;border-radius:999px;
-  border:1px solid rgba(var(--accent-rgb),0.3);background:rgba(var(--accent-rgb),0.04);
-  text-decoration:none;transition:all 0.18s;
+  font-size:11px;color:var(--text-muted);
+  padding:5px 10px;border-radius:8px;
+  border:1px solid rgba(var(--accent-rgb),0.25);background:rgba(var(--accent-rgb),0.04);
+  text-decoration:none;transition:all 0.18s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.build-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),0.1);box-shadow:0 0 10px rgba(var(--accent-rgb),0.15)}
-.build-soon{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.04em}
-@keyframes group-flash{0%,100%{box-shadow:var(--card-shadow)}35%{box-shadow:0 0 0 2px rgba(var(--accent-rgb),0.5),0 4px 20px rgba(var(--accent-rgb),0.2)}}
-.flash{animation:group-flash 1.1s ease;border-radius:var(--radius-sm)}
+.build-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),0.1);box-shadow:0 0 8px rgba(var(--accent-rgb),0.15)}
 
 /* ═══════════════════════════════ COMMUNITY ═══════════════════════════════ */
 .community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
@@ -471,7 +452,6 @@ details.device-entry summary::-webkit-details-marker{display:none}
   background:rgba(255,255,255,0.02);margin-bottom:7px;
   text-decoration:none;transition:all 0.18s;color:inherit;
 }
-[data-theme="white"] .link-row{background:var(--bg3)}
 .link-row:hover{border-color:rgba(var(--accent-rgb),0.35);background:rgba(var(--accent-rgb),0.05)}
 .lr-left{display:flex;flex-direction:column}
 .lr-name{font-size:12.5px;font-weight:500;color:var(--text)}
@@ -485,9 +465,17 @@ details.device-entry summary::-webkit-details-marker{display:none}
 .lr-tag.live{color:#22c55e;border-color:rgba(34,197,94,0.3)}
 
 /* ═══════════════════════════════ TEAM ═══════════════════════════════ */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.team-marquee-wrap{
+  overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+.team-marquee{display:flex;gap:16px;width:max-content;animation:team-scroll 48s linear infinite}
+.team-marquee:hover{animation-play-state:paused}
+@keyframes team-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .team-card{
-  height:230px;perspective:900px;cursor:pointer;
+  width:300px;flex-shrink:0;
+  height:240px;perspective:900px;cursor:pointer;
   border-radius:var(--radius);
 }
 .team-card-inner{
@@ -601,11 +589,48 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 }
 
 /* ═══════════════════════════════ DISCLAIMER ═══════════════════════════════ */
-.disclaimer-banner{background:rgba(180,30,30,0.06);border-top:1px solid rgba(220,38,38,0.18)}
+.disclaimer-banner{background:rgba(180,30,30,0.06);border-top:1px solid rgba(220,38,38,0.18);border-bottom:1px solid rgba(220,38,38,0.10)}
 .disclaimer-inner{max-width:1140px;margin:0 auto;padding:14px 28px;display:flex;align-items:flex-start;gap:12px}
 .disclaimer-icon{font-size:16px;flex-shrink:0;margin-top:1px}
 .disclaimer-text{font-size:12px;color:var(--text-muted);line-height:1.6}
 .disclaimer-text strong{color:var(--text)}
+
+/* ═══════════════════════════════ COMMUNITY MARQUEE ═══════════════════════════════ */
+.community-marquee-wrap{
+  overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+.community-marquee{display:flex;gap:16px;width:max-content;animation:comm-scroll 28s linear infinite}
+.community-marquee:hover{animation-play-state:paused}
+@keyframes comm-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.community-marquee .community-card{width:300px;flex-shrink:0}
+
+/* ═══════════════════════════════ CREDITS MARQUEE ═══════════════════════════════ */
+.credits-marquee-wrap{
+  overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+.credits-marquee{display:flex;gap:14px;width:max-content;animation:credits-scroll 36s linear infinite}
+.credits-marquee:hover{animation-play-state:paused}
+@keyframes credits-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.credits-marquee .about-card{width:260px;flex-shrink:0;margin-bottom:0}
+
+/* ═══════════════════════════════ MARQUEE NAV BUTTONS ═══════════════════════════════ */
+.mq-outer{position:relative}
+.mq-nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:20;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,0.72);border:1px solid rgba(255,255,255,0.18);
+  color:var(--text);cursor:pointer;font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.18s;backdrop-filter:blur(8px);
+  user-select:none;
+}
+.mq-nav-btn:hover{background:rgba(var(--accent-rgb),0.3);border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(var(--accent-rgb),0.3)}
+.mq-nav-prev{left:6px}
+.mq-nav-next{right:6px}
 
 /* ═══════════════════════════════ FOOTER ═══════════════════════════════ */
 .footer-ticker-wrap{
@@ -678,11 +703,6 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#credits">Credits</a></li>
     </ul>
-    <div class="nav-right">
-      <button class="theme-cycle-btn" id="themeCycleBtn" title="Switch theme">
-        <span class="theme-dot" id="themeDot"></span>
-      </button>
-    </div>
   </nav>
 </div>
 
@@ -760,22 +780,50 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <p>Connect with TeamExyKings across platforms</p>
     </div>
   </div>
-  <div class="community-grid">
-    <div class="community-card reveal" data-tilt data-tilt-max="4" data-tilt-speed="500" data-tilt-glare data-tilt-max-glare="0.06">
-      <h3>💬 Chat & Updates</h3>
-      <p class="cc-sub">Real-time discussions and announcements</p>
-      <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">WhatsApp Community</span><span class="lr-desc">TeamExyKings — releases & updates</span></span><span class="lr-tag">Soon</span></a>
-      <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">Telegram Channel</span><span class="lr-desc">@TeamExyKings — news & releases</span></span><span class="lr-tag">Soon</span></a>
-    </div>
-    <div class="community-card reveal" data-tilt data-tilt-max="4" data-tilt-speed="500" data-tilt-glare data-tilt-max-glare="0.06">
-      <h3>📺 Content</h3>
-      <p class="cc-sub">Guides, tutorials and showcases</p>
-      <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos & tutorials</span></span><span class="lr-tag">Soon</span></a>
-    </div>
-    <div class="community-card reveal" data-tilt data-tilt-max="4" data-tilt-speed="500" data-tilt-glare data-tilt-max-glare="0.06">
-      <h3>💻 Code</h3>
-      <p class="cc-sub">Open source — all on GitHub</p>
-      <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public & open source</span></span><span class="lr-tag live">Live</span></a>
+  <div class="community-marquee-wrap">
+    <div class="community-marquee" id="communityMarquee">
+      <!-- CARD 1: Chat & Updates -->
+      <div class="community-card">
+        <h3>💬 Chat &amp; Updates</h3>
+        <p class="cc-sub">Real-time discussions and announcements</p>
+        <!-- PLACEHOLDER: Replace href="#" with WhatsApp Community invite link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">WhatsApp Community</span><span class="lr-desc">TeamExyKings — releases &amp; updates</span></span><span class="lr-tag">Soon</span></a>
+        <!-- PLACEHOLDER: Replace href="#" with Telegram channel link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">Telegram Channel</span><span class="lr-desc">@TeamExyKings — news &amp; releases</span></span><span class="lr-tag">Soon</span></a>
+      </div>
+      <!-- CARD 2: Content -->
+      <div class="community-card">
+        <h3>📺 Content</h3>
+        <p class="cc-sub">Guides, tutorials and showcases</p>
+        <!-- PLACEHOLDER: Replace href="#" with YouTube channel link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag">Soon</span></a>
+      </div>
+      <!-- CARD 3: Code -->
+      <div class="community-card">
+        <h3>💻 Code</h3>
+        <p class="cc-sub">Open source — all on GitHub</p>
+        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public &amp; open source</span></span><span class="lr-tag live">Live</span></a>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="community-card">
+        <h3>💬 Chat &amp; Updates</h3>
+        <p class="cc-sub">Real-time discussions and announcements</p>
+        <!-- PLACEHOLDER: Replace href="#" with WhatsApp Community invite link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">WhatsApp Community</span><span class="lr-desc">TeamExyKings — releases &amp; updates</span></span><span class="lr-tag">Soon</span></a>
+        <!-- PLACEHOLDER: Replace href="#" with Telegram channel link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">Telegram Channel</span><span class="lr-desc">@TeamExyKings — news &amp; releases</span></span><span class="lr-tag">Soon</span></a>
+      </div>
+      <div class="community-card">
+        <h3>📺 Content</h3>
+        <p class="cc-sub">Guides, tutorials and showcases</p>
+        <!-- PLACEHOLDER: Replace href="#" with YouTube channel link when ready -->
+        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag">Soon</span></a>
+      </div>
+      <div class="community-card">
+        <h3>💻 Code</h3>
+        <p class="cc-sub">Open source — all on GitHub</p>
+        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public &amp; open source</span></span><span class="lr-tag live">Live</span></a>
+      </div>
     </div>
   </div>
 </div>
@@ -792,7 +840,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <p>The people behind TeamExyKings — past and present</p>
     </div>
   </div>
-  <div class="team-grid" id="teamGrid"></div>
+  <div class="team-marquee-wrap"><div class="team-marquee" id="teamGrid"></div></div>
 </div>
 
 <hr class="section-divider"/>
@@ -888,101 +936,171 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <h2>Built with &amp; powered by</h2>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px">
-    <div class="about-card reveal"><h3>🌐 Frontend</h3><p>Built with plain HTML, CSS &amp; JavaScript — no frameworks, no build tools, no npm. Single self-contained file.</p></div>
-    <div class="about-card reveal"><h3>🎨 Fonts</h3><p>Anton, Inter, Space Grotesk, JetBrains Mono via Google Fonts.</p></div>
-    <div class="about-card reveal"><h3>🚀 3D &amp; Animation</h3><p>Three.js r128 for WebGL hero. GSAP 3.12.5 + ScrollTrigger for scroll animations. Vanilla Tilt 1.8.1 for 3D card tilt effects.</p></div>
-    <div class="about-card reveal"><h3>☁️ Hosting</h3><p><strong>GitHub Pages</strong> — free, fast, and open. The entire site lives in a single <code>index.html</code> deployed directly from the TeamExyKings GitHub repository.</p></div>
-    <div class="about-card reveal"><h3>🌐 Domain</h3><p><strong>GoDaddy</strong> — domain registrar for <code>teamexykings.in</code>. DNS pointed to GitHub Pages for zero-downtime delivery.</p></div>
-    <div class="about-card reveal"><h3>🔧 Libraries</h3><p>All CDN via cdnjs.cloudflare.com. No bundlers, no build step required.</p></div>
-    <div class="about-card reveal"><h3>👑 Founder</h3><p><strong>Somadsul</strong> — Founder of TeamExyKings Group. The original visionary who started it all in 2014 and brought the team together.</p></div>
-    <div class="about-card reveal"><h3>💻 Site Developer</h3><p><strong>Yashwanth Ram Somireddy</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">@Yash92Duster</span> — founding member and lead developer of TeamExyKings. Designed and built this website.</p></div>
+  <div class="credits-marquee-wrap">
+    <div class="credits-marquee">
+      <div class="about-card"><h3>🌐 Frontend</h3><p>Built with plain HTML, CSS &amp; JavaScript — no frameworks, no build tools, no npm. Single self-contained file.</p></div>
+      <div class="about-card"><h3>🎨 Fonts</h3><p>Anton, Inter, Space Grotesk, JetBrains Mono via Google Fonts.</p></div>
+      <div class="about-card"><h3>🚀 3D &amp; Animation</h3><p>Three.js r128 for WebGL hero. GSAP 3.12.5 + ScrollTrigger for scroll animations. Vanilla Tilt 1.8.1 for 3D card tilt effects.</p></div>
+      <div class="about-card"><h3>☁️ Hosting</h3><p><strong>GitHub Pages</strong> — free, fast, and open. The entire site lives in a single <code>index.html</code> deployed directly from the TeamExyKings GitHub repository.</p></div>
+      <div class="about-card"><h3>🌐 Domain</h3><p><strong>GoDaddy</strong> — domain registrar for <code>teamexykings.in</code>. DNS pointed to GitHub Pages for zero-downtime delivery.</p></div>
+      <div class="about-card"><h3>🔧 Libraries</h3><p>All CDN via cdnjs.cloudflare.com. No bundlers, no build step required.</p></div>
+      <div class="about-card"><h3>👑 Founder</h3><p><strong>Somadsul</strong> — Founder of TeamExyKings Group. The original visionary who started it all in 2014 and brought the team together.</p></div>
+      <div class="about-card"><h3>💻 Site Developer</h3><p><strong>Yashwanth Ram Somireddy</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">@Yash92Duster</span> — founding member and lead developer of TeamExyKings. Designed and built this website.</p></div>
+      <!-- duplicate for seamless loop -->
+      <div class="about-card"><h3>🌐 Frontend</h3><p>Built with plain HTML, CSS &amp; JavaScript — no frameworks, no build tools, no npm. Single self-contained file.</p></div>
+      <div class="about-card"><h3>🎨 Fonts</h3><p>Anton, Inter, Space Grotesk, JetBrains Mono via Google Fonts.</p></div>
+      <div class="about-card"><h3>🚀 3D &amp; Animation</h3><p>Three.js r128 for WebGL hero. GSAP 3.12.5 + ScrollTrigger for scroll animations. Vanilla Tilt 1.8.1 for 3D card tilt effects.</p></div>
+      <div class="about-card"><h3>☁️ Hosting</h3><p><strong>GitHub Pages</strong> — free, fast, and open. The entire site lives in a single <code>index.html</code> deployed directly from the TeamExyKings GitHub repository.</p></div>
+      <div class="about-card"><h3>🌐 Domain</h3><p><strong>GoDaddy</strong> — domain registrar for <code>teamexykings.in</code>. DNS pointed to GitHub Pages for zero-downtime delivery.</p></div>
+      <div class="about-card"><h3>🔧 Libraries</h3><p>All CDN via cdnjs.cloudflare.com. No bundlers, no build step required.</p></div>
+      <div class="about-card"><h3>👑 Founder</h3><p><strong>Somadsul</strong> — Founder of TeamExyKings Group. The original visionary who started it all in 2014 and brought the team together.</p></div>
+      <div class="about-card"><h3>💻 Site Developer</h3><p><strong>Yashwanth Ram Somireddy</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">@Yash92Duster</span> — founding member and lead developer of TeamExyKings. Designed and built this website.</p></div>
+    </div>
   </div>
 </div>
 
 </div><!-- /page -->
 
 
-<!-- DISCLAIMER -->
-<div class="disclaimer-banner">
-  <div class="disclaimer-inner">
-    <span class="disclaimer-icon">⚠️</span>
-    <div class="disclaimer-text">
-      <strong>Disclaimer:</strong> All custom ROMs, kernels, and tools provided by TeamExyKings are distributed <em>as-is</em>, without warranty of any kind. Use at your own risk. TeamExyKings and its contributors shall not be held liable for any damage to hardware, loss of data, or voided warranties. <strong>Always back up your device before flashing any custom software.</strong>
-    </div>
-  </div>
-</div>
-
 <footer>
   <div class="footer-ticker-wrap"><div class="footer-ticker" id="devTicker"></div></div>
+  <!-- DISCLAIMER — sits below dev-names ticker -->
+  <div class="disclaimer-banner">
+    <div class="disclaimer-inner">
+      <span class="disclaimer-icon">⚠️</span>
+      <div class="disclaimer-text">
+        <strong>Disclaimer:</strong> All custom ROMs, kernels, and tools provided by TeamExyKings are distributed <em>as-is</em>, without warranty of any kind. Use at your own risk. TeamExyKings and its contributors shall not be held liable for any damage to hardware, loss of data, or voided warranties. <strong>Always back up your device before flashing any custom software.</strong>
+      </div>
+    </div>
+  </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2014–2026 TeamExyKings · All Rights Reserved · Chennai, India · Website is the intellectual property of TeamExyKings. No content may be copied or redistributed without permission.</span>
-    <div class="footer-links">
-      <a href="https://t.me/TeamExyKings" target="_blank">Telegram</a>
-      <a href="#about">About</a>
-    </div>
   </div>
 </footer>
 
 <script>
 // ═══════════════════════════════ DATA ═══════════════════════════════
 const PROJECTS = [
-  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy", store:"#", firefoxStore:"#", status:"live" },
+  // PLACEHOLDER: update store + firefoxStore URLs when BTM is published to Chrome/Firefox stores
+  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy", store:"#" /* TODO: Chrome Web Store URL */, firefoxStore:"#" /* TODO: Firefox Add-ons URL */, status:"live" },
   { id:2, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
   { id:3, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
   { id:4, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
-  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#", store:null, firefoxStore:null, status:"soon" },
-  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"#", store:null, firefoxStore:null, status:"soon" },
-  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"#", store:null, firefoxStore:null, status:"live" }
+  // PLACEHOLDER: update github URL when QuickOff Watch repo is public
+  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"soon" },
+  // PLACEHOLDER: update github URL when RecruitLens repo is public
+  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"soon" },
+  // PLACEHOLDER: update github URL when Device Care Plus repo is public
+  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"live" }
 ];
 
 const LEGACY_ICONS = { "Note Series":"📓", "S Series":"⭐", "A Series":"🅰️", "Tab Series":"📟", "Kernels":"⚙️" };
+// LEGACY build links — replace "#" with the actual download/mirror URL for each build.
+// Each build is { name: "display name", link: "download URL" }.
+// "#" = placeholder; add the real URL and it becomes a live link automatically.
 const LEGACY = {
   "Note Series": [
-    { device:"Note 10", model:"SM-N970/975 F", builds:["LightROM [Stock Pie]"] },
-    { device:"Note 9", model:"SM-N960 F/FD", builds:["LightROM [Stock Pie]","LightROM [Stock Oreo]"] },
-    { device:"Note 8", model:"SM-N950 F/FD", builds:["LightROM [Stock Pie]","LightROM [Stock Oreo]","LightROM [S9+ Oreo Port]","LightROM [Stock Nougat]"] }
+    { device:"Note 10", model:"SM-N970/975 F", builds:[
+      { name:"LightROM [Stock Pie]",   link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"Note 9", model:"SM-N960 F/FD", builds:[
+      { name:"LightROM [Stock Pie]",   link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",  link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"Note 8", model:"SM-N950 F/FD", builds:[
+      { name:"LightROM [Stock Pie]",      link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [S9+ Oreo Port]",  link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Nougat]",   link:"#" /* TODO: add download URL */ }
+    ]}
   ],
   "S Series": [
-    { device:"S10/S10+", model:"SM-G973/975 F", builds:["LightROM [Stock Pie]"] },
-    { device:"S9/S9+", model:"SM-G960/965 F/FD", builds:["LightROM [Stock Q]","LightROM [Stock Pie]","LightROM [Stock Oreo]"] },
-    { device:"S8/S8+", model:"SM-G950/955 F/FD", builds:["LightROM [Stock Pie]","LightROM [Stock Oreo]","LightROM [S9+ Oreo Port]","LightROM [Stock Nougat]"] },
-    { device:"S7/S7E", model:"SM-G930/935 F/FD", builds:["LightROM [NFE Pie Port]","LightROM [Stock Oreo]","LightROM [S9+ Oreo Port]"] },
-    { device:"S6/S6E", model:"SM-G920/925 F", builds:["LightROM [Stock NN]"] },
-    { device:"S5", model:"G900H", builds:["LightROM [A320F MM Port]","LightROM [S5 Neo MM Port]","Resurrection Remix [NN]","HavocOS [Q]","AOSIP Quiche [Q]"] }
+    { device:"S10/S10+", model:"SM-G973/975 F", builds:[
+      { name:"LightROM [Stock Pie]",   link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"S9/S9+", model:"SM-G960/965 F/FD", builds:[
+      { name:"LightROM [Stock Q]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Pie]",   link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",  link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"S8/S8+", model:"SM-G950/955 F/FD", builds:[
+      { name:"LightROM [Stock Pie]",      link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [S9+ Oreo Port]",  link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Nougat]",   link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"S7/S7E", model:"SM-G930/935 F/FD", builds:[
+      { name:"LightROM [NFE Pie Port]",   link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [S9+ Oreo Port]",  link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"S6/S6E", model:"SM-G920/925 F", builds:[
+      { name:"LightROM [Stock NN]",    link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"S5", model:"G900H", builds:[
+      { name:"LightROM [A320F MM Port]",  link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [S5 Neo MM Port]", link:"#" /* TODO: add download URL */ },
+      { name:"Resurrection Remix [NN]",   link:"#" /* TODO: add download URL */ },
+      { name:"HavocOS [Q]",               link:"#" /* TODO: add download URL */ },
+      { name:"AOSIP Quiche [Q]",          link:"#" /* TODO: add download URL */ }
+    ]}
   ],
   "A Series": [
-    { device:"A8/A8+", model:"SM-A530/730 F", builds:["LightROM [Stock Pie]","LightROM [Stock Oreo]","LightROM [S9+ Oreo Port]"] },
-    { device:"A50", model:"SM-A505 F/FN/G", builds:["LightROM [Stock Q]","LightROM [Stock Pie]"] },
-    { device:"A5", model:"SM-A500G", builds:["LightROM [Stock MM]"] },
-    { device:"A3", model:"SM-A300H", builds:["LightROM [Stock LL]"] }
+    { device:"A8/A8+", model:"SM-A530/730 F", builds:[
+      { name:"LightROM [Stock Pie]",      link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Oreo]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [S9+ Oreo Port]",  link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"A50", model:"SM-A505 F/FN/G", builds:[
+      { name:"LightROM [Stock Q]",     link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [Stock Pie]",   link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"A5", model:"SM-A500G", builds:[
+      { name:"LightROM [Stock MM]",    link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"A3", model:"SM-A300H", builds:[
+      { name:"LightROM [Stock LL]",    link:"#" /* TODO: add download URL */ }
+    ]}
   ],
   "Tab Series": [
-    { device:"Tab", model:"SM-T560/561", builds:["LightROM [T560][Stock KK]","LightROM [T561][Stock KK]"] },
-    { device:"Tab", model:"SM-T230/231", builds:["LightROM [T230][Stock KK]","LightROM [T231][Stock KK]"] }
+    { device:"Tab", model:"SM-T560/561", builds:[
+      { name:"LightROM [T560][Stock KK]", link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [T561][Stock KK]", link:"#" /* TODO: add download URL */ }
+    ]},
+    { device:"Tab", model:"SM-T230/231", builds:[
+      { name:"LightROM [T230][Stock KK]", link:"#" /* TODO: add download URL */ },
+      { name:"LightROM [T231][Stock KK]", link:"#" /* TODO: add download URL */ }
+    ]}
   ],
   "Kernels": [
-    { device:"S5", model:"SM-G900H", builds:["MoonLight [MM]","GreenApple [MM]","Wanted [MM]","duki994 [MM]"] }
+    { device:"S5", model:"SM-G900H", builds:[
+      { name:"MoonLight [MM]",    link:"#" /* TODO: add download URL */ },
+      { name:"GreenApple [MM]",   link:"#" /* TODO: add download URL */ },
+      { name:"Wanted [MM]",       link:"#" /* TODO: add download URL */ },
+      { name:"duki994 [MM]",      link:"#" /* TODO: add download URL */ }
+    ]}
   ]
 };
 
+// TEAM — for each member, replace null with the actual URL string to show that link on their card.
+// github / linkedin / youtube / paypal / upi — set to null to hide, or a URL string to show.
 const TEAM = [
-  { name:"Somadsul", handle:"somadsul", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Rameshdbad", handle:"Amtra", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Yashwanth Ram Somireddy", handle:"Yash92Duster", location:"Chennai, India", alumni:false, github:"https://github.com/yashwanthramsomireddy", linkedin:"https://linkedin.com/in/yashwanth-ram-somireddy-15121b215", youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Ale Retana", handle:"aleretana", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Griffin98", handle:"Griffin98", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Aditya Singh", handle:"adityasingh", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"FevaX", handle:"FevaX", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Duki994", handle:"Duki994", location:"", alumni:true, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Rohit Nayak", handle:"rohitnayak", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"HyperAlvi", handle:"HyperAlvi", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Prashantp", handle:"prashantp", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Cnkzlyr", handle:"Cnkzlyr", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"MaDaaN", handle:"MaDaaN", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Jashan Cheema", handle:"jashancheema", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Adithya Dinesh", handle:"adithyadinesh", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null },
-  { name:"Wajdi Muhtadi", handle:"wajdimuhtadi", location:"", alumni:false, github:null, linkedin:null, youtube:null, xda:null, paypal:null, upi:null }
+  { name:"Somadsul",                 handle:"somadsul",        location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Rameshdbad",               handle:"Amtra",           location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Yashwanth Ram Somireddy",  handle:"Yash92Duster",   location:"Chennai, India", alumni:false, github:"https://github.com/yashwanthramsomireddy", linkedin:"https://linkedin.com/in/yashwanth-ram-somireddy-15121b215", youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Ale Retana",        handle:"aleretana",      location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Griffin98",         handle:"Griffin98",       location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Aditya Singh",      handle:"adityasingh",    location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"FevaX",             handle:"FevaX",           location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Duki994",           handle:"Duki994",         location:"", alumni:true,  github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Rohit Nayak",       handle:"rohitnayak",     location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"HyperAlvi",         handle:"HyperAlvi",       location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Prashantp",         handle:"prashantp",       location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Cnkzlyr",           handle:"Cnkzlyr",         location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"MaDaaN",            handle:"MaDaaN",          location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Jashan Cheema",     handle:"jashancheema",   location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Adithya Dinesh",    handle:"adithyadinesh",  location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
+  { name:"Wajdi Muhtadi",     handle:"wajdimuhtadi",   location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ }
 ];
 
 // ═══════════════════════════════ THREE.JS HERO ═══════════════════════════════
@@ -1046,9 +1164,9 @@ const TEAM = [
     return mesh;
   }
 
-  const obj1 = makeWireframe(new THREE.IcosahedronGeometry(1, 0), 0x4f8ef7, 1.1, [2.2, 0.5, -1]);
+  const obj1 = makeWireframe(new THREE.IcosahedronGeometry(1, 0), 0x4f8ef7, 1.1, [4.0, 0.3, -1]);
   const obj2 = makeWireframe(new THREE.OctahedronGeometry(1, 0), 0x7c5cf7, 0.7, [-2.5, -0.8, 0]);
-  const obj3 = makeWireframe(new THREE.IcosahedronGeometry(1, 1), 0x4f8ef7, 0.5, [0.5, 1.8, 1]);
+  const obj3 = makeWireframe(new THREE.IcosahedronGeometry(1, 1), 0x4f8ef7, 0.5, [2.8, 1.6, 1]);
   scene.add(obj1); scene.add(obj2); scene.add(obj3);
 
   // Glow halos (larger transparent spheres behind wireframes)
@@ -1060,7 +1178,7 @@ const TEAM = [
     m.position.set(...pos);
     return m;
   }
-  scene.add(makeGlow([2.2, 0.5, -1], 0x4f8ef7, 1.1));
+  scene.add(makeGlow([4.0, 0.3, -1], 0x4f8ef7, 1.1));
   scene.add(makeGlow([-2.5, -0.8, 0], 0x7c5cf7, 0.7));
 
   // Mouse parallax
@@ -1081,15 +1199,6 @@ const TEAM = [
   resize();
   new ResizeObserver(resize).observe(document.getElementById('home'));
 
-  // Color update on theme change (called from setTheme)
-  window._tekUpdateHeroTheme = function(theme) {
-    const accents = { black: 0x4f8ef7, white: 0x7ab3ff };
-    const fogColors = { black: 0x000000, white: 0x0d0d20 };
-    const col = accents[theme] || 0x4f8ef7;
-    obj1.material.color.set(col);
-    obj3.material.color.set(col);
-    scene.fog.color.set(fogColors[theme] || 0x07070f);
-  };
 
   // Animate
   const clock = new THREE.Clock();
@@ -1128,7 +1237,7 @@ const TEAM = [
   // Hero reveal (immediate)
   gsap.fromTo('.hero-content', { opacity:0, y:40 }, { opacity:1, y:0, duration:1.1, ease:'power3.out', delay:0.3 });
   gsap.fromTo('.stats-bar',    { opacity:0, y:30 }, { opacity:1, y:0, duration:0.9, ease:'power3.out', delay:0.7 });
-  gsap.fromTo('.home-summary', { opacity:0, y:30 }, { opacity:1, y:0, duration:0.9, ease:'power3.out', delay:0.95 });
+  // .home-summary removed from HTML — animation line removed to silence GSAP warning
 
   // Scroll reveals
   document.querySelectorAll('.reveal').forEach((el, i) => {
@@ -1156,12 +1265,12 @@ const TEAM = [
 
   // Stagger team cards
   ScrollTrigger.create({
-    trigger: '#teamGrid',
-    start: 'top 80%',
+    trigger: '.team-marquee-wrap',
+    start: 'top 85%',
     onEnter: () => {
-      gsap.fromTo('#teamGrid .team-card',
-        { opacity:0, y:24 },
-        { opacity:1, y:0, duration:0.55, ease:'power2.out', stagger:0.05 }
+      gsap.fromTo('.team-marquee-wrap',
+        { opacity:0, y:20 },
+        { opacity:1, y:0, duration:0.7, ease:'power2.out' }
       );
     }
   });
@@ -1182,6 +1291,60 @@ const TEAM = [
     }
   });
 })();
+
+// ═══════════════════════════════ MARQUEE NAV ═══════════════════════════════
+function setupMarqueeNav(wrapEl, animName, stepPx) {
+  if(!wrapEl || wrapEl._mqNavInit) return;
+  wrapEl._mqNavInit = true;
+  const trackEl = wrapEl.firstElementChild;
+  if(!trackEl) return;
+
+  // Wrap in .mq-outer so buttons sit outside overflow:hidden
+  const outer = document.createElement('div');
+  outer.className = 'mq-outer';
+  wrapEl.parentNode.insertBefore(outer, wrapEl);
+  outer.appendChild(wrapEl);
+
+  function nudge(dir) {
+    const cs = window.getComputedStyle(trackEl);
+    const curX = new DOMMatrix(cs.transform).m41;
+    const halfW = trackEl.scrollWidth / 2;
+    if(!halfW) return; // hidden or not yet laid out
+
+    // Duration: prefer inline style (legacy pages set it), fall back to computed
+    const dur = parseFloat(trackEl.style.animationDuration) || parseFloat(cs.animationDuration) || 38;
+
+    let newX = curX + dir * stepPx;
+    // Wrap to keep within [-halfW, 0]
+    if(newX > 0) newX -= halfW;
+    if(newX < -halfW) newX += halfW;
+
+    // Freeze → slide to new position → resume animation from that offset
+    trackEl.style.animation = 'none';
+    trackEl.style.transform = `translateX(${curX}px)`;
+    trackEl.offsetWidth; // force reflow
+    trackEl.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1)';
+    trackEl.style.transform = `translateX(${newX}px)`;
+
+    setTimeout(() => {
+      trackEl.style.transition = 'none';
+      trackEl.style.transform = '';
+      trackEl.offsetWidth; // force reflow
+      // Negative delay = how far into the animation cycle to start
+      const delay = (newX / halfW) * dur; // negative value
+      trackEl.style.animation = `${animName} ${dur}s ${delay.toFixed(2)}s linear infinite`;
+    }, 380);
+  }
+
+  ['prev','next'].forEach(type => {
+    const btn = document.createElement('button');
+    btn.className = `mq-nav-btn mq-nav-${type}`;
+    btn.setAttribute('aria-label', type === 'prev' ? 'Previous' : 'Next');
+    btn.innerHTML = type === 'prev' ? '&#8249;' : '&#8250;';
+    btn.addEventListener('click', e => { e.stopPropagation(); nudge(type === 'prev' ? 1 : -1); });
+    outer.appendChild(btn);
+  });
+}
 
 // ═══════════════════════════════ PROJECTS ═══════════════════════════════
 function makeProjectCardHTML(p) {
@@ -1211,6 +1374,7 @@ function renderProjects(filter) {
     list.removeAttribute('style');
     const cards = PROJECTS.map(makeProjectCardHTML).join('');
     list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${cards}${cards}</div></div>`;
+    setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306);
   } else {
     // 3-col grid
     list.className = 'projects-grid';
@@ -1235,7 +1399,7 @@ renderProjects('currentAll');
 // ═══════════════════════════════ LEGACY ═══════════════════════════════
 const legacyGroups = Object.keys(LEGACY);
 const legacyCounts = legacyGroups.map(g => LEGACY[g].reduce((s,d)=>s+d.builds.length,0));
-const totalBuilds = legacyCounts.reduce((a,b)=>a+b,0);
+const totalBuilds = legacyCounts.reduce((a,b)=>a+b,0); // used for stats counter
 
 // Legacy sub-pages
 const legacyNavEl = document.getElementById('legacyNav');
@@ -1245,19 +1409,33 @@ legacyNavEl.innerHTML = legacyGroups.map((g,i) => {
   return `<button class="legacy-nav-btn${i===0?' active':''}" data-group="${g}">${LEGACY_ICONS[g]} ${g} <span class="legacy-count-badge">${cnt}</span></button>`;
 }).join('');
 
-legacyPagesEl.innerHTML = legacyGroups.map((g,i) => `
-  <div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
-    ${LEGACY[g].map(d => `
-      <details class="device-entry" open>
-        <summary>
-          <span><span class="device-entry-title">${d.device}</span><span class="device-model">${d.model}</span></span>
-          <span class="device-build-count">${d.builds.length} build${d.builds.length>1?'s':''}</span>
-        </summary>
-        <div class="device-builds">
-          ${d.builds.map(b => `<a class="build-chip" href="#">${b} <span class="build-soon">soon</span></a>`).join('')}
-        </div>
-      </details>`).join('')}
-  </div>`).join('');
+// Build device-card marquee for each series tab
+legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
+  const devices = LEGACY[g];
+  // Repeat cards so the loop looks full even for small series (min 6 visible)
+  const reps = devices.length < 4 ? Math.ceil(8 / devices.length) : 2;
+  const dur = Math.max(18, devices.length * 6); // ~6s per unique card, min 18s
+  const cardHTML = devices.map(d => `
+    <div class="legacy-device-card">
+      <span class="legacy-dc-icon">${LEGACY_ICONS[g]}</span>
+      <div class="legacy-dc-name">${d.device}</div>
+      <div class="legacy-dc-model">${d.model}</div>
+      <div class="legacy-dc-builds">
+        ${d.builds.map(b => `<a class="build-chip" href="${b.link}" target="_blank">${b.name}</a>`).join('')}
+      </div>
+    </div>`).join('');
+  const looped = Array(reps).fill(cardHTML).join('');
+  return `<div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
+    <div class="legacy-marquee-wrap">
+      <div class="legacy-marquee" style="animation-duration:${dur}s">${looped}</div>
+    </div>
+  </div>`;
+}).join('');
+
+// Add nav buttons to every legacy series marquee
+document.querySelectorAll('.legacy-marquee-wrap').forEach(el => {
+  setupMarqueeNav(el, 'legacy-dev-scroll', 244);
+});
 
 let legacyActiveIdx = 0;
 function switchLegacyPage(groupKey) {
@@ -1268,19 +1446,16 @@ function switchLegacyPage(groupKey) {
   if(el) el.classList.add('active');
 }
 
-// Auto-cycle tabs when idle
+// Auto-cycle tabs every 3 s; pause on hover/touch
 let legacyAutoTimer = null;
 function startLegacyAuto() {
   if(legacyAutoTimer) return;
   legacyAutoTimer = setInterval(() => {
     legacyActiveIdx = (legacyActiveIdx + 1) % legacyGroups.length;
     switchLegacyPage(legacyGroups[legacyActiveIdx]);
-  }, 3500);
+  }, 10000);
 }
-function stopLegacyAuto() {
-  clearInterval(legacyAutoTimer);
-  legacyAutoTimer = null;
-}
+function stopLegacyAuto() { clearInterval(legacyAutoTimer); legacyAutoTimer = null; }
 const legacySection = document.getElementById('legacy');
 legacySection.addEventListener('mouseenter', stopLegacyAuto);
 legacySection.addEventListener('mouseleave', startLegacyAuto);
@@ -1294,13 +1469,11 @@ legacyNavEl.addEventListener('click', e => {
 
 // ═══════════════════════════════ TEAM ═══════════════════════════════
 const AVATARS = ['🧑‍💻','👨‍💻','👩‍💻','🧑‍🔧','🧑‍🎨','🧑‍🚀'];
-document.getElementById('teamGrid').innerHTML = TEAM.map((t,i) => {
-  // Front face — all info
+function makeTeamCardHTML(t, i) {
   const frontLinks = [];
   if(t.github) frontLinks.push(`<a class="team-link" href="${t.github}" target="_blank">🐙 GitHub</a>`);
   if(t.linkedin) frontLinks.push(`<a class="team-link" href="${t.linkedin}" target="_blank">💼 LinkedIn</a>`);
   if(t.youtube) frontLinks.push(`<a class="team-link" href="${t.youtube}" target="_blank">▶ YT</a>`);
-  // Back face — donate only
   let backHTML = '';
   if(t.paypal || t.upi) {
     backHTML = `<div class="team-donate-label">Support ${t.name.split(' ')[0]}</div>`;
@@ -1309,7 +1482,6 @@ document.getElementById('teamGrid').innerHTML = TEAM.map((t,i) => {
   } else {
     backHTML = `<div class="team-donate-label">Support</div><span class="team-donate-soon">Donate link coming soon</span>`;
   }
-  // Duplicate name for marquee scroll
   const nameScroll = `${t.name} &nbsp;·&nbsp; ${t.name}`;
   return `<div class="team-card">
     <div class="team-card-inner">
@@ -1320,16 +1492,21 @@ document.getElementById('teamGrid').innerHTML = TEAM.map((t,i) => {
         ${t.location ? `<div class="team-location">📍 ${t.location}</div>` : ''}
         ${t.alumni ? '<span class="alumni-tag">Alumni</span>' : ''}
         ${frontLinks.length ? `<div class="team-links">${frontLinks.join('')}</div>` : ''}
-        <div class="team-flip-hint">flip for support ↩</div>
+        <div class="team-flip-hint">hover to flip · tap for support</div>
       </div>
       <div class="team-back">${backHTML}</div>
     </div>
   </div>`;
-}).join('');
+}
+// Marquee: all cards duplicated for seamless loop
+const teamCardsHTML = TEAM.map((t,i) => makeTeamCardHTML(t,i)).join('');
+document.getElementById('teamGrid').innerHTML = teamCardsHTML + teamCardsHTML;
+setupMarqueeNav(document.querySelector('.team-marquee-wrap'), 'team-scroll', 316);
 
 // Click to flip on mobile/touch
-document.querySelectorAll('.team-card').forEach(card => {
-  card.addEventListener('click', () => card.classList.toggle('flipped'));
+document.getElementById('teamGrid').addEventListener('click', e => {
+  const card = e.target.closest('.team-card');
+  if(card) card.classList.toggle('flipped');
 });
 
 // Init Vanilla Tilt on community cards only (not team cards — flip CSS handles those)
@@ -1343,19 +1520,12 @@ if(typeof VanillaTilt !== 'undefined') {
 const tickerHtml = TEAM.map(t => `<span class="ticker-item">${t.name}</span><span class="ticker-dot">·</span>`).join('');
 document.getElementById('devTicker').innerHTML = tickerHtml + tickerHtml;
 
-// ═══════════════════════════════ THEME ═══════════════════════════════
-const THEMES = ['black','white'];
-function setTheme(t) {
-  document.documentElement.setAttribute('data-theme', t);
-  try { localStorage.setItem('tek-theme', t); } catch(e) {}
-  const lbl = document.getElementById('themeLabel');
-  if(window._tekUpdateHeroTheme) window._tekUpdateHeroTheme(t);
-}
-document.getElementById('themeCycleBtn').addEventListener('click', () => {
-  const cur = document.documentElement.getAttribute('data-theme') || 'black';
-  setTheme(THEMES[(THEMES.indexOf(cur)+1) % THEMES.length]);
-});
-setTheme('black');
+// Nav buttons for static marquees (community & credits)
+setupMarqueeNav(document.querySelector('.community-marquee-wrap'), 'comm-scroll', 316);
+setupMarqueeNav(document.querySelector('.credits-marquee-wrap'), 'credits-scroll', 274);
+
+// Theme is always black — no toggle needed
+document.documentElement.setAttribute('data-theme', 'black');
 
 // ═══════════════════════════════ MOBILE NAV ═══════════════════════════════
 document.getElementById('navToggle').addEventListener('click', () =>

@@ -2,6 +2,16 @@
 
 ---
 
+## v3k — 2026-09-13
+
+### New
+- **Marquee navigation arrows** — `‹` / `›` buttons added to all five scrollers: Projects (All tab), Team, Community, Credits, and each of the five Legacy series marquees. Clicking nudges the scroll in the pressed direction with a smooth 0.35 s slide, then resumes the infinite animation from the new position using a negative `animation-delay` offset. Buttons are positioned outside the `overflow:hidden` + mask-gradient container via a `.mq-outer` wrapper, so they are never clipped.
+
+### Changed
+- **Legacy tab auto-cycle** — interval increased from 3 s → 10 s, giving users more time to read each series before the tab switches.
+
+---
+
 ## v3j — 2026-09-13
 
 ### New

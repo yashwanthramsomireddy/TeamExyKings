@@ -134,6 +134,12 @@ nav{
   padding:80px 28px 40px;
   text-align:center;
 }
+.hero-welcome{
+  font-size:33px;font-weight:700;
+  color:rgba(255,255,255,0.68);
+  margin-bottom:18px;letter-spacing:0.08em;text-transform:uppercase;
+  line-height:1.2;
+}
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(255,255,255,0.08);
@@ -304,6 +310,9 @@ nav{
 .projects-marquee:hover{animation-play-state:paused}
 @keyframes proj-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .projects-marquee .project-card{width:290px;flex-shrink:0}
+@media(max-width:600px){
+  .projects-marquee .project-card{width:min(290px,82vw)}
+}
 
 /* Grid (category tabs) */
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -484,8 +493,10 @@ nav{
   transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);
   border-radius:var(--radius);
 }
-.team-card:hover .team-card-inner,
 .team-card.flipped .team-card-inner{transform:rotateY(180deg)}
+@media (hover:hover) and (pointer:fine){
+  .team-card:hover .team-card-inner{transform:rotateY(180deg)}
+}
 .team-front,.team-back{
   position:absolute;inset:0;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;
@@ -508,16 +519,10 @@ nav{
   display:flex;align-items:center;justify-content:center;
   font-size:24px;margin-bottom:10px;
 }
-.team-name-wrap{width:100%;overflow:hidden;margin-bottom:3px}
 .team-name{
-  display:inline-block;white-space:nowrap;
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   font-size:13px;font-weight:700;color:var(--text);
-  animation:team-name-scroll 7s linear infinite;
-  padding-right:28px;
-}
-@keyframes team-name-scroll{
-  0%,25%{transform:translateX(0)}
-  75%,100%{transform:translateX(calc(-50%))}
+  margin-bottom:3px;width:100%;
 }
 .team-handle{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px}
 .team-location{font-size:10px;color:var(--text-dim);margin-bottom:8px}
@@ -634,15 +639,16 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 /* ═══════════════════════════════ FOOTER ═══════════════════════════════ */
 .footer-ticker-wrap{
-  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:10px 0;
+  border-top:1px solid var(--border);
+  overflow:hidden;padding:9px 0;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
 }
-.footer-ticker{display:flex;gap:0;width:max-content;animation:ticker-scroll 45s linear infinite}
+.footer-ticker{display:flex;gap:0;width:max-content;animation:ticker-scroll 44s linear infinite}
 @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ticker-item{font-size:11.5px;color:var(--text-dim);font-weight:500;padding:0 20px;white-space:nowrap}
-.ticker-dot{color:var(--text-dim);padding:0 4px;opacity:0.4}
+.ticker-item{font-size:11.5px;color:var(--text-dim);font-weight:500;padding:0 18px;white-space:nowrap}
+.ticker-dot{color:var(--text-dim);padding:0 4px;opacity:0.3}
+
 .footer-bottom{
   max-width:1140px;margin:0 auto;padding:18px 28px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
@@ -657,13 +663,22 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 .reveal-left{opacity:0;transform:translateX(-24px);will-change:transform,opacity}
 .reveal-scale{opacity:0;transform:scale(0.95);will-change:transform,opacity}
 
+/* ═══════════════════════════════ SCROLL PROGRESS ═══════════════════════════════ */
+#scrollProgress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--accent),rgba(139,92,246,0.9));
+  z-index:10000;pointer-events:none;
+  transition:width 0.08s linear;
+}
+
 /* ═══════════════════════════════ RESPONSIVE ═══════════════════════════════ */
 @media(max-width:900px){
   .projects-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 }
 @media(max-width:600px){
   .section{padding:60px 20px}
-  .hero-content{padding:60px 20px 28px}
+  .hero-content{padding:24px 20px 20px}
+  .hero-welcome{font-size:22px}
   .stat-num{font-size:22px}
   .section-num{display:none}
 }
@@ -685,6 +700,9 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   </symbol>
 </svg>
 
+<!-- SCROLL PROGRESS -->
+<div id="scrollProgress"></div>
+
 <!-- NAV -->
 <div class="nav-wrap">
   <nav>
@@ -698,10 +716,10 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <li><a href="#projects">Projects</a></li>
       <li><a href="#legacy">Legacy</a></li>
       <li><a href="#community">Community</a></li>
-      <li><a href="#team">Team</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#credits">Credits</a></li>
+      <li><a href="#team">Team</a></li>
     </ul>
   </nav>
 </div>
@@ -710,6 +728,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 <section id="home">
   <canvas id="heroCanvas"></canvas>
   <div class="hero-content reveal">
+    <p class="hero-welcome">Welcome to TEK Family</p>
     <div class="hero-badge"><span class="dot"></span> Open Source · Free Forever</div>
     <h1>Tools built by<br><span class="accent">developers,</span><br><span class="dim-word">for developers</span></h1>
     <p class="hero-sub">TeamExyKings is a developer collective building free tools, browser extensions, and apps — plus a legacy archive of custom Samsung ROMs & kernels from 2014–2020.</p>
@@ -830,24 +849,9 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 <hr class="section-divider"/>
 
-<!-- TEAM -->
-<div class="section" id="team">
-  <div class="section-num">04</div>
-  <div class="section-head reveal">
-    <div class="section-title-group">
-      <div class="section-eyebrow">The Team</div>
-      <h2>16 developers, one vision</h2>
-      <p>The people behind TeamExyKings — past and present</p>
-    </div>
-  </div>
-  <div class="team-marquee-wrap"><div class="team-marquee" id="teamGrid"></div></div>
-</div>
-
-<hr class="section-divider"/>
-
 <!-- ABOUT -->
 <div class="section" id="about">
-  <div class="section-num">05</div>
+  <div class="section-num">04</div>
   <div class="section-head reveal">
     <div class="section-title-group">
       <div class="section-eyebrow">About</div>
@@ -880,7 +884,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 <!-- FAQ -->
 <div class="section" id="faq">
-  <div class="section-num">06</div>
+  <div class="section-num">05</div>
   <div class="section-head reveal">
     <div class="section-title-group">
       <div class="section-eyebrow">FAQ</div>
@@ -929,7 +933,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 <!-- CREDITS -->
 <div class="section" id="credits">
-  <div class="section-num">07</div>
+  <div class="section-num">06</div>
   <div class="section-head reveal">
     <div class="section-title-group">
       <div class="section-eyebrow">Credits</div>
@@ -959,12 +963,27 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   </div>
 </div>
 
+<hr class="section-divider"/>
+
+<!-- TEAM -->
+<div class="section" id="team">
+  <div class="section-num">07</div>
+  <div class="section-head reveal">
+    <div class="section-title-group">
+      <div class="section-eyebrow">The Team</div>
+      <h2>16 developers, one vision</h2>
+      <p>The people behind TeamExyKings — past and present</p>
+    </div>
+  </div>
+  <div class="team-marquee-wrap"><div class="team-marquee" id="teamGrid"></div></div>
+</div>
+
 </div><!-- /page -->
 
 
 <footer>
-  <div class="footer-ticker-wrap"><div class="footer-ticker" id="devTicker"></div></div>
-  <!-- DISCLAIMER — sits below dev-names ticker -->
+  <div class="footer-ticker-wrap"><div class="footer-ticker" id="statsTicker"></div></div>
+  <!-- DISCLAIMER — sits below tickers -->
   <div class="disclaimer-banner">
     <div class="disclaimer-inner">
       <span class="disclaimer-icon">⚠️</span>
@@ -1085,9 +1104,9 @@ const LEGACY = {
 // TEAM — for each member, replace null with the actual URL string to show that link on their card.
 // github / linkedin / youtube / paypal / upi — set to null to hide, or a URL string to show.
 const TEAM = [
+  { name:"Yashwanth Ram Somireddy",  handle:"Yash92Duster",   location:"Chennai, India", alumni:false, github:"https://github.com/yashwanthramsomireddy", linkedin:"https://linkedin.com/in/yashwanth-ram-somireddy-15121b215", youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
   { name:"Somadsul",                 handle:"somadsul",        location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
   { name:"Rameshdbad",               handle:"Amtra",           location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
-  { name:"Yashwanth Ram Somireddy",  handle:"Yash92Duster",   location:"Chennai, India", alumni:false, github:"https://github.com/yashwanthramsomireddy", linkedin:"https://linkedin.com/in/yashwanth-ram-somireddy-15121b215", youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
   { name:"Ale Retana",        handle:"aleretana",      location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
   { name:"Griffin98",         handle:"Griffin98",       location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
   { name:"Aditya Singh",      handle:"adityasingh",    location:"", alumni:false, github:null /* TODO */, linkedin:null /* TODO */, youtube:null, xda:null, paypal:null /* TODO */, upi:null /* TODO */ },
@@ -1164,9 +1183,11 @@ const TEAM = [
     return mesh;
   }
 
-  const obj1 = makeWireframe(new THREE.IcosahedronGeometry(1, 0), 0x4f8ef7, 1.1, [4.0, 0.3, -1]);
+  // Adjust sphere positions for mobile (portrait viewport is ~3.5 units wide at z=6)
+  const _mob = window.innerWidth < 600;
+  const obj1 = makeWireframe(new THREE.IcosahedronGeometry(1, 0), 0x4f8ef7, _mob ? 0.8 : 1.1, _mob ? [1.1, 0.2, -1] : [4.0, 0.3, -1]);
   const obj2 = makeWireframe(new THREE.OctahedronGeometry(1, 0), 0x7c5cf7, 0.7, [-2.5, -0.8, 0]);
-  const obj3 = makeWireframe(new THREE.IcosahedronGeometry(1, 1), 0x4f8ef7, 0.5, [2.8, 1.6, 1]);
+  const obj3 = makeWireframe(new THREE.IcosahedronGeometry(1, 1), 0x4f8ef7, _mob ? 0.38 : 0.5, _mob ? [0.7, 1.3, 1] : [2.8, 1.6, 1]);
   scene.add(obj1); scene.add(obj2); scene.add(obj3);
 
   // Glow halos (larger transparent spheres behind wireframes)
@@ -1178,15 +1199,41 @@ const TEAM = [
     m.position.set(...pos);
     return m;
   }
-  scene.add(makeGlow([4.0, 0.3, -1], 0x4f8ef7, 1.1));
+  scene.add(makeGlow(_mob ? [1.1, 0.2, -1] : [4.0, 0.3, -1], 0x4f8ef7, _mob ? 0.8 : 1.1));
   scene.add(makeGlow([-2.5, -0.8, 0], 0x7c5cf7, 0.7));
 
-  // Mouse parallax
+  // Mouse / touch parallax
   let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-  document.addEventListener('mousemove', e => {
-    mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+
+  if(!_mob) {
+    // Desktop: mouse movement drives parallax
+    document.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+  } else {
+    // Mobile: touch-drag on the hero drives parallax
+    const heroEl = document.getElementById('home');
+    let touchRefX = null, touchRefY = null, wasDragging = false;
+    if(heroEl) {
+      heroEl.addEventListener('touchstart', e => {
+        touchRefX = e.touches[0].clientX;
+        touchRefY = e.touches[0].clientY;
+      }, { passive: true });
+      heroEl.addEventListener('touchmove', e => {
+        if(touchRefX === null) return;
+        wasDragging = true;
+        const dx = (e.touches[0].clientX - touchRefX) / (window.innerWidth  * 0.35);
+        const dy = (e.touches[0].clientY - touchRefY) / (window.innerHeight * 0.35);
+        mouseX = Math.max(-1, Math.min(1, dx));
+        mouseY = Math.max(-1, Math.min(1, dy));
+      }, { passive: true });
+      heroEl.addEventListener('touchend', () => {
+        touchRefX = touchRefY = null;
+        if(wasDragging) { mouseX = 0; mouseY = 0; wasDragging = false; }
+      }, { passive: true });
+    }
+  }
 
   // Resize
   function resize() {
@@ -1206,11 +1253,14 @@ const TEAM = [
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Smooth mouse parallax
-    targetX += (mouseX - targetX) * 0.04;
-    targetY += (mouseY - targetY) * 0.04;
-    camera.position.x = targetX * 0.6;
-    camera.position.y = -targetY * 0.3;
+    // Smooth mouse / gyro / touch parallax
+    const _lerpF = _mob ? 0.08 : 0.04;
+    const _camMX = _mob ? 1.0 : 0.6;
+    const _camMY = _mob ? 0.5 : 0.3;
+    targetX += (mouseX - targetX) * _lerpF;
+    targetY += (mouseY - targetY) * _lerpF;
+    camera.position.x = targetX * _camMX;
+    camera.position.y = -targetY * _camMY;
     camera.lookAt(0, 0, 0);
 
     // Rotate objects
@@ -1293,7 +1343,7 @@ const TEAM = [
 })();
 
 // ═══════════════════════════════ MARQUEE NAV ═══════════════════════════════
-function setupMarqueeNav(wrapEl, animName, stepPx) {
+function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
   if(!wrapEl || wrapEl._mqNavInit) return;
   wrapEl._mqNavInit = true;
   const trackEl = wrapEl.firstElementChild;
@@ -1317,6 +1367,13 @@ function setupMarqueeNav(wrapEl, animName, stepPx) {
     return parseFloat(trackEl.style.animationDuration)
         || parseFloat(window.getComputedStyle(trackEl).animationDuration)
         || 38;
+  }
+  // Use actual rendered card width+gap so snap is pixel-perfect on every viewport
+  function getCardStep() {
+    const firstCard = trackEl.firstElementChild;
+    if(!firstCard) return stepPx;
+    const gap = parseFloat(window.getComputedStyle(trackEl).gap) || 16;
+    return firstCard.offsetWidth + gap;
   }
   function getLiveX() {
     return new DOMMatrix(window.getComputedStyle(trackEl).transform).m41;
@@ -1367,6 +1424,33 @@ function setupMarqueeNav(wrapEl, animName, stepPx) {
     drifting = false;
     driftDir = 0;
     if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    // Snap to the nearest clean card boundary so no card is ever half-cut
+    const halfW = getHalfW();
+    const cardStep = getCardStep();
+    if(halfW && cardStep > 0) {
+      // Round driftX to nearest card boundary, then normalise into [-halfW, 0]
+      let snapped = Math.round(driftX / cardStep) * cardStep;
+      while(snapped > 0)      snapped -= halfW;
+      while(snapped < -halfW) snapped += halfW;
+      const dist = Math.abs(snapped - driftX);
+      if(dist > 2) {
+        // Animate the snap over 280 ms, then hand off to CSS animation
+        trackEl.style.animation  = 'none';
+        trackEl.style.transition = 'none';
+        trackEl.style.transform  = `translateX(${driftX}px)`;
+        trackEl.offsetWidth;
+        trackEl.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1)';
+        trackEl.style.transform  = `translateX(${snapped}px)`;
+        setTimeout(() => {
+          driftX = snapped;
+          trackEl.style.transition = 'none';
+          trackEl.style.transform  = '';
+          trackEl.offsetWidth;
+          resumeAnim();
+        }, 300);
+        return;
+      }
+    }
     resumeAnim();
   }
 
@@ -1386,31 +1470,58 @@ function setupMarqueeNav(wrapEl, animName, stepPx) {
     }
   });
 
-  // ── Click: single nudge (mobile / tap) ────────────────────────────
-  function nudge(dir) {
-    const curX  = drifting ? driftX : getLiveX();
+  // ── Animate track to a target X position ──────────────────────────
+  function animateTo(curX, newX) {
     const halfW = getHalfW();
-    if(!halfW) return;
-    const dur = getDur();
-
-    let newX = curX + dir * stepPx;
-    if(newX > 0)      newX -= halfW;
-    if(newX < -halfW) newX += halfW;
-
+    if(halfW) {
+      while(newX > 0)      newX -= halfW;
+      while(newX < -halfW) newX += halfW;
+    }
     trackEl.style.animation  = 'none';
     trackEl.style.transition = 'none';
     trackEl.style.transform  = `translateX(${curX}px)`;
     trackEl.offsetWidth;
     trackEl.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1)';
     trackEl.style.transform  = `translateX(${newX}px)`;
-
     setTimeout(() => {
-      driftX = newX; // keep driftX in sync for resumeAnim
+      driftX = newX;
       trackEl.style.transition = 'none';
       trackEl.style.transform  = '';
       trackEl.offsetWidth;
       resumeAnim();
     }, 380);
+  }
+
+  // ── Click: single nudge (arrow buttons) ───────────────────────────
+  function nudge(dir) {
+    const curX     = drifting ? driftX : getLiveX();
+    const halfW    = getHalfW();
+    if(!halfW) return;
+    const cardStep = getCardStep();
+    // dir=-1 (›, forward): ceil ensures we always cross to the next boundary
+    // dir=+1 (‹, back):    floor ensures we always step to the previous boundary
+    const snapBase = dir < 0
+      ? Math.ceil(curX / cardStep)
+      : Math.floor(curX / cardStep);
+    const newX = snapBase * cardStep + dir * cardStep;
+    animateTo(curX, newX);
+  }
+
+  // ── Card click: snap clicked card to the left visible edge ────────
+  function snapCardToLeft(cardEl) {
+    const wrapRect = wrapEl.getBoundingClientRect();
+    const cardRect = cardEl.getBoundingClientRect();
+    const offset   = cardRect.left - wrapRect.left; // px from left edge
+    if(Math.abs(offset) < 4) return;                // already there
+    const curX = drifting ? driftX : getLiveX();
+    animateTo(curX, curX - offset);
+  }
+
+  if(cardSel) {
+    trackEl.addEventListener('click', e => {
+      const card = e.target.closest(cardSel);
+      if(card) snapCardToLeft(card);
+    });
   }
 
   ['prev','next'].forEach(type => {
@@ -1456,22 +1567,25 @@ function makeProjectCardHTML(p) {
 
 function renderProjects(filter) {
   const list = document.getElementById('projectsList');
-  if (filter === 'currentAll') {
-    // Horizontal marquee
-    list.className = '';
-    list.removeAttribute('style');
-    const cards = PROJECTS.map(makeProjectCardHTML).join('');
-    list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${cards}${cards}</div></div>`;
-    setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306);
-  } else {
-    // 3-col grid
-    list.className = 'projects-grid';
-    const filtered = PROJECTS.filter(p => p.cat === filter);
-    list.innerHTML = filtered.map(makeProjectCardHTML).join('');
-    if(typeof VanillaTilt !== 'undefined') {
-      VanillaTilt.init(list.querySelectorAll('.project-card'), { max:7, speed:400, glare:true, 'max-glare':0.12, scale:1.02 });
-    }
+  list.className = '';
+  list.removeAttribute('style');
+
+  const items = filter === 'currentAll'
+    ? PROJECTS
+    : PROJECTS.filter(p => p.cat === filter);
+
+  if(!items.length) {
+    list.innerHTML = '<p style="padding:40px;text-align:center;color:var(--text-muted)">No projects in this category yet.</p>';
+    return;
   }
+
+  // Repeat base cards until we have at least 4 in each half (seamless loop needs density)
+  const base = items.map(makeProjectCardHTML).join('');
+  let half = base;
+  while(half.split('project-card').length - 1 < 4) half += base;
+
+  list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${half}${half}</div></div>`;
+  setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306, '.project-card');
 }
 
 document.querySelector('.tab-bar').addEventListener('click', e => {
@@ -1522,7 +1636,7 @@ legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
 
 // Add nav buttons to every legacy series marquee
 document.querySelectorAll('.legacy-marquee-wrap').forEach(el => {
-  setupMarqueeNav(el, 'legacy-dev-scroll', 244);
+  setupMarqueeNav(el, 'legacy-dev-scroll', 244, '.legacy-device-card');
 });
 
 let legacyActiveIdx = 0;
@@ -1570,12 +1684,11 @@ function makeTeamCardHTML(t, i) {
   } else {
     backHTML = `<div class="team-donate-label">Support</div><span class="team-donate-soon">Donate link coming soon</span>`;
   }
-  const nameScroll = `${t.name} &nbsp;·&nbsp; ${t.name}`;
   return `<div class="team-card">
     <div class="team-card-inner">
       <div class="team-front">
         <div class="team-avatar">${AVATARS[i % AVATARS.length]}</div>
-        <div class="team-name-wrap"><span class="team-name">${nameScroll}</span></div>
+        <div class="team-name">${t.name}</div>
         <div class="team-handle">@${t.handle}</div>
         ${t.location ? `<div class="team-location">📍 ${t.location}</div>` : ''}
         ${t.alumni ? '<span class="alumni-tag">Alumni</span>' : ''}
@@ -1589,12 +1702,20 @@ function makeTeamCardHTML(t, i) {
 // Marquee: all cards duplicated for seamless loop
 const teamCardsHTML = TEAM.map((t,i) => makeTeamCardHTML(t,i)).join('');
 document.getElementById('teamGrid').innerHTML = teamCardsHTML + teamCardsHTML;
-setupMarqueeNav(document.querySelector('.team-marquee-wrap'), 'team-scroll', 316);
+setupMarqueeNav(document.querySelector('.team-marquee-wrap'), 'team-scroll', 316, '.team-card');
 
-// Click to flip on mobile/touch
+// Click to flip on mobile/touch — auto-resets to front after 5 s
 document.getElementById('teamGrid').addEventListener('click', e => {
   const card = e.target.closest('.team-card');
-  if(card) card.classList.toggle('flipped');
+  if(!card) return;
+  if(e.target.closest('a')) return; // donate/social links navigate — don't toggle flip
+  card.classList.toggle('flipped');
+  clearTimeout(card._flipTimer);
+  if(card.classList.contains('flipped')) {
+    card._flipTimer = setTimeout(() => {
+      card.classList.remove('flipped');
+    }, 5000);
+  }
 });
 
 // Init Vanilla Tilt on community cards only (not team cards — flip CSS handles those)
@@ -1605,12 +1726,20 @@ if(typeof VanillaTilt !== 'undefined') {
 }
 
 // ═══════════════════════════════ FOOTER TICKER ═══════════════════════════════
-const tickerHtml = TEAM.map(t => `<span class="ticker-item">${t.name}</span><span class="ticker-dot">·</span>`).join('');
-document.getElementById('devTicker').innerHTML = tickerHtml + tickerHtml;
+const STATS_FACTS = [
+  '39 Legacy Builds','7 Active Projects','16 Developers',
+  'Founded 2014','Free Forever','Open Source',
+  'Android · Windows · Chrome','Samsung Galaxy ROMs 2014–2020',
+  'Custom Kernels','TeamExyKings'
+];
+const statsHtml = STATS_FACTS.map(s =>
+  `<span class="ticker-item">${s}</span><span class="ticker-dot">·</span>`
+).join('');
+document.getElementById('statsTicker').innerHTML = statsHtml + statsHtml;
 
 // Nav buttons for static marquees (community & credits)
-setupMarqueeNav(document.querySelector('.community-marquee-wrap'), 'comm-scroll', 316);
-setupMarqueeNav(document.querySelector('.credits-marquee-wrap'), 'credits-scroll', 274);
+setupMarqueeNav(document.querySelector('.community-marquee-wrap'), 'comm-scroll', 316, '.community-card');
+setupMarqueeNav(document.querySelector('.credits-marquee-wrap'), 'credits-scroll', 274, '.about-card');
 
 // Theme is always black — no toggle needed
 document.documentElement.setAttribute('data-theme', 'black');
@@ -1634,6 +1763,18 @@ const observer = new IntersectionObserver(entries => {
 ['home','projects','legacy','community','team','about','faq','credits'].forEach(id => {
   const el = document.getElementById(id); if(el) observer.observe(el);
 });
+
+// ═══════════════════════════════ SCROLL PROGRESS ═══════════════════════════════
+(function(){
+  const bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = max > 0 ? (window.scrollY / max * 100).toFixed(2) + '%' : '0%';
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 </script>
 </body>
 </html>

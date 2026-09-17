@@ -702,6 +702,9 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 /* ═══════════════════════════════ MARQUEE NAV BUTTONS ═══════════════════════════════ */
 .mq-outer{position:relative}
+.mq-drag-surface{cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.mq-drag-surface.mq-dragging{cursor:grabbing}
+.mq-drag-surface.mq-dragging *{cursor:grabbing !important}
 .mq-nav-btn{
   position:absolute;top:50%;transform:translateY(-50%);z-index:20;
   width:36px;height:36px;border-radius:50%;
@@ -732,9 +735,10 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
 }
 .footer-copy{font-size:12px;color:var(--text-dim)}
-.footer-visits{display:inline-flex;align-items:center;opacity:0.75;transition:opacity 0.2s;flex-shrink:0;margin-left:auto}
+.footer-visits{display:inline-flex;align-items:center;gap:5px;opacity:0.6;transition:opacity 0.2s;flex-shrink:0;margin-left:auto;text-decoration:none}
 .footer-visits:hover{opacity:1}
-.footer-visits img{display:block;border-radius:4px}
+.footer-visits-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em}
+.footer-visits img{display:block;height:12px;width:auto;border-radius:3px}
 .footer-links{display:flex;gap:18px}
 .footer-links a{font-size:12px;color:var(--text-dim);text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:var(--text-muted)}
@@ -1078,7 +1082,8 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   <div class="footer-bottom">
     <span class="footer-copy">© 2014–2026 TeamExyKings · All Rights Reserved · Chennai, India · Website is the intellectual property of TeamExyKings. No content may be copied or redistributed without permission.</span>
     <a class="footer-visits" href="https://hits.sh" target="_blank" rel="noopener noreferrer" aria-label="Privacy-friendly visit counter">
-      <img src="https://hits.sh/teamexykings.in.svg?style=flat-square&label=visits&color=4f8ef7&labelColor=0a0a14" alt="Site visit count" loading="lazy" width="118" height="20">
+      <span class="footer-visits-label">Visits</span>
+      <img src="https://hits.sh/teamexykings.in.svg?style=flat&label=&color=%237c7c9e" alt="" loading="lazy" height="13">
     </a>
   </div>
 </footer>
@@ -1440,11 +1445,29 @@ const TEAM = [
 })();
 
 // ═══════════════════════════════ MARQUEE NAV ═══════════════════════════════
+// One shared scroll speed for every marquee section (Projects, Legacy, Team,
+// Community, Credits) — matches the Team section's original pace (px/sec) so
+// nothing drifts faster or slower than anything else, regardless of card
+// size or how many cards a section has.
+const MQ_PX_PER_SEC = 112;
+
 function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
   if(!wrapEl || wrapEl._mqNavInit) return;
   wrapEl._mqNavInit = true;
   const trackEl = wrapEl.firstElementChild;
   if(!trackEl) return;
+
+  // Override whatever animation-duration the CSS/inline style set, so every
+  // section moves at the same px/sec regardless of its own card count/width.
+  // Uses DOM child count × stepPx rather than scrollWidth — scrollWidth reads
+  // 0 for a track that's currently display:none (e.g. every Legacy series
+  // tab except the one shown first), which silently skipped the speed fix
+  // for those. Counting children works even while hidden.
+  const _cardCount = trackEl.children.length;
+  if(_cardCount > 0) {
+    const _halfW = (_cardCount / 2) * stepPx;
+    trackEl.style.animationDuration = (_halfW / MQ_PX_PER_SEC).toFixed(2) + 's';
+  }
 
   // Wrap in .mq-outer so buttons sit outside overflow:hidden
   const outer = document.createElement('div');
@@ -1516,22 +1539,18 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
     rafId = requestAnimationFrame(frame);
   }
 
-  function stopDrift() {
-    if(!drifting) return;
-    drifting = false;
-    driftDir = 0;
-    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
-    // Snap to the nearest clean card boundary so no card is ever half-cut
+  // Snap driftX to the nearest clean card boundary so no card is ever half-cut,
+  // then hand control back to the looping CSS animation. Shared by hover-drift
+  // release and manual drag release.
+  function snapToNearestAndResume() {
     const halfW = getHalfW();
     const cardStep = getCardStep();
     if(halfW && cardStep > 0) {
-      // Round driftX to nearest card boundary, then normalise into [-halfW, 0]
       let snapped = Math.round(driftX / cardStep) * cardStep;
       while(snapped > 0)      snapped -= halfW;
       while(snapped < -halfW) snapped += halfW;
       const dist = Math.abs(snapped - driftX);
       if(dist > 2) {
-        // Animate the snap over 280 ms, then hand off to CSS animation
         trackEl.style.animation  = 'none';
         trackEl.style.transition = 'none';
         trackEl.style.transform  = `translateX(${driftX}px)`;
@@ -1549,6 +1568,23 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
       }
     }
     resumeAnim();
+  }
+
+  function stopDrift() {
+    if(!drifting) return;
+    drifting = false;
+    driftDir = 0;
+    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    snapToNearestAndResume();
+  }
+
+  function haltDrift() {
+    // Cancel hover-drift immediately with no snap animation (used when a manual
+    // drag is taking over control of the track).
+    if(!drifting) return;
+    drifting = false;
+    driftDir = 0;
+    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
   }
 
   // ── Marquee card area: pause on hover (replaces broken CSS :hover) ──
@@ -1604,22 +1640,80 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
     animateTo(curX, newX);
   }
 
-  // ── Card click: snap clicked card to the left visible edge ────────
-  function snapCardToLeft(cardEl) {
-    const wrapRect = wrapEl.getBoundingClientRect();
-    const cardRect = cardEl.getBoundingClientRect();
-    const offset   = cardRect.left - wrapRect.left; // px from left edge
-    if(Math.abs(offset) < 4) return;                // already there
-    const curX = drifting ? driftX : getLiveX();
-    animateTo(curX, curX - offset);
+  // ── Manual drag: press/touch and move the tiles yourself ──────────
+  // Works with mouse, touch, and pen via the unified Pointer Events API,
+  // so the same code drives desktop click-and-drag and mobile touch-drag.
+  wrapEl.classList.add('mq-drag-surface');
+  let dragging          = false;
+  let dragPointerId     = null;
+  let dragStartClientX  = 0;
+  let dragStartX        = 0;
+  let dragMoved         = false;
+  let suppressNextClick = false;
+  const DRAG_MOVE_THRESHOLD = 4; // px before a press counts as a drag, not a tap
+
+  function onPointerDown(e) {
+    if(e.pointerType === 'mouse' && e.button !== 0) return; // left button only
+    haltDrift(); // hand control from hover-drift (if any) to the drag
+    dragging         = true;
+    dragMoved        = false;
+    dragPointerId     = e.pointerId;
+    dragStartClientX = e.clientX;
+    dragStartX        = getLiveX();
+    driftX = dragStartX;
+    trackEl.style.animation  = 'none';
+    trackEl.style.transition = 'none';
+    trackEl.style.transform  = `translateX(${driftX}px)`;
+    wrapEl.classList.add('mq-dragging');
+    try { wrapEl.setPointerCapture(e.pointerId); } catch(err) {}
   }
 
-  if(cardSel) {
-    trackEl.addEventListener('click', e => {
-      const card = e.target.closest(cardSel);
-      if(card) snapCardToLeft(card);
-    });
+  function onPointerMove(e) {
+    if(!dragging || e.pointerId !== dragPointerId) return;
+    const delta = e.clientX - dragStartClientX;
+    if(!dragMoved && Math.abs(delta) < DRAG_MOVE_THRESHOLD) return;
+    dragMoved = true;
+    const halfW = getHalfW();
+    let newX = dragStartX + delta;
+    if(halfW) {
+      while(newX > 0)      newX -= halfW;
+      while(newX < -halfW) newX += halfW;
+    }
+    driftX = newX;
+    trackEl.style.transform = `translateX(${driftX}px)`;
   }
+
+  function onPointerUp(e) {
+    if(!dragging || e.pointerId !== dragPointerId) return;
+    dragging = false;
+    wrapEl.classList.remove('mq-dragging');
+    try { wrapEl.releasePointerCapture(e.pointerId); } catch(err) {}
+    if(dragMoved) {
+      // Hand off to the looping animation from the exact spot the drag ended —
+      // no corrective snap. A snap-to-nearest-edge here reads as the tile
+      // jumping out from under your finger the instant you let go.
+      resumeAnim();
+      suppressNextClick = true; // swallow the click a drag-release fires
+    } else {
+      resumeAnim();
+    }
+  }
+
+  wrapEl.addEventListener('pointerdown', onPointerDown);
+  wrapEl.addEventListener('pointermove', onPointerMove);
+  wrapEl.addEventListener('pointerup', onPointerUp);
+  wrapEl.addEventListener('pointercancel', onPointerUp);
+
+  // A card click no longer snaps it to the front — that felt broken when it
+  // fired mid-scroll. Instead, just swallow the stray click a drag release
+  // produces so links inside cards don't accidentally activate.
+  trackEl.addEventListener('click', e => {
+    if(suppressNextClick) {
+      suppressNextClick = false;
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
 
   ['prev','next'].forEach(type => {
     const btn = document.createElement('button');

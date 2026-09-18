@@ -1704,9 +1704,8 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
   wrapEl.addEventListener('pointerup', onPointerUp);
   wrapEl.addEventListener('pointercancel', onPointerUp);
 
-  // A card click no longer snaps it to the front — that felt broken when it
-  // fired mid-scroll. Instead, just swallow the stray click a drag release
-  // produces so links inside cards don't accidentally activate.
+  // Swallow the stray click a drag-release produces, so links inside cards
+  // don't accidentally activate right after you were dragging the strip.
   trackEl.addEventListener('click', e => {
     if(suppressNextClick) {
       suppressNextClick = false;
@@ -1714,6 +1713,27 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
       e.stopPropagation();
     }
   }, true);
+
+  // ── Card click: snap the clicked card to the left edge ─────────────
+  // Only for an actual tap/click (drag releases are swallowed above, so
+  // this never fires mid-scroll or mid-drag). Links inside a card (GitHub,
+  // PayPal, etc.) are left alone so they just navigate normally.
+  function snapCardToLeft(cardEl) {
+    const wrapRect = wrapEl.getBoundingClientRect();
+    const cardRect = cardEl.getBoundingClientRect();
+    const offset   = cardRect.left - wrapRect.left; // px from left edge
+    if(Math.abs(offset) < 4) return;                // already there
+    const curX = drifting ? driftX : getLiveX();
+    animateTo(curX, curX - offset);
+  }
+
+  if(cardSel) {
+    trackEl.addEventListener('click', e => {
+      if(e.target.closest('a')) return; // let links navigate, no snap
+      const card = e.target.closest(cardSel);
+      if(card) snapCardToLeft(card);
+    });
+  }
 
   ['prev','next'].forEach(type => {
     const btn = document.createElement('button');

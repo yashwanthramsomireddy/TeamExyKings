@@ -1718,17 +1718,30 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
     dragStartClientX = e.clientX;
     dragStartX        = getLiveX();
     driftX = dragStartX;
-    trackEl.style.animation  = 'none';
-    trackEl.style.transition = 'none';
-    trackEl.style.transform  = `translateX(${driftX}px)`;
-    wrapEl.classList.add('mq-dragging');
-    try { wrapEl.setPointerCapture(e.pointerId); } catch(err) {}
+    // NOTE: pointer capture is deliberately NOT taken here. Capturing on
+    // pointerdown makes the browser route the resulting click event's target
+    // to the capturing element (wrapEl) instead of whatever was actually
+    // pressed — which silently breaks every link inside the cards (GitHub,
+    // LinkedIn, donate buttons, etc: a plain tap looked like a click on the
+    // wrapper, not the <a>). Capture is taken below, only once the pointer
+    // has actually moved past the drag threshold, so a genuine tap/click
+    // never captures the pointer and links work normally.
   }
 
   function onPointerMove(e) {
     if(!dragging || e.pointerId !== dragPointerId) return;
     const delta = e.clientX - dragStartClientX;
     if(!dragMoved && Math.abs(delta) < DRAG_MOVE_THRESHOLD) return;
+    if(!dragMoved) {
+      // Movement threshold just crossed — this is now a real drag, not a tap.
+      // Take over from here: stop the CSS animation, capture the pointer so
+      // moves keep tracking even if the cursor leaves the strip, and lock in
+      // the drag visuals.
+      trackEl.style.animation  = 'none';
+      trackEl.style.transition = 'none';
+      wrapEl.classList.add('mq-dragging');
+      try { wrapEl.setPointerCapture(e.pointerId); } catch(err) {}
+    }
     dragMoved = true;
     const halfW = getHalfW();
     let newX = dragStartX + delta;

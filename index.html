@@ -421,18 +421,13 @@ nav{
 .tab-btn:hover{border-color:var(--border-hover);color:var(--text)}
 .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 16px rgba(var(--accent-rgb),0.35)}
 
-/* Marquee (All tab) */
-.projects-marquee-wrap{
-  overflow:hidden;position:relative;margin-bottom:4px;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
-}
-.projects-marquee{display:flex;gap:16px;width:max-content;animation:proj-scroll 38s linear infinite}
-.projects-marquee:hover{animation-play-state:paused}
-@keyframes proj-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.projects-marquee .project-card{width:290px;flex-shrink:0}
+/* Horizontal scroll-snap strip (All tab) — native scrolling (wheel,
+   trackpad, touch swipe, scrollbar drag) instead of an always-auto-scrolling
+   marquee, so nothing ever has to fight the browser for control of clicks,
+   links, or text selection. See the shared .hscroll rules further down. */
+.projects-hscroll .project-card{width:290px}
 @media(max-width:600px){
-  .projects-marquee .project-card{width:min(290px,82vw)}
+  .projects-hscroll .project-card{width:min(290px,82vw)}
 }
 
 /* Grid (category tabs) */
@@ -526,20 +521,6 @@ nav{
 .legacy-page.active{display:block;animation:legacyFadeIn 0.38s cubic-bezier(0.4,0,0.2,1)}
 @keyframes legacyFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* Legacy device card marquee */
-.legacy-marquee-wrap{
-  overflow:hidden;position:relative;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
-}
-.legacy-marquee{display:flex;gap:14px;width:max-content;animation:legacy-dev-scroll linear infinite}
-.legacy-marquee:hover{animation-play-state:paused}
-@keyframes legacy-dev-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* Static grid for series with only a few devices — looping 1-3 cards in an
-   infinite marquee just shows the same card sliding past itself forever. */
-.legacy-grid{display:flex;flex-wrap:wrap;gap:14px}
-
 /* Legacy device card — project-card style */
 .legacy-device-card{
   width:230px;flex-shrink:0;
@@ -599,14 +580,6 @@ nav{
 .lr-tag.live{color:#22c55e;border-color:rgba(34,197,94,0.3)}
 
 /* ═══════════════════════════════ TEAM ═══════════════════════════════ */
-.team-marquee-wrap{
-  overflow:hidden;position:relative;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
-}
-.team-marquee{display:flex;gap:16px;width:max-content;animation:team-scroll 48s linear infinite}
-.team-marquee:hover{animation-play-state:paused}
-@keyframes team-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .team-card{
   width:300px;flex-shrink:0;height:268px;
   border-radius:var(--radius);cursor:pointer;
@@ -709,35 +682,31 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 .disclaimer-text{font-size:12px;color:var(--text-muted);line-height:1.6}
 .disclaimer-text strong{color:var(--text)}
 
-/* ═══════════════════════════════ COMMUNITY MARQUEE ═══════════════════════════════ */
-.community-marquee-wrap{
-  overflow:hidden;position:relative;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
-}
-.community-marquee{display:flex;gap:16px;width:max-content;animation:comm-scroll 28s linear infinite}
-.community-marquee:hover{animation-play-state:paused}
-@keyframes comm-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.community-marquee .community-card{width:300px;flex-shrink:0}
+.community-hscroll .community-card{width:300px}
+.credits-hscroll .about-card{width:260px;margin-bottom:0}
 
-/* ═══════════════════════════════ CREDITS MARQUEE ═══════════════════════════════ */
-.credits-marquee-wrap{
-  overflow:hidden;position:relative;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+/* ═══════════════════════════════ HORIZONTAL SCROLL STRIP ═══════════════════════════════
+   Shared by Projects (All tab), Legacy, Team, Community and Credits. Plain
+   native horizontal scrolling — wheel/shift-wheel, trackpad, touch swipe,
+   and scrollbar drag all work for free, with prev/next buttons (below) as
+   an extra affordance. Replaces the old always-auto-scrolling marquee,
+   which had to fight the browser for control of clicks, links and text
+   selection every time a card was pressed. */
+.hscroll{
+  display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px; /* clears the scrollbar so it doesn't crowd the cards */
+  scrollbar-width:thin;scrollbar-color:var(--fg18) transparent;
 }
-.credits-marquee{display:flex;gap:14px;width:max-content;animation:credits-scroll 36s linear infinite}
-.credits-marquee:hover{animation-play-state:paused}
-@keyframes credits-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.credits-marquee .about-card{width:260px;flex-shrink:0;margin-bottom:0}
+.hscroll > *{scroll-snap-align:start;flex-shrink:0}
+.hscroll::-webkit-scrollbar{height:6px}
+.hscroll::-webkit-scrollbar-track{background:transparent}
+.hscroll::-webkit-scrollbar-thumb{background:var(--fg18);border-radius:999px}
+.hscroll::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
-/* ═══════════════════════════════ MARQUEE NAV BUTTONS ═══════════════════════════════ */
+/* ═══════════════════════════════ SCROLL NAV BUTTONS ═══════════════════════════════ */
 .mq-outer{position:relative}
-.mq-drag-surface{cursor:grab;touch-action:pan-y}
-/* Only block text selection while an actual drag is in progress — letting
-   people select and copy card text (names, handles, links) the rest of the time. */
-.mq-drag-surface.mq-dragging{cursor:grabbing;-webkit-user-select:none;user-select:none}
-.mq-drag-surface.mq-dragging *{cursor:grabbing !important}
 .mq-nav-btn{
   position:absolute;top:50%;transform:translateY(-50%);z-index:20;
   width:36px;height:36px;border-radius:50%;
@@ -769,8 +738,18 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   .footer-ticker{animation:none}
 }
 
+.footer-scroll-tip{
+  max-width:1140px;margin:0 auto;padding:14px 28px 0;
+  font-size:11px;color:var(--text-dim);
+  display:flex;align-items:center;gap:6px;
+}
+.footer-scroll-tip kbd{
+  font-family:var(--mono);font-size:10px;
+  padding:1px 6px;border-radius:4px;
+  border:1px solid var(--border);background:var(--bg3);color:var(--text-muted);
+}
 .footer-bottom{
-  max-width:1140px;margin:0 auto;padding:18px 28px;
+  max-width:1140px;margin:0 auto;padding:10px 28px 18px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
 }
 .footer-copy{font-size:12px;color:var(--text-dim)}
@@ -929,8 +908,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <p>Connect with TeamExyKings across platforms</p>
     </div>
   </div>
-  <div class="community-marquee-wrap">
-    <div class="community-marquee" id="communityMarquee">
+  <div class="hscroll community-hscroll" id="communityMarquee">
       <!-- CARD 1: Chat & Updates -->
       <div class="community-card">
         <h3>💬 Chat &amp; Updates</h3>
@@ -950,24 +928,6 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
         <p class="cc-sub">Open source — all on GitHub</p>
         <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public &amp; open source</span></span><span class="lr-tag live">Live</span></a>
       </div>
-      <!-- duplicate for seamless loop -->
-      <div class="community-card">
-        <h3>💬 Chat &amp; Updates</h3>
-        <p class="cc-sub">Real-time discussions and announcements</p>
-        <a href="https://chat.whatsapp.com/EhNw5vL52IcA1YlBHH6bDK" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">WhatsApp Community</span><span class="lr-desc">TeamExyKings — releases &amp; updates</span></span><span class="lr-tag live">Live</span></a>
-        <a href="https://t.me/TeamExyKings" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">Telegram Channel</span><span class="lr-desc">@TeamExyKings — news &amp; releases</span></span><span class="lr-tag live">Live</span></a>
-      </div>
-      <div class="community-card">
-        <h3>📺 Content</h3>
-        <p class="cc-sub">Guides, tutorials and showcases</p>
-        <a href="https://www.youtube.com/@yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag live">Live</span></a>
-      </div>
-      <div class="community-card">
-        <h3>💻 Code</h3>
-        <p class="cc-sub">Open source — all on GitHub</p>
-        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public &amp; open source</span></span><span class="lr-tag live">Live</span></a>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1055,8 +1015,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <h2>Built with &amp; powered by</h2>
     </div>
   </div>
-  <div class="credits-marquee-wrap">
-    <div class="credits-marquee">
+  <div class="hscroll credits-hscroll" id="creditsMarquee">
       <div class="about-card"><h3>🌐 Frontend</h3><p>Built with plain HTML, CSS &amp; JavaScript — no frameworks, no build tools, no npm. Single self-contained file.</p></div>
       <div class="about-card"><h3>🎨 Fonts</h3><p>Anton, Inter, Space Grotesk, JetBrains Mono via Google Fonts.</p></div>
       <div class="about-card"><h3>🚀 3D &amp; Animation</h3><p>Three.js r128 for WebGL hero. GSAP 3.12.5 + ScrollTrigger for scroll animations. Vanilla Tilt 1.8.1 for 3D card tilt effects.</p></div>
@@ -1065,16 +1024,6 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <div class="about-card"><h3>🔧 Libraries</h3><p>All CDN via cdnjs.cloudflare.com. No bundlers, no build step required.</p></div>
       <div class="about-card"><h3>👑 Founder</h3><p><strong>Somadsul</strong> — Founder of TeamExyKings Group. The original visionary who started it all in 2014 and brought the team together.</p></div>
       <div class="about-card"><h3>💻 Site Developer</h3><p><strong>Yashwanth Ram Somireddy</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">@Yash92Duster</span> — founding member and lead developer of TeamExyKings. Designed and built this website.</p></div>
-      <!-- duplicate for seamless loop -->
-      <div class="about-card"><h3>🌐 Frontend</h3><p>Built with plain HTML, CSS &amp; JavaScript — no frameworks, no build tools, no npm. Single self-contained file.</p></div>
-      <div class="about-card"><h3>🎨 Fonts</h3><p>Anton, Inter, Space Grotesk, JetBrains Mono via Google Fonts.</p></div>
-      <div class="about-card"><h3>🚀 3D &amp; Animation</h3><p>Three.js r128 for WebGL hero. GSAP 3.12.5 + ScrollTrigger for scroll animations. Vanilla Tilt 1.8.1 for 3D card tilt effects.</p></div>
-      <div class="about-card"><h3>☁️ Hosting</h3><p><strong>GitHub Pages</strong> — free, fast, and open. The entire site lives in a single <code>index.html</code> deployed directly from the TeamExyKings GitHub repository.</p></div>
-      <div class="about-card"><h3>🌐 Domain</h3><p><strong>GoDaddy</strong> — domain registrar for <code>teamexykings.in</code>. DNS pointed to GitHub Pages for zero-downtime delivery.</p></div>
-      <div class="about-card"><h3>🔧 Libraries</h3><p>All CDN via cdnjs.cloudflare.com. No bundlers, no build step required.</p></div>
-      <div class="about-card"><h3>👑 Founder</h3><p><strong>Somadsul</strong> — Founder of TeamExyKings Group. The original visionary who started it all in 2014 and brought the team together.</p></div>
-      <div class="about-card"><h3>💻 Site Developer</h3><p><strong>Yashwanth Ram Somireddy</strong> <span style="font-family:var(--mono);font-size:11px;color:var(--accent)">@Yash92Duster</span> — founding member and lead developer of TeamExyKings. Designed and built this website.</p></div>
-    </div>
   </div>
 </div>
 
@@ -1090,7 +1039,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <p>The people behind TeamExyKings — past and present</p>
     </div>
   </div>
-  <div class="team-marquee-wrap"><div class="team-marquee" id="teamGrid"></div></div>
+  <div class="hscroll" id="teamGrid"></div>
 </div>
 
 </div><!-- /page -->
@@ -1107,6 +1056,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       </div>
     </div>
   </div>
+  <div class="footer-scroll-tip">↔️ Tip: hold <kbd>Shift</kbd> + scroll (or swipe) to browse the card rows sideways</div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2014–2026 TeamExyKings · All Rights Reserved · Chennai, India · Website is the intellectual property of TeamExyKings. No content may be copied or redistributed without permission.</span>
     <a class="footer-visits" href="https://hits.sh" target="_blank" rel="noopener noreferrer" aria-label="Privacy-friendly visit counter">
@@ -1120,8 +1070,9 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 // ═══════════════════════════════ MOTION PREFERENCE ═══════════════════════════════
 // Respect the OS-level "reduce motion" setting: the hero stays static (no spin/
 // parallax), scroll reveals show content instantly instead of sliding in, and
-// every auto-scrolling marquee stays put — manual drag and the arrow buttons
-// still work either way, since those are motion the visitor asked for directly.
+// the scroll-nav buttons / tap-to-scroll jump straight to position instead of
+// animating. The card strips themselves are plain native scrolling now (no
+// auto-scroll), so there's nothing passive to pause there in the first place.
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ═══════════════════════════════ DATA ═══════════════════════════════
@@ -1456,10 +1407,10 @@ const TEAM = [
 
   // Stagger team cards
   ScrollTrigger.create({
-    trigger: '.team-marquee-wrap',
+    trigger: '#teamGrid',
     start: 'top 85%',
     onEnter: () => {
-      gsap.fromTo('.team-marquee-wrap',
+      gsap.fromTo('#teamGrid',
         { opacity:0, y:Y(20) },
         { opacity:1, y:0, duration:D(0.7), ease:'power2.out' }
       );
@@ -1487,388 +1438,66 @@ const TEAM = [
   });
 })();
 
-// ═══════════════════════════════ MARQUEE NAV ═══════════════════════════════
-// One shared scroll speed for every marquee section (Projects, Legacy, Team,
-// Community, Credits) — matches the Team section's original pace (px/sec) so
-// nothing drifts faster or slower than anything else, regardless of card
-// size or how many cards a section has.
-const MQ_PX_PER_SEC = 112;
+// ═══════════════════════════════ SCROLL NAV ═══════════════════════════════
+// Prev/next buttons plus "tap a card to bring it into view" for a native
+// horizontal scroll-snap strip (.hscroll). The strip itself is just plain
+// browser scrolling — wheel/shift-wheel, trackpad, touch swipe, and
+// scrollbar drag all work with zero custom JS, so links and text selection
+// inside the cards are never fought over. This replaces the old
+// always-auto-scrolling marquee (custom drag tracking, pointer capture,
+// infinite-loop content duplication) entirely.
 
-function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
-  if(!wrapEl || wrapEl._mqNavInit) return;
-  wrapEl._mqNavInit = true;
-  const trackEl = wrapEl.firstElementChild;
-  if(!trackEl) return;
+function setupScrollNav(wrapEl, cardSel) {
+  if(!wrapEl || wrapEl._scrollNavInit) return;
+  wrapEl._scrollNavInit = true;
 
-  // Override whatever animation-duration the CSS/inline style set, so every
-  // section moves at the same px/sec regardless of its own card count/width.
-  // Uses DOM child count × stepPx rather than scrollWidth — scrollWidth reads
-  // 0 for a track that's currently display:none (e.g. every Legacy series
-  // tab except the one shown first), which silently skipped the speed fix
-  // for those. Counting children works even while hidden.
-  const _cardCount = trackEl.children.length;
-  if(_cardCount > 0) {
-    const _halfW = (_cardCount / 2) * stepPx;
-    trackEl.style.animationDuration = (_halfW / MQ_PX_PER_SEC).toFixed(2) + 's';
+  function cardStep() {
+    const card = cardSel ? wrapEl.querySelector(cardSel) : wrapEl.firstElementChild;
+    if(!card) return 300;
+    const gap = parseFloat(getComputedStyle(wrapEl).gap) || 16;
+    return card.getBoundingClientRect().width + gap;
   }
-  // Reduced motion: keep the loop's timing/delay math intact (getDur/getHalfW
-  // still work off it) but hold the track still — no passive auto-scroll.
-  // Manual drag and the arrow buttons still move it; resumeAnim() below keeps
-  // it paused afterward instead of handing back to the auto-scroll.
-  if(prefersReducedMotion) trackEl.style.animationPlayState = 'paused';
 
-  // Wrap in .mq-outer so buttons sit outside overflow:hidden
+  // Wrap in .mq-outer so the prev/next buttons can sit outside overflow-x.
   const outer = document.createElement('div');
   outer.className = 'mq-outer';
   wrapEl.parentNode.insertBefore(outer, wrapEl);
   outer.appendChild(wrapEl);
-
-  const DRIFT_PX = 2.4; // pixels per rAF frame while hovering (~144 px/s at 60 fps)
-  let drifting    = false;
-  let driftDir    = 0;
-  let driftX      = 0;
-  let rafId       = null;
-  let isOverWrap  = false; // mouse is currently hovering the marquee cards area
-
-  function getHalfW() { return trackEl.scrollWidth / 2; }
-  function getDur() {
-    return parseFloat(trackEl.style.animationDuration)
-        || parseFloat(window.getComputedStyle(trackEl).animationDuration)
-        || 38;
-  }
-  // Use actual rendered card width+gap so snap is pixel-perfect on every viewport
-  function getCardStep() {
-    const firstCard = trackEl.firstElementChild;
-    if(!firstCard) return stepPx;
-    const gap = parseFloat(window.getComputedStyle(trackEl).gap) || 16;
-    return firstCard.offsetWidth + gap;
-  }
-  function getLiveX() {
-    return new DOMMatrix(window.getComputedStyle(trackEl).transform).m41;
-  }
-  function resumeAnim() {
-    // Resume CSS animation from driftX, then honour isOverWrap pause state
-    const halfW = getHalfW();
-    const dur   = getDur();
-    trackEl.style.transition = 'none';
-    trackEl.style.transform  = '';
-    trackEl.offsetWidth; // reflow
-    if(halfW) {
-      const delay = (driftX / halfW) * dur; // negative → starts mid-cycle
-      trackEl.style.animation = `${animName} ${dur}s ${delay.toFixed(2)}s linear infinite`;
-    } else {
-      trackEl.style.animation = '';
-    }
-    // If mouse is still over the cards, keep it paused (CSS :hover can't override inline style)
-    trackEl.style.animationPlayState = (isOverWrap || prefersReducedMotion) ? 'paused' : 'running';
-  }
-
-  // ── Hover: continuous drift (desktop) ──────────────────────────────
-  function startDrift(dir) {
-    if(prefersReducedMotion) return; // hover-drift is passive auto-motion, not a deliberate drag
-    if(drifting) return;
-    drifting = true;
-    driftDir = dir;
-    driftX = getLiveX();
-    trackEl.style.animation  = 'none';
-    trackEl.style.transition = 'none';
-    trackEl.style.transform  = `translateX(${driftX}px)`;
-
-    function frame() {
-      if(!drifting) return;
-      const halfW = getHalfW();
-      if(halfW) {
-        driftX += driftDir * DRIFT_PX;
-        if(driftX > 0)      driftX -= halfW;
-        if(driftX < -halfW) driftX += halfW;
-        trackEl.style.transform = `translateX(${driftX}px)`;
-      }
-      rafId = requestAnimationFrame(frame);
-    }
-    rafId = requestAnimationFrame(frame);
-  }
-
-  // Snap driftX to the nearest clean card boundary so no card is ever half-cut,
-  // then hand control back to the looping CSS animation. Shared by hover-drift
-  // release and manual drag release.
-  function snapToNearestAndResume() {
-    const halfW = getHalfW();
-    const cardStep = getCardStep();
-    if(halfW && cardStep > 0) {
-      let snapped = Math.round(driftX / cardStep) * cardStep;
-      while(snapped > 0)      snapped -= halfW;
-      while(snapped < -halfW) snapped += halfW;
-      const dist = Math.abs(snapped - driftX);
-      if(dist > 2) {
-        trackEl.style.animation  = 'none';
-        trackEl.style.transition = 'none';
-        trackEl.style.transform  = `translateX(${driftX}px)`;
-        trackEl.offsetWidth;
-        trackEl.style.transition = 'transform 0.28s cubic-bezier(0.4,0,0.2,1)';
-        trackEl.style.transform  = `translateX(${snapped}px)`;
-        setTimeout(() => {
-          driftX = snapped;
-          trackEl.style.transition = 'none';
-          trackEl.style.transform  = '';
-          trackEl.offsetWidth;
-          resumeAnim();
-        }, 300);
-        return;
-      }
-    }
-    resumeAnim();
-  }
-
-  function stopDrift() {
-    if(!drifting) return;
-    drifting = false;
-    driftDir = 0;
-    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
-    snapToNearestAndResume();
-  }
-
-  function haltDrift() {
-    // Cancel hover-drift immediately with no snap animation (used when a manual
-    // drag is taking over control of the track).
-    if(!drifting) return;
-    drifting = false;
-    driftDir = 0;
-    if(rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  }
-
-  // ── Marquee card area: pause on hover (replaces broken CSS :hover) ──
-  wrapEl.addEventListener('mouseenter', () => {
-    isOverWrap = true;
-    if(drifting) {
-      stopDrift(); // stopDrift → resumeAnim → sees isOverWrap=true → pauses
-    } else {
-      trackEl.style.animationPlayState = 'paused';
-    }
-  });
-  wrapEl.addEventListener('mouseleave', () => {
-    isOverWrap = false;
-    if(!drifting && !prefersReducedMotion) {
-      trackEl.style.animationPlayState = 'running';
-    }
-  });
-
-  // ── Animate track to a target X position ──────────────────────────
-  function animateTo(curX, newX) {
-    const halfW = getHalfW();
-    if(halfW) {
-      while(newX > 0)      newX -= halfW;
-      while(newX < -halfW) newX += halfW;
-    }
-    trackEl.style.animation  = 'none';
-    trackEl.style.transition = 'none';
-    trackEl.style.transform  = `translateX(${curX}px)`;
-    trackEl.offsetWidth;
-    trackEl.style.transition = 'transform 0.35s cubic-bezier(0.4,0,0.2,1)';
-    trackEl.style.transform  = `translateX(${newX}px)`;
-    setTimeout(() => {
-      driftX = newX;
-      trackEl.style.transition = 'none';
-      trackEl.style.transform  = '';
-      trackEl.offsetWidth;
-      resumeAnim();
-    }, 380);
-  }
-
-  // ── Click: single nudge (arrow buttons) ───────────────────────────
-  function nudge(dir) {
-    const curX     = drifting ? driftX : getLiveX();
-    const halfW    = getHalfW();
-    if(!halfW) return;
-    const cardStep = getCardStep();
-    // dir=-1 (›, forward): ceil ensures we always cross to the next boundary
-    // dir=+1 (‹, back):    floor ensures we always step to the previous boundary
-    const snapBase = dir < 0
-      ? Math.ceil(curX / cardStep)
-      : Math.floor(curX / cardStep);
-    const newX = snapBase * cardStep + dir * cardStep;
-    animateTo(curX, newX);
-  }
-
-  // ── Manual drag: press/touch and move the tiles yourself ──────────
-  // Works with mouse, touch, and pen via the unified Pointer Events API,
-  // so the same code drives desktop click-and-drag and mobile touch-drag.
-  wrapEl.classList.add('mq-drag-surface');
-  let dragging          = false;
-  let dragPointerId     = null;
-  let dragStartClientX  = 0;
-  let dragStartX        = 0;
-  let dragMoved         = false;
-  let suppressNextClick = false;
-  let textSelecting     = false; // this press started on text — leave it to native selection, don't drag-scroll
-  const DRAG_MOVE_THRESHOLD = 4; // px before a press counts as a drag, not a tap
-
-  // Deciding "is this press a text selection?" from event timing (watching
-  // window.getSelection() or 'selectionchange' during the drag) doesn't
-  // work: the instant our code starts moving the strip by the same amount
-  // the pointer moves, the text under the cursor stops advancing relative
-  // to it — both slide together — which silently stalls the browser's
-  // selection at a collapsed caret before it can ever be detected. So the
-  // call has to be made upfront, synchronously, at pointerdown: if the
-  // exact element pressed is a text-bearing leaf (no element children of
-  // its own, just rendered text — a name, handle, description, etc.),
-  // treat the whole gesture as a selection attempt and never touch the
-  // strip. A card's own background/padding, icon wrappers, and the gaps
-  // between cards all have element children or no text, so they're
-  // unaffected — grab any of those to drag-scroll.
-  const HAS_WORD_CHAR = /[\p{L}\p{N}]/u; // at least one letter or digit — excludes emoji/icon-only leaves
-  function isTextLeaf(el) {
-    if(!el || el.nodeType !== 1 || el.children.length > 0) return false;
-    const t = el.textContent.trim();
-    // An emoji/icon avatar is a text-free leaf too (e.g. "🧑‍💻") — nothing
-    // there is worth selecting, and it's a natural place to grab the card,
-    // so it doesn't count as "text" for this check.
-    return t.length > 0 && HAS_WORD_CHAR.test(t);
-  }
-
-  function onPointerDown(e) {
-    if(e.pointerType === 'mouse' && e.button !== 0) return; // left button only
-    haltDrift(); // hand control from hover-drift (if any) to the drag
-    dragging         = true;
-    dragMoved        = false;
-    textSelecting    = isTextLeaf(e.target);
-    dragPointerId     = e.pointerId;
-    dragStartClientX = e.clientX;
-    dragStartX        = getLiveX();
-    driftX = dragStartX;
-    // NOTE: pointer capture is deliberately NOT taken here. Capturing on
-    // pointerdown makes the browser route the resulting click event's target
-    // to the capturing element (wrapEl) instead of whatever was actually
-    // pressed — which silently breaks every link inside the cards (GitHub,
-    // LinkedIn, donate buttons, etc: a plain tap looked like a click on the
-    // wrapper, not the <a>). Capture is taken below, only once the pointer
-    // has actually moved past the drag threshold, so a genuine tap/click
-    // never captures the pointer and links work normally.
-  }
-
-  function onPointerMove(e) {
-    if(!dragging || e.pointerId !== dragPointerId) return;
-    if(textSelecting) return; // this press turned out to be a text selection — leave it alone
-    const delta = e.clientX - dragStartClientX;
-    if(!dragMoved && Math.abs(delta) < DRAG_MOVE_THRESHOLD) return;
-    if(!dragMoved) {
-      // Movement threshold just crossed — this is now a real drag, not a tap.
-      // Take over from here: stop the CSS animation, capture the pointer so
-      // moves keep tracking even if the cursor leaves the strip, and lock in
-      // the drag visuals.
-      trackEl.style.animation  = 'none';
-      trackEl.style.transition = 'none';
-      wrapEl.classList.add('mq-dragging');
-      try { wrapEl.setPointerCapture(e.pointerId); } catch(err) {}
-    }
-    dragMoved = true;
-    // Track the raw, unwrapped position while actively dragging — no modulo
-    // here. Wrapping mid-drag (snapping instantly back by a full halfW the
-    // moment the strip crosses position 0) used to make the DOM teleport by
-    // thousands of pixels on an ordinary drag, which is exactly what was
-    // breaking native text selection: the browser's selection tracking
-    // can't survive its anchor element jumping that far mid-gesture. The
-    // loop's content is duplicated, and resumeAnim()'s CSS animation-delay
-    // math (below) already handles an arbitrarily large driftX correctly via
-    // the animation's own natural wraparound, so there's no need to wrap
-    // here — only the release needs a sane value, and it gets one for free.
-    driftX = dragStartX + delta;
-    trackEl.style.transform = `translateX(${driftX}px)`;
-  }
-
-  function onPointerUp(e) {
-    if(!dragging || e.pointerId !== dragPointerId) return;
-    dragging = false;
-    if(textSelecting) return; // was a text selection, not a drag — the strip was never touched, leave it be
-    wrapEl.classList.remove('mq-dragging');
-    try { wrapEl.releasePointerCapture(e.pointerId); } catch(err) {}
-    if(dragMoved) {
-      // Hand off to the looping animation from the exact spot the drag ended —
-      // no corrective snap. A snap-to-nearest-edge here reads as the tile
-      // jumping out from under your finger the instant you let go.
-      resumeAnim();
-      suppressNextClick = true; // swallow the click a drag-release fires
-    } else {
-      resumeAnim();
-    }
-  }
-
-  wrapEl.addEventListener('pointerdown', onPointerDown);
-  wrapEl.addEventListener('pointermove', onPointerMove);
-  wrapEl.addEventListener('pointerup', onPointerUp);
-  wrapEl.addEventListener('pointercancel', onPointerUp);
-
-  // Swallow the stray click a drag-release produces, so links inside cards
-  // don't accidentally activate right after you were dragging the strip.
-  trackEl.addEventListener('click', e => {
-    if(suppressNextClick) {
-      suppressNextClick = false;
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }, true);
-
-  // ── Card click: snap the clicked card to the left edge ─────────────
-  // Only for an actual tap/click (drag releases are swallowed above, so
-  // this never fires mid-scroll or mid-drag). Links inside a card (GitHub,
-  // PayPal, etc.) are left alone so they just navigate normally.
-  function snapCardToLeft(cardEl) {
-    const wrapRect = wrapEl.getBoundingClientRect();
-    const cardRect = cardEl.getBoundingClientRect();
-    const offset   = cardRect.left - wrapRect.left; // px from left edge
-    if(Math.abs(offset) < 4) return;                // already there
-    const curX = drifting ? driftX : getLiveX();
-    animateTo(curX, curX - offset);
-  }
-
-  if(cardSel) {
-    let pendingSnapTimer = null;
-    trackEl.addEventListener('click', e => {
-      if(e.target.closest('a')) return; // let links navigate, no snap
-      const card = e.target.closest(cardSel);
-      if(!card) return;
-
-      // e.detail is 2+ on the second (and later) click of a double/triple
-      // click — that's a word/paragraph text-selection gesture, not a tap.
-      // Cancel any snap still waiting from the first click and leave the
-      // selection alone.
-      if(e.detail > 1) {
-        if(pendingSnapTimer) { clearTimeout(pendingSnapTimer); pendingSnapTimer = null; }
-        return;
-      }
-
-      // Don't snap the instant a single click lands — wait past the
-      // double-click window first. If a second click arrives, the branch
-      // above cancels this. If the click instead left behind a text
-      // selection (a click-drag that selected a word), skip the snap too —
-      // moving the card out from under a fresh selection would clear it.
-      if(pendingSnapTimer) clearTimeout(pendingSnapTimer);
-      pendingSnapTimer = setTimeout(() => {
-        pendingSnapTimer = null;
-        const sel = window.getSelection();
-        if(sel && sel.toString().length > 0) return;
-        snapCardToLeft(card);
-      }, 300);
-    });
-  }
 
   ['prev','next'].forEach(type => {
     const btn = document.createElement('button');
     btn.className = `mq-nav-btn mq-nav-${type}`;
     btn.setAttribute('aria-label', type === 'prev' ? 'Previous' : 'Next');
     btn.innerHTML = type === 'prev' ? '&#8249;' : '&#8250;';
-    const dir = type === 'prev' ? 1 : -1;
-
-    // Desktop: hover = continuous scroll
-    btn.addEventListener('mouseenter', () => startDrift(dir));
-    btn.addEventListener('mouseleave', stopDrift);
-
-    // Click = single nudge (mobile only; desktop hover already scrolls continuously)
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      if(!drifting) nudge(dir);
+    const dir = type === 'prev' ? -1 : 1;
+    btn.addEventListener('click', () => {
+      wrapEl.scrollBy({ left: dir * cardStep(), behavior: prefersReducedMotion ? 'instant' : 'smooth' });
     });
-
     outer.appendChild(btn);
+  });
+
+  if(!cardSel) return;
+
+  // Tap a card to scroll it into view at the start of the strip — a genuine
+  // single click/tap only. A double/triple click (word/paragraph selection)
+  // or a click-drag that leaves text selected is left alone, so selecting
+  // and copying card text still works normally.
+  let pendingTimer = null;
+  wrapEl.addEventListener('click', e => {
+    if(e.target.closest('a')) return; // let links navigate
+    const card = e.target.closest(cardSel);
+    if(!card) return;
+    if(e.detail > 1) {
+      if(pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+      return;
+    }
+    if(pendingTimer) clearTimeout(pendingTimer);
+    pendingTimer = setTimeout(() => {
+      pendingTimer = null;
+      const sel = window.getSelection();
+      if(sel && sel.toString().length > 0) return; // a selection was made — don't scroll it away
+      card.scrollIntoView({ behavior: prefersReducedMotion ? 'instant' : 'smooth', inline: 'start', block: 'nearest' });
+    }, 300);
   });
 }
 
@@ -1909,13 +1538,11 @@ function renderProjects(filter) {
   }
 
   if(filter === 'currentAll') {
-    // Full list — plenty of cards, an auto-scrolling marquee reads well.
+    // Full list — a horizontal scroll strip (wheel/swipe/scrollbar), not an
+    // auto-scrolling marquee.
     list.className = '';
-    const base = items.map(makeProjectCardHTML).join('');
-    let half = base;
-    while(half.split('project-card').length - 1 < 4) half += base;
-    list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${half}${half}</div></div>`;
-    setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306, '.project-card');
+    list.innerHTML = `<div class="hscroll projects-hscroll">${items.map(makeProjectCardHTML).join('')}</div>`;
+    setupScrollNav(list.querySelector('.hscroll'), '.project-card');
   } else {
     // A single category can have just 1–3 cards — looping that in an infinite
     // marquee just shows the same card sliding past itself forever, which
@@ -1948,13 +1575,14 @@ legacyNavEl.innerHTML = legacyGroups.map((g,i) => {
   return `<button class="legacy-nav-btn${i===0?' active':''}" data-group="${g}">${LEGACY_ICONS[g]} ${g} <span class="legacy-count-badge">${cnt}</span></button>`;
 }).join('');
 
-// Build a device-card marquee for each series tab — unless the series only
-// has a few devices, in which case looping them forever just shows the same
-// card(s) sliding past themselves, so those get a plain static grid instead.
-const LEGACY_STATIC_MAX = 3;
+// Build a device-card scroll strip for each series tab. Native scroll means
+// a series with only 1-2 devices just doesn't need to scroll — no special
+// case required (the old auto-scrolling marquee had to duplicate/loop
+// content to avoid showing a single card sliding past itself forever; a
+// plain scroll strip has no such problem).
 legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
   const devices = LEGACY[g];
-  const makeCard = d => `
+  const cardHTML = devices.map(d => `
     <div class="legacy-device-card">
       <span class="legacy-dc-icon">${LEGACY_ICONS[g]}</span>
       <div class="legacy-dc-name">${d.device}</div>
@@ -1962,29 +1590,14 @@ legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
       <div class="legacy-dc-builds">
         ${d.builds.map(b => `<a class="build-chip" href="${b.link}" target="_blank">${b.name}</a>`).join('')}
       </div>
-    </div>`;
-
-  if(devices.length <= LEGACY_STATIC_MAX) {
-    return `<div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
-      <div class="legacy-grid">${devices.map(makeCard).join('')}</div>
-    </div>`;
-  }
-
-  // Repeat cards so the loop looks full even for mid-size series (min 6 visible)
-  const reps = devices.length < 4 ? Math.ceil(8 / devices.length) : 2;
-  const dur = Math.max(18, devices.length * 6); // ~6s per unique card, min 18s
-  const cardHTML = devices.map(makeCard).join('');
-  const looped = Array(reps).fill(cardHTML).join('');
+    </div>`).join('');
   return `<div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
-    <div class="legacy-marquee-wrap">
-      <div class="legacy-marquee" style="animation-duration:${dur}s">${looped}</div>
-    </div>
+    <div class="hscroll">${cardHTML}</div>
   </div>`;
 }).join('');
 
-// Add nav buttons only to the series that actually got a marquee
-document.querySelectorAll('.legacy-marquee-wrap').forEach(el => {
-  setupMarqueeNav(el, 'legacy-dev-scroll', 244, '.legacy-device-card');
+document.querySelectorAll('#legacyPages .hscroll').forEach(el => {
+  setupScrollNav(el, '.legacy-device-card');
 });
 
 let legacyActiveIdx = 0;
@@ -2037,10 +1650,9 @@ function makeTeamCardHTML(t, i) {
     ${donateLinks.length ? `<div class="team-donate-row">${donateLinks.join('')}</div>` : ''}
   </div>`;
 }
-// Marquee: all cards duplicated for seamless loop
 const teamCardsHTML = TEAM.map((t,i) => makeTeamCardHTML(t,i)).join('');
-document.getElementById('teamGrid').innerHTML = teamCardsHTML + teamCardsHTML;
-setupMarqueeNav(document.querySelector('.team-marquee-wrap'), 'team-scroll', 316, '.team-card');
+document.getElementById('teamGrid').innerHTML = teamCardsHTML;
+setupScrollNav(document.getElementById('teamGrid'), '.team-card');
 
 // Init Vanilla Tilt on community cards only
 if(typeof VanillaTilt !== 'undefined') {
@@ -2061,9 +1673,9 @@ const statsHtml = STATS_FACTS.map(s =>
 ).join('');
 document.getElementById('statsTicker').innerHTML = statsHtml + statsHtml;
 
-// Nav buttons for static marquees (community & credits)
-setupMarqueeNav(document.querySelector('.community-marquee-wrap'), 'comm-scroll', 316, '.community-card');
-setupMarqueeNav(document.querySelector('.credits-marquee-wrap'), 'credits-scroll', 274, '.about-card');
+// Nav buttons for the Community and Credits scroll strips
+setupScrollNav(document.getElementById('communityMarquee'), '.community-card');
+setupScrollNav(document.getElementById('creditsMarquee'), '.about-card');
 
 // ═══════════════════════════════ THEME TOGGLE ═══════════════════════════════
 (function () {

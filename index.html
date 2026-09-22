@@ -536,6 +536,10 @@ nav{
 .legacy-marquee:hover{animation-play-state:paused}
 @keyframes legacy-dev-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* Static grid for series with only a few devices — looping 1-3 cards in an
+   infinite marquee just shows the same card sliding past itself forever. */
+.legacy-grid{display:flex;flex-wrap:wrap;gap:14px}
+
 /* Legacy device card — project-card style */
 .legacy-device-card{
   width:230px;flex-shrink:0;
@@ -729,8 +733,10 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 
 /* ═══════════════════════════════ MARQUEE NAV BUTTONS ═══════════════════════════════ */
 .mq-outer{position:relative}
-.mq-drag-surface{cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.mq-drag-surface.mq-dragging{cursor:grabbing}
+.mq-drag-surface{cursor:grab;touch-action:pan-y}
+/* Only block text selection while an actual drag is in progress — letting
+   people select and copy card text (names, handles, links) the rest of the time. */
+.mq-drag-surface.mq-dragging{cursor:grabbing;-webkit-user-select:none;user-select:none}
 .mq-drag-surface.mq-dragging *{cursor:grabbing !important}
 .mq-nav-btn{
   position:absolute;top:50%;transform:translateY(-50%);z-index:20;
@@ -936,8 +942,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <div class="community-card">
         <h3>📺 Content</h3>
         <p class="cc-sub">Guides, tutorials and showcases</p>
-        <!-- PLACEHOLDER: Replace href="#" with YouTube channel link when ready -->
-        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag">Soon</span></a>
+        <a href="https://www.youtube.com/@yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag live">Live</span></a>
       </div>
       <!-- CARD 3: Code -->
       <div class="community-card">
@@ -955,8 +960,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <div class="community-card">
         <h3>📺 Content</h3>
         <p class="cc-sub">Guides, tutorials and showcases</p>
-        <!-- PLACEHOLDER: Replace href="#" with YouTube channel link when ready -->
-        <a href="#" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag">Soon</span></a>
+        <a href="https://www.youtube.com/@yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">YouTube Channel</span><span class="lr-desc">Tool demos &amp; tutorials</span></span><span class="lr-tag live">Live</span></a>
       </div>
       <div class="community-card">
         <h3>💻 Code</h3>
@@ -983,15 +987,6 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <h3>About TeamExyKings</h3>
       <p>TeamExyKings started as a Samsung Galaxy ROM & kernel development team around 2014 — building custom builds for the Galaxy S5 through S10 and Note10 era — before evolving into a broader developer collective building free tools and apps.</p>
       <p>Our current tools are actively maintained. The ROM and kernel archive is preserved here for reference and is no longer actively developed.</p>
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
-        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 16px">GitHub ↗</a>
-        <a href="https://t.me/TeamExyKings" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 16px">Telegram ↗</a>
-      </div>
-    </div>
-    <div class="about-card reveal">
-      <h3>Current Status</h3>
-      <p>Our current tools — Bookmark Tab Manager, DebloatKit, PurgeKit, QuickOff, and more — are actively maintained and open source.</p>
-      <p>The ROM and kernel archive (2014–2020) is preserved for reference. No new ROM builds are planned.</p>
       <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
         <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 16px">GitHub ↗</a>
         <a href="https://t.me/TeamExyKings" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 16px">Telegram ↗</a>
@@ -1131,17 +1126,14 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 // ═══════════════════════════════ DATA ═══════════════════════════════
 const PROJECTS = [
-  // PLACEHOLDER: update store + firefoxStore URLs when BTM is published to Chrome/Firefox stores
-  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy", store:"#" /* TODO: Chrome Web Store URL */, firefoxStore:"#" /* TODO: Firefox Add-ons URL */, status:"live" },
-  { id:2, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
-  { id:3, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
-  { id:4, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy", store:null, firefoxStore:null, status:"live" },
-  // PLACEHOLDER: update github URL when QuickOff Watch repo is public
-  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"soon" },
-  // PLACEHOLDER: update github URL when RecruitLens repo is public
-  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"soon" },
-  // PLACEHOLDER: update github URL when Device Care Plus repo is public
-  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"#" /* TODO: GitHub repo URL */, store:null, firefoxStore:null, status:"live" }
+  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy/bookmark-tab-manager", store:"https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj", firefoxStore:"https://addons.mozilla.org/en-GB/firefox/addon/bookmark-tab-manager-fx/", status:"live" },
+  { id:2, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy/DebloatKit", store:null, firefoxStore:null, status:"live" },
+  { id:3, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy/PurgeKit", store:null, firefoxStore:null, status:"live" },
+  { id:4, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy/QuickOff", store:null, firefoxStore:null, status:"live" },
+  // PLACEHOLDER: update github URL when QuickOff Watch repo is created/public
+  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#" /* TODO: repo not yet created */, store:null, firefoxStore:null, status:"soon" },
+  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"https://github.com/yashwanthramsomireddy/RecruitLens", store:null, firefoxStore:null, status:"soon" },
+  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"https://github.com/yashwanthramsomireddy/Device-Care-Plus", store:null, firefoxStore:null, status:"live" }
 ];
 
 const LEGACY_ICONS = { "Note Series":"📓", "S Series":"⭐", "A Series":"🅰️", "Tab Series":"📟", "Kernels":"⚙️" };
@@ -1707,13 +1699,38 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
   let dragStartX        = 0;
   let dragMoved         = false;
   let suppressNextClick = false;
+  let textSelecting     = false; // this press started on text — leave it to native selection, don't drag-scroll
   const DRAG_MOVE_THRESHOLD = 4; // px before a press counts as a drag, not a tap
+
+  // Deciding "is this press a text selection?" from event timing (watching
+  // window.getSelection() or 'selectionchange' during the drag) doesn't
+  // work: the instant our code starts moving the strip by the same amount
+  // the pointer moves, the text under the cursor stops advancing relative
+  // to it — both slide together — which silently stalls the browser's
+  // selection at a collapsed caret before it can ever be detected. So the
+  // call has to be made upfront, synchronously, at pointerdown: if the
+  // exact element pressed is a text-bearing leaf (no element children of
+  // its own, just rendered text — a name, handle, description, etc.),
+  // treat the whole gesture as a selection attempt and never touch the
+  // strip. A card's own background/padding, icon wrappers, and the gaps
+  // between cards all have element children or no text, so they're
+  // unaffected — grab any of those to drag-scroll.
+  const HAS_WORD_CHAR = /[\p{L}\p{N}]/u; // at least one letter or digit — excludes emoji/icon-only leaves
+  function isTextLeaf(el) {
+    if(!el || el.nodeType !== 1 || el.children.length > 0) return false;
+    const t = el.textContent.trim();
+    // An emoji/icon avatar is a text-free leaf too (e.g. "🧑‍💻") — nothing
+    // there is worth selecting, and it's a natural place to grab the card,
+    // so it doesn't count as "text" for this check.
+    return t.length > 0 && HAS_WORD_CHAR.test(t);
+  }
 
   function onPointerDown(e) {
     if(e.pointerType === 'mouse' && e.button !== 0) return; // left button only
     haltDrift(); // hand control from hover-drift (if any) to the drag
     dragging         = true;
     dragMoved        = false;
+    textSelecting    = isTextLeaf(e.target);
     dragPointerId     = e.pointerId;
     dragStartClientX = e.clientX;
     dragStartX        = getLiveX();
@@ -1730,6 +1747,7 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
 
   function onPointerMove(e) {
     if(!dragging || e.pointerId !== dragPointerId) return;
+    if(textSelecting) return; // this press turned out to be a text selection — leave it alone
     const delta = e.clientX - dragStartClientX;
     if(!dragMoved && Math.abs(delta) < DRAG_MOVE_THRESHOLD) return;
     if(!dragMoved) {
@@ -1743,19 +1761,24 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
       try { wrapEl.setPointerCapture(e.pointerId); } catch(err) {}
     }
     dragMoved = true;
-    const halfW = getHalfW();
-    let newX = dragStartX + delta;
-    if(halfW) {
-      while(newX > 0)      newX -= halfW;
-      while(newX < -halfW) newX += halfW;
-    }
-    driftX = newX;
+    // Track the raw, unwrapped position while actively dragging — no modulo
+    // here. Wrapping mid-drag (snapping instantly back by a full halfW the
+    // moment the strip crosses position 0) used to make the DOM teleport by
+    // thousands of pixels on an ordinary drag, which is exactly what was
+    // breaking native text selection: the browser's selection tracking
+    // can't survive its anchor element jumping that far mid-gesture. The
+    // loop's content is duplicated, and resumeAnim()'s CSS animation-delay
+    // math (below) already handles an arbitrarily large driftX correctly via
+    // the animation's own natural wraparound, so there's no need to wrap
+    // here — only the release needs a sane value, and it gets one for free.
+    driftX = dragStartX + delta;
     trackEl.style.transform = `translateX(${driftX}px)`;
   }
 
   function onPointerUp(e) {
     if(!dragging || e.pointerId !== dragPointerId) return;
     dragging = false;
+    if(textSelecting) return; // was a text selection, not a drag — the strip was never touched, leave it be
     wrapEl.classList.remove('mq-dragging');
     try { wrapEl.releasePointerCapture(e.pointerId); } catch(err) {}
     if(dragMoved) {
@@ -1798,10 +1821,33 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
   }
 
   if(cardSel) {
+    let pendingSnapTimer = null;
     trackEl.addEventListener('click', e => {
       if(e.target.closest('a')) return; // let links navigate, no snap
       const card = e.target.closest(cardSel);
-      if(card) snapCardToLeft(card);
+      if(!card) return;
+
+      // e.detail is 2+ on the second (and later) click of a double/triple
+      // click — that's a word/paragraph text-selection gesture, not a tap.
+      // Cancel any snap still waiting from the first click and leave the
+      // selection alone.
+      if(e.detail > 1) {
+        if(pendingSnapTimer) { clearTimeout(pendingSnapTimer); pendingSnapTimer = null; }
+        return;
+      }
+
+      // Don't snap the instant a single click lands — wait past the
+      // double-click window first. If a second click arrives, the branch
+      // above cancels this. If the click instead left behind a text
+      // selection (a click-drag that selected a word), skip the snap too —
+      // moving the card out from under a fresh selection would clear it.
+      if(pendingSnapTimer) clearTimeout(pendingSnapTimer);
+      pendingSnapTimer = setTimeout(() => {
+        pendingSnapTimer = null;
+        const sel = window.getSelection();
+        if(sel && sel.toString().length > 0) return;
+        snapCardToLeft(card);
+      }, 300);
     });
   }
 
@@ -1828,11 +1874,13 @@ function setupMarqueeNav(wrapEl, animName, stepPx, cardSel) {
 
 // ═══════════════════════════════ PROJECTS ═══════════════════════════════
 function makeProjectCardHTML(p) {
+  // Show whichever real links exist regardless of live/soon status — a repo
+  // can be public before the project is fully "live" (e.g. RecruitLens), and
+  // gating on status alone was hiding links that were actually set.
   const links = [];
-  if(p.status === 'live') {
-    if(p.github && p.github !== '#') links.push(`<a class="pc-link pc-link-primary" href="${p.github}" target="_blank">↗ GitHub</a>`);
-    if(p.store && p.store !== '#') links.push(`<a class="pc-link pc-link-outline" href="${p.store}" target="_blank">Chrome Store</a>`);
-  }
+  if(p.github && p.github !== '#') links.push(`<a class="pc-link pc-link-primary" href="${p.github}" target="_blank">↗ GitHub</a>`);
+  if(p.store && p.store !== '#') links.push(`<a class="pc-link pc-link-outline" href="${p.store}" target="_blank">Chrome Store</a>`);
+  if(p.firefoxStore && p.firefoxStore !== '#') links.push(`<a class="pc-link pc-link-outline" href="${p.firefoxStore}" target="_blank">Firefox Add-ons</a>`);
   if(!links.length) links.push(`<span class="pc-link pc-link-outline" style="opacity:0.4;cursor:default">Coming Soon</span>`);
   return `<div class="project-card">
     <span class="pc-icon">${p.icon}</span>
@@ -1848,7 +1896,6 @@ function makeProjectCardHTML(p) {
 
 function renderProjects(filter) {
   const list = document.getElementById('projectsList');
-  list.className = '';
   list.removeAttribute('style');
 
   const items = filter === 'currentAll'
@@ -1856,17 +1903,26 @@ function renderProjects(filter) {
     : PROJECTS.filter(p => p.cat === filter);
 
   if(!items.length) {
+    list.className = 'projects-grid';
     list.innerHTML = '<p style="padding:40px;text-align:center;color:var(--text-muted)">No projects in this category yet.</p>';
     return;
   }
 
-  // Repeat base cards until we have at least 4 in each half (seamless loop needs density)
-  const base = items.map(makeProjectCardHTML).join('');
-  let half = base;
-  while(half.split('project-card').length - 1 < 4) half += base;
-
-  list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${half}${half}</div></div>`;
-  setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306, '.project-card');
+  if(filter === 'currentAll') {
+    // Full list — plenty of cards, an auto-scrolling marquee reads well.
+    list.className = '';
+    const base = items.map(makeProjectCardHTML).join('');
+    let half = base;
+    while(half.split('project-card').length - 1 < 4) half += base;
+    list.innerHTML = `<div class="projects-marquee-wrap"><div class="projects-marquee">${half}${half}</div></div>`;
+    setupMarqueeNav(list.querySelector('.projects-marquee-wrap'), 'proj-scroll', 306, '.project-card');
+  } else {
+    // A single category can have just 1–3 cards — looping that in an infinite
+    // marquee just shows the same card sliding past itself forever, which
+    // reads as broken. Show these as a plain static grid instead.
+    list.className = 'projects-grid';
+    list.innerHTML = items.map(makeProjectCardHTML).join('');
+  }
 }
 
 document.querySelector('.tab-bar').addEventListener('click', e => {
@@ -1892,13 +1948,13 @@ legacyNavEl.innerHTML = legacyGroups.map((g,i) => {
   return `<button class="legacy-nav-btn${i===0?' active':''}" data-group="${g}">${LEGACY_ICONS[g]} ${g} <span class="legacy-count-badge">${cnt}</span></button>`;
 }).join('');
 
-// Build device-card marquee for each series tab
+// Build a device-card marquee for each series tab — unless the series only
+// has a few devices, in which case looping them forever just shows the same
+// card(s) sliding past themselves, so those get a plain static grid instead.
+const LEGACY_STATIC_MAX = 3;
 legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
   const devices = LEGACY[g];
-  // Repeat cards so the loop looks full even for small series (min 6 visible)
-  const reps = devices.length < 4 ? Math.ceil(8 / devices.length) : 2;
-  const dur = Math.max(18, devices.length * 6); // ~6s per unique card, min 18s
-  const cardHTML = devices.map(d => `
+  const makeCard = d => `
     <div class="legacy-device-card">
       <span class="legacy-dc-icon">${LEGACY_ICONS[g]}</span>
       <div class="legacy-dc-name">${d.device}</div>
@@ -1906,7 +1962,18 @@ legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
       <div class="legacy-dc-builds">
         ${d.builds.map(b => `<a class="build-chip" href="${b.link}" target="_blank">${b.name}</a>`).join('')}
       </div>
-    </div>`).join('');
+    </div>`;
+
+  if(devices.length <= LEGACY_STATIC_MAX) {
+    return `<div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
+      <div class="legacy-grid">${devices.map(makeCard).join('')}</div>
+    </div>`;
+  }
+
+  // Repeat cards so the loop looks full even for mid-size series (min 6 visible)
+  const reps = devices.length < 4 ? Math.ceil(8 / devices.length) : 2;
+  const dur = Math.max(18, devices.length * 6); // ~6s per unique card, min 18s
+  const cardHTML = devices.map(makeCard).join('');
   const looped = Array(reps).fill(cardHTML).join('');
   return `<div class="legacy-page${i===0?' active':''}" id="legacy-page-${g.replace(/[^a-z0-9]/gi,'-')}">
     <div class="legacy-marquee-wrap">
@@ -1915,7 +1982,7 @@ legacyPagesEl.innerHTML = legacyGroups.map((g,i) => {
   </div>`;
 }).join('');
 
-// Add nav buttons to every legacy series marquee
+// Add nav buttons only to the series that actually got a marquee
 document.querySelectorAll('.legacy-marquee-wrap').forEach(el => {
   setupMarqueeNav(el, 'legacy-dev-scroll', 244, '.legacy-device-card');
 });

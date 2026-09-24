@@ -1539,39 +1539,71 @@ function setupScrollNav(wrapEl, cardSel) {
   if(!cardSel) return;
 
   // Auto-hide the prev/next buttons so they never cover a card's text:
-  // prev is hidden by default and while hovering the first card, next is
-  // hidden while hovering the last card, and both show again over any
-  // middle card.
+  // prev is hidden by default and while the first card is the one sitting
+  // under it, next is hidden while the last card is, and both show again
+  // otherwise. On a device with real hover (mouse/trackpad) that's driven
+  // by pointer hover; on touch, where nothing ever "hovers", it's driven by
+  // scroll position instead — being scrolled all the way to the start (or
+  // end) is exactly when the first (or last) card is the one in view there.
   outer.classList.add('mq-hide-prev');
-  function resetNavHover() {
-    outer.classList.add('mq-hide-prev');
-    outer.classList.remove('mq-hide-next');
+  const hoverCapable = !!(window.matchMedia && window.matchMedia('(hover: hover)').matches);
+
+  if(hoverCapable) {
+    function resetNavHover() {
+      outer.classList.add('mq-hide-prev');
+      outer.classList.remove('mq-hide-next');
+    }
+    function applyNavHover(card) {
+      const cards = wrapEl.querySelectorAll(cardSel);
+      const isFirst = card === cards[0];
+      const isLast = card === cards[cards.length - 1];
+      outer.classList.toggle('mq-hide-prev', isFirst);
+      outer.classList.toggle('mq-hide-next', isLast);
+    }
+    wrapEl.addEventListener('pointerover', e => {
+      const card = e.target.closest(cardSel);
+      if(card && wrapEl.contains(card)) applyNavHover(card);
+    });
+    wrapEl.addEventListener('pointerout', e => {
+      const card = e.target.closest(cardSel);
+      if(!card) return;
+      const to = e.relatedTarget;
+      if(to && card.contains(to)) return; // still inside the same card
+      if(to && to.closest('.mq-nav-btn')) return; // moving onto a nav button — leave its current visibility alone so the click lands
+      const toCard = to ? to.closest(cardSel) : null;
+      if(!toCard) resetNavHover();
+    });
+    // Leaving a nav button back into the strip (not onto the other button) is
+    // handled by the card's own pointerover once the cursor reaches it; only
+    // reset when the pointer leaves the whole component (outer), not wrapEl
+    // alone, so crossing onto a button never counts as "left the strip".
+    outer.addEventListener('pointerleave', resetNavHover);
+  } else {
+    let edgeRAF = null;
+    function updateEdgeState() {
+      edgeRAF = null;
+      const cards = wrapEl.querySelectorAll(cardSel);
+      if(!cards.length) return;
+      const EPS = 6;
+      // Compare against each card's actual scroll-container-relative
+      // position rather than scrollWidth/clientWidth math — with
+      // scroll-snap-align:start, the browser's real max scrollLeft aligns
+      // the LAST CARD's start edge to the viewport, which is usually short
+      // of scrollWidth-clientWidth (trailing gap/padding), so that math
+      // under-detects "at the end".
+      const first = cards[0], last = cards[cards.length - 1];
+      const atStart = wrapEl.scrollLeft <= first.offsetLeft - wrapEl.offsetLeft + EPS;
+      const lastEdge = last.offsetLeft - wrapEl.offsetLeft;
+      const maxScroll = wrapEl.scrollWidth - wrapEl.clientWidth;
+      const atEnd = wrapEl.scrollLeft >= Math.min(lastEdge, maxScroll) - EPS;
+      outer.classList.toggle('mq-hide-prev', atStart);
+      outer.classList.toggle('mq-hide-next', atEnd);
+    }
+    updateEdgeState();
+    wrapEl.addEventListener('scroll', () => {
+      if(edgeRAF == null) edgeRAF = requestAnimationFrame(updateEdgeState);
+    }, { passive: true });
   }
-  function applyNavHover(card) {
-    const cards = wrapEl.querySelectorAll(cardSel);
-    const isFirst = card === cards[0];
-    const isLast = card === cards[cards.length - 1];
-    outer.classList.toggle('mq-hide-prev', isFirst);
-    outer.classList.toggle('mq-hide-next', isLast);
-  }
-  wrapEl.addEventListener('pointerover', e => {
-    const card = e.target.closest(cardSel);
-    if(card && wrapEl.contains(card)) applyNavHover(card);
-  });
-  wrapEl.addEventListener('pointerout', e => {
-    const card = e.target.closest(cardSel);
-    if(!card) return;
-    const to = e.relatedTarget;
-    if(to && card.contains(to)) return; // still inside the same card
-    if(to && to.closest('.mq-nav-btn')) return; // moving onto a nav button — leave its current visibility alone so the click lands
-    const toCard = to ? to.closest(cardSel) : null;
-    if(!toCard) resetNavHover();
-  });
-  // Leaving a nav button back into the strip (not onto the other button) is
-  // handled by the card's own pointerover once the cursor reaches it; only
-  // reset when the pointer leaves the whole component (outer), not wrapEl
-  // alone, so crossing onto a button never counts as "left the strip".
-  outer.addEventListener('pointerleave', resetNavHover);
 
   // Tap a card to scroll it into view at the start of the strip — a genuine
   // single click/tap only. A double/triple click (word/paragraph selection)

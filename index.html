@@ -713,7 +713,8 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   background:rgba(0,0,0,0.72);border:1px solid var(--fg18);
   color:var(--text);cursor:pointer;font-size:20px;line-height:1;
   display:flex;align-items:center;justify-content:center;
-  transition:all 0.18s;backdrop-filter:blur(8px);
+  transition:opacity 0.18s,background 0.18s,border-color 0.18s,color 0.18s,box-shadow 0.18s;
+  backdrop-filter:blur(8px);
   user-select:none;
 }
 .mq-nav-btn:hover{background:rgba(var(--accent-rgb),0.3);border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(var(--accent-rgb),0.3)}
@@ -721,6 +722,14 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
 [data-theme="white"] .mq-nav-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 12px rgba(var(--accent-rgb),0.4)}
 .mq-nav-prev{left:6px}
 .mq-nav-next{right:6px}
+/* Auto-hide: prev hides by default (nothing to go back to) and whenever the
+   first card is hovered; next hides whenever the last card is hovered — so
+   the button never sits on top of the card text it would otherwise cover. */
+.mq-outer.mq-hide-prev .mq-nav-prev,
+.mq-outer.mq-hide-next .mq-nav-next{opacity:0;pointer-events:none}
+/* A row that isn't actually overflowing (few enough cards to fit the
+   viewport) never needs nav buttons at all — hide both regardless of hover. */
+.mq-outer.mq-no-scroll .mq-nav-btn{display:none}
 
 /* ═══════════════════════════════ FOOTER ═══════════════════════════════ */
 .footer-ticker-wrap{
@@ -838,7 +847,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
   <canvas id="heroCanvas"></canvas>
   <div class="hero-content reveal">
     <p class="hero-welcome">Welcome to TEK Family</p>
-    <div class="hero-badge"><span class="dot"></span> Open Source · Free Forever</div>
+    <div class="hero-badge"><span class="dot"></span> Free Forever · Public on GitHub</div>
     <h1>Tools built by<br><span class="accent">developers,</span><br><span class="dim-word">for developers</span></h1>
     <p class="hero-sub">TeamExyKings is a developer collective building free tools, browser extensions, and apps — plus a legacy archive of custom Samsung ROMs & kernels from 2014–2020.</p>
     <div class="hero-cta">
@@ -925,8 +934,8 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <!-- CARD 3: Code -->
       <div class="community-card">
         <h3>💻 Code</h3>
-        <p class="cc-sub">Open source — all on GitHub</p>
-        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public &amp; open source</span></span><span class="lr-tag live">Live</span></a>
+        <p class="cc-sub">Public repos — all on GitHub</p>
+        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public · most open source</span></span><span class="lr-tag live">Live</span></a>
       </div>
   </div>
 </div>
@@ -1077,14 +1086,15 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 // ═══════════════════════════════ DATA ═══════════════════════════════
 const PROJECTS = [
-  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy/bookmark-tab-manager", store:"https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj", firefoxStore:"https://addons.mozilla.org/en-GB/firefox/addon/bookmark-tab-manager-fx/", status:"live" },
-  { id:2, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy/DebloatKit", store:null, firefoxStore:null, status:"live" },
-  { id:3, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy/PurgeKit", store:null, firefoxStore:null, status:"live" },
-  { id:4, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy/QuickOff", store:null, firefoxStore:null, status:"live" },
+  // NOTE: BTM's repo currently holds only README/CHANGELOG/LICENSE, not the extension source — opensource:false until that changes
+  { id:1, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy/bookmark-tab-manager", store:"https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj", firefoxStore:"https://addons.mozilla.org/en-GB/firefox/addon/bookmark-tab-manager-fx/", status:"live", opensource:false },
+  { id:2, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy/DebloatKit", store:null, firefoxStore:null, status:"live", opensource:true },
+  { id:3, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy/PurgeKit", store:null, firefoxStore:null, status:"live", opensource:true },
+  { id:4, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy/QuickOff", store:null, firefoxStore:null, status:"live", opensource:true },
   // PLACEHOLDER: update github URL when QuickOff Watch repo is created/public
-  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#" /* TODO: repo not yet created */, store:null, firefoxStore:null, status:"soon" },
-  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"https://github.com/yashwanthramsomireddy/RecruitLens", store:null, firefoxStore:null, status:"soon" },
-  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"https://github.com/yashwanthramsomireddy/Device-Care-Plus", store:null, firefoxStore:null, status:"live" }
+  { id:5, name:"QuickOff Watch", handle:"QO Watch", desc:"Wear OS power-menu app for Galaxy Watch 8 Classic — wrist-level power controls.", cat:"Android Tool", icon:"⌚", github:"#" /* TODO: repo not yet created */, store:null, firefoxStore:null, status:"soon", opensource:true },
+  { id:6, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"https://github.com/yashwanthramsomireddy/RecruitLens", store:null, firefoxStore:null, status:"soon", opensource:true },
+  { id:7, name:"Device Care Plus", handle:"DCP", desc:"Android app-lock for Samsung S22 Ultra — Kotlin/Compose app currently stable at v1.11.", cat:"Android Tool", icon:"🔒", github:"https://github.com/yashwanthramsomireddy/Device-Care-Plus", store:null, firefoxStore:null, status:"live", opensource:true }
 ];
 
 const LEGACY_ICONS = { "Note Series":"📓", "S Series":"⭐", "A Series":"🅰️", "Tab Series":"📟", "Kernels":"⚙️" };
@@ -1464,19 +1474,104 @@ function setupScrollNav(wrapEl, cardSel) {
   wrapEl.parentNode.insertBefore(outer, wrapEl);
   outer.appendChild(wrapEl);
 
+  // A row that doesn't actually overflow its viewport (e.g. only 3 Community
+  // cards, or a Legacy series with just a couple of devices) never needs nav
+  // buttons — recheck whenever the row's size changes, which also covers a
+  // hidden Legacy tab becoming visible (0-width while hidden, real width
+  // once switched to) without any tab-switch-specific code.
+  function updateOverflowState() {
+    const needsScroll = wrapEl.scrollWidth > wrapEl.clientWidth + 1;
+    outer.classList.toggle('mq-no-scroll', !needsScroll);
+  }
+  updateOverflowState();
+  if(typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(updateOverflowState).observe(wrapEl);
+  } else {
+    window.addEventListener('resize', updateOverflowState);
+  }
+
+  const LONG_PRESS_DELAY = 350;  // ms held before auto-repeat kicks in
+  const LONG_PRESS_REPEAT = 260; // ms between repeated card-advances while held
+  // Note: with scroll-snap-type active, even a small scrollBy() snaps all the
+  // way to the next card — so a long press repeatedly advances one card per
+  // tick (like keyboard auto-repeat) rather than a smooth pixel drag, which
+  // scroll-snap would just fight and cancel out.
+
   ['prev','next'].forEach(type => {
     const btn = document.createElement('button');
     btn.className = `mq-nav-btn mq-nav-${type}`;
     btn.setAttribute('aria-label', type === 'prev' ? 'Previous' : 'Next');
     btn.innerHTML = type === 'prev' ? '&#8249;' : '&#8250;';
     const dir = type === 'prev' ? -1 : 1;
+
+    let pressTimer = null;
+    let repeatInterval = null;
+    let didLongPress = false;
+
+    function advance() {
+      wrapEl.scrollBy({ left: dir * cardStep(), behavior: 'instant' });
+    }
+    function startLongPress() {
+      didLongPress = true;
+      advance();
+      repeatInterval = setInterval(advance, LONG_PRESS_REPEAT);
+    }
+    function stopPress() {
+      clearTimeout(pressTimer);
+      pressTimer = null;
+      if(repeatInterval) { clearInterval(repeatInterval); repeatInterval = null; }
+    }
+
+    btn.addEventListener('pointerdown', e => {
+      if(e.button !== undefined && e.button !== 0) return;
+      didLongPress = false;
+      pressTimer = setTimeout(startLongPress, LONG_PRESS_DELAY);
+    });
+    ['pointerup','pointerleave','pointercancel'].forEach(evt => btn.addEventListener(evt, stopPress));
+
     btn.addEventListener('click', () => {
+      if(didLongPress) { didLongPress = false; return; } // long-press already moved it
       wrapEl.scrollBy({ left: dir * cardStep(), behavior: prefersReducedMotion ? 'instant' : 'smooth' });
     });
     outer.appendChild(btn);
   });
 
   if(!cardSel) return;
+
+  // Auto-hide the prev/next buttons so they never cover a card's text:
+  // prev is hidden by default and while hovering the first card, next is
+  // hidden while hovering the last card, and both show again over any
+  // middle card.
+  outer.classList.add('mq-hide-prev');
+  function resetNavHover() {
+    outer.classList.add('mq-hide-prev');
+    outer.classList.remove('mq-hide-next');
+  }
+  function applyNavHover(card) {
+    const cards = wrapEl.querySelectorAll(cardSel);
+    const isFirst = card === cards[0];
+    const isLast = card === cards[cards.length - 1];
+    outer.classList.toggle('mq-hide-prev', isFirst);
+    outer.classList.toggle('mq-hide-next', isLast);
+  }
+  wrapEl.addEventListener('pointerover', e => {
+    const card = e.target.closest(cardSel);
+    if(card && wrapEl.contains(card)) applyNavHover(card);
+  });
+  wrapEl.addEventListener('pointerout', e => {
+    const card = e.target.closest(cardSel);
+    if(!card) return;
+    const to = e.relatedTarget;
+    if(to && card.contains(to)) return; // still inside the same card
+    if(to && to.closest('.mq-nav-btn')) return; // moving onto a nav button — leave its current visibility alone so the click lands
+    const toCard = to ? to.closest(cardSel) : null;
+    if(!toCard) resetNavHover();
+  });
+  // Leaving a nav button back into the strip (not onto the other button) is
+  // handled by the card's own pointerover once the cursor reaches it; only
+  // reset when the pointer leaves the whole component (outer), not wrapEl
+  // alone, so crossing onto a button never counts as "left the strip".
+  outer.addEventListener('pointerleave', resetNavHover);
 
   // Tap a card to scroll it into view at the start of the strip — a genuine
   // single click/tap only. A double/triple click (word/paragraph selection)
@@ -1518,7 +1613,7 @@ function makeProjectCardHTML(p) {
       <span class="status-badge ${p.status==='live'?'status-live':'status-soon'}">${p.status==='live'?'Live':'Soon'}</span>
     </div>
     <p class="pc-desc">${p.desc}</p>
-    <div class="pc-tags"><span class="pc-tag">${p.cat}</span><span class="pc-tag">Free</span>${p.status==='live'?'<span class="pc-tag">Open Source</span>':''}</div>
+    <div class="pc-tags"><span class="pc-tag">${p.cat}</span><span class="pc-tag">Free</span>${p.opensource?'<span class="pc-tag">Open Source</span>':''}</div>
     <div class="pc-links">${links.join('')}</div>
   </div>`;
 }
@@ -1664,7 +1759,7 @@ if(typeof VanillaTilt !== 'undefined') {
 // ═══════════════════════════════ FOOTER TICKER ═══════════════════════════════
 const STATS_FACTS = [
   '37 Legacy Builds','7 Active Projects','17 Developers',
-  'Founded 2014','Free Forever','Open Source',
+  'Founded 2014','Free Forever','Public on GitHub',
   'Android · Windows · Chrome','Samsung Galaxy ROMs 2014–2020',
   'Custom Kernels','TeamExyKings'
 ];

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KingCalc — Privacy Policy</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7;}
+  .container{max-width:760px;margin:0 auto;padding:60px 24px;}
+  .logo{font-size:28px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .logo span{color:#f97316;}
+  .tagline{font-size:14px;color:#555;margin-bottom:48px;}
+  h1{font-size:32px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .updated{font-size:12px;color:#444;margin-bottom:40px;}
+  h2{font-size:16px;font-weight:600;color:#fff;margin:32px 0 12px;padding-left:12px;border-left:3px solid #f97316;}
+  p{font-size:14px;color:#888;margin-bottom:12px;}
+  ul{margin:0 0 12px 20px;}
+  ul li{font-size:14px;color:#888;margin-bottom:6px;}
+  .highlight{background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.15);border-radius:10px;padding:16px 20px;margin:24px 0;}
+  .highlight p{color:#aaa;margin:0;}
+  .highlight strong{color:#f97316;}
+  .browsers{display:flex;gap:12px;margin:16px 0 24px;}
+  .browser-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 14px;font-size:12px;color:#aaa;}
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid #1a1a1a;font-size:12px;color:#333;text-align:center;}
+  footer a{margin:0 8px;}
+  a{color:#f97316;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">King<span>Calc</span></div>
+  <div class="tagline">Free, open-source calculator — Android</div>
+
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: October 2026</div>
+
+  <div class="browsers">
+    <span class="browser-badge">🤖 Android</span>
+    <span class="browser-badge">🧮 Open Source · MIT</span>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Short version:</strong> KingCalc has no account, no backend server, no cloud storage, no ads, and no tracking of any kind. Everything you calculate stays on your device. The only thing that ever leaves your device is an amount and two currency codes — and only when you use the currency converter — sent to a free exchange-rate API to fetch a live rate.</p>
+  </div>
+
+  <h2>1. Information We Collect</h2>
+  <p>We do not collect, store, or have access to any personal data. KingCalc does not require sign-in, does not have a backend server, and does not use analytics, advertising identifiers, or crash-reporting services that transmit your data to us. Specifically, we never see or receive:</p>
+  <ul>
+    <li>Any calculation you perform (basic, percent, loan/EMI, or unit conversion)</li>
+    <li>Your name, email, device identifiers, or location</li>
+    <li>Any usage statistics or analytics about how you use the app</li>
+  </ul>
+  <p>The one exception, used only when you actively use a specific feature:</p>
+  <ul>
+    <li>When you use the currency converter, the base currency you're converting from is sent to a live exchange-rate API to fetch the current rates for that currency. The actual amount you type and the conversion result are calculated locally on your device — they are never sent anywhere. No other data, and nothing identifying you, is included in that request.</li>
+  </ul>
+  <p>The app's Donate option simply opens your PayPal or Razorpay payment page link in your browser — it's a direct link, not an in-app payment flow, so KingCalc itself never collects or sees your payment details.</p>
+
+  <h2>2. How Your Data Is Stored</h2>
+  <p>Anything KingCalc remembers between sessions — your theme choice, font selection, and the calculator mode you last used — is stored exclusively in local storage on your device. This data:</p>
+  <ul>
+    <li>Never leaves your device</li>
+    <li>Is never transmitted to any server we operate</li>
+    <li>Can be cleared at any time by clearing the app's storage or uninstalling it</li>
+  </ul>
+
+  <h2>3. Third-Party Services</h2>
+  <p>KingCalc uses the following third-party services:</p>
+  <ul>
+    <li><strong>ExchangeRate-API</strong> (open.er-api.com) — Used only for the currency converter, to fetch current exchange rates for the base currency you select. This is ExchangeRate-API's free, keyless endpoint — no account or API key is used, and nothing identifying you is sent.</li>
+    <li><strong>PayPal / Razorpay</strong> — The optional Donate option opens a direct link to the developer's PayPal or Razorpay page in your browser. KingCalc does not integrate any payment SDK and does not receive, process, or store anything about a donation — any payment is handled entirely between you and PayPal/Razorpay.</li>
+  </ul>
+  <p>If this changes to a different exchange-rate provider in a future version, this page will be updated to name it.</p>
+
+  <h2>4. Permissions Used</h2>
+  <p>KingCalc requests implicit internet access (needed solely to fetch live exchange rates for the currency converter — if you never open that tool, the app makes no network requests at all) and vibration (for button-press haptics). Storage access is explicitly blocked in the app's manifest. KingCalc does not request access to your contacts, location, camera, or any other sensitive permission.</p>
+
+  <h2>5. Open Source</h2>
+  <p>KingCalc's full source code is public under the MIT license, so you (or anyone) can verify exactly what the app does and does not do:</p>
+  <p><a href="https://github.com/yashwanthramsomireddy/KingCalc" target="_blank">github.com/yashwanthramsomireddy/KingCalc</a></p>
+
+  <h2>6. Children's Privacy</h2>
+  <p>KingCalc does not knowingly collect any information from anyone, including children under 13, because it does not collect personal information from any user regardless of age.</p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>We may update this privacy policy occasionally. Any changes will be reflected on this page with an updated date. Continued use of KingCalc after changes constitutes acceptance of the new policy.</p>
+
+  <h2>8. Contact</h2>
+  <p>If you have any questions about this privacy policy, please contact us at:</p>
+  <p><a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a></p>
+
+  <footer>
+    © 2026 KingCalc — <a href="https://teamexykings.in/" target="_blank" rel="noopener">TeamExyKings</a>. All rights reserved.<br>
+    <a href="https://github.com/yashwanthramsomireddy/KingCalc" target="_blank">GitHub Repo</a> ·
+    <a href="https://teamexykings.in/" target="_blank" rel="noopener">Website</a>
+  </footer>
+</div>
+</body>
+</html>

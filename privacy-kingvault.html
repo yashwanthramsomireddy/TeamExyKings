@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KingVault — Privacy Policy</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7;}
+  .container{max-width:760px;margin:0 auto;padding:60px 24px;}
+  .logo{font-size:28px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .logo span{color:#eab308;}
+  .tagline{font-size:14px;color:#555;margin-bottom:48px;}
+  h1{font-size:32px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .updated{font-size:12px;color:#444;margin-bottom:40px;}
+  h2{font-size:16px;font-weight:600;color:#fff;margin:32px 0 12px;padding-left:12px;border-left:3px solid #eab308;}
+  p{font-size:14px;color:#888;margin-bottom:12px;}
+  ul{margin:0 0 12px 20px;}
+  ul li{font-size:14px;color:#888;margin-bottom:6px;}
+  .highlight{background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.15);border-radius:10px;padding:16px 20px;margin:24px 0;}
+  .highlight p{color:#aaa;margin:0;}
+  .highlight strong{color:#eab308;}
+  .browsers{display:flex;gap:12px;margin:16px 0 24px;}
+  .browser-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 14px;font-size:12px;color:#aaa;}
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid #1a1a1a;font-size:12px;color:#333;text-align:center;}
+  footer a{margin:0 8px;}
+  a{color:#eab308;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">King<span>Vault</span></div>
+  <div class="tagline">Personal secure vault — Banking, Cards, IDs & WiFi, Passwords</div>
+
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: October 2026</div>
+
+  <div class="browsers">
+    <span class="browser-badge">🤖 Android</span>
+    <span class="browser-badge">🔐 Local-First</span>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Short version:</strong> KingVault is local-first — everything you store (banking info, cards, IDs, WiFi credentials, passwords) is saved only in an encrypted local database on your device. We do not run a server and never receive your vault data. Nothing leaves your device unless you explicitly tap Sync, which uploads an encrypted backup to a private, hidden folder in your own Google Drive that only KingVault can access — not a regular folder we or anyone else can browse.</p>
+  </div>
+
+  <h2>1. Information We Collect</h2>
+  <p>We do not operate a backend server for your vault data, and we do not collect, see, or have access to the contents of your vaults. Specifically, we never receive:</p>
+  <ul>
+    <li>Your banking details, card numbers, ID documents, WiFi credentials, or saved passwords</li>
+    <li>Your PIN, password, or biometric data used to unlock the app — these are handled entirely by your device's own secure storage and authentication system, and never leave it</li>
+  </ul>
+  <p>The only thing that can leave your device, and only if you choose to use it:</p>
+  <ul>
+    <li>Your encrypted vault backup — only when you tap Sync, uploaded directly to your own Google Drive</li>
+    <li>Your Google account email, if you sign in to enable Drive sync</li>
+  </ul>
+
+  <h2>2. How Your Data Is Stored</h2>
+  <p>All vault entries are stored in an encrypted local database on your device (not in the cloud, not on any server we operate). The app is fully usable offline. If you enable Sync, an encrypted copy is uploaded to a special <code>appDataFolder</code> in your Google Drive — a hidden, app-specific space that doesn't appear in your regular Drive file list and that only KingVault (using your sign-in) can read or write. This means:</p>
+  <ul>
+    <li>Your vault data never leaves your device unless you tap Sync</li>
+    <li>The backup in your Drive is not browsable by you, us, or any other app — only KingVault can access it</li>
+    <li>Deleting the app or your Drive's app data removes the backup; deleting app data on your device removes your local vault</li>
+  </ul>
+
+  <h2>3. Third-Party Services</h2>
+  <p>KingVault uses the following third-party service, only for the optional backup feature:</p>
+  <ul>
+    <li><strong>Google Sign-In & Google Drive</strong> — Used only if you tap "Connect Drive" to enable backup/restore. The Google account token received is used only to authorize Drive access. Your backup is uploaded to the <code>drive.appdata</code> scope of your own Google Drive — the narrowest Drive scope that exists, giving access only to a hidden, app-specific folder that KingVault itself creates. It does not appear in your regular Drive file list, and KingVault has no access to any other Drive file, Gmail, Contacts, Calendar, or anything else in your account. Governed by <a href="https://policies.google.com/privacy" target="_blank">Google's privacy policy</a>.</li>
+  </ul>
+  <p>KingVault does not use Supabase, Firebase, or any other backend database — your vault contents are never processed by, or visible to, any server. The app contains no analytics, crash-reporting, or advertising SDKs of any kind, and makes no passive network calls — the only network activity is the Drive backup/restore you explicitly trigger.</p>
+
+  <h2>4. Permissions Used</h2>
+  <p>KingVault requests exactly four permissions:</p>
+  <ul>
+    <li><strong>USE_BIOMETRIC</strong> and <strong>USE_FINGERPRINT</strong> — to unlock the app using your device's own fingerprint or face unlock, handled entirely by the operating system and never transmitted anywhere</li>
+    <li><strong>INTERNET</strong> — used only for Google Drive backup/restore</li>
+    <li><strong>ACCESS_NETWORK_STATE</strong> — used to check you're online before attempting a Drive sync</li>
+  </ul>
+  <p>KingVault does not request access to your contacts, SMS, camera, location, or microphone.</p>
+
+  <h2>5. Exporting Your Data</h2>
+  <p>You can export a vault (or all vaults) as an Excel or JSON file at any time. This file is generated locally and only leaves your device if you choose to share, save, or send it yourself — KingVault does not upload export files anywhere on your behalf.</p>
+
+  <h2>6. Monetization</h2>
+  <p>KingVault is free, with no in-app purchases, subscriptions, or ads in this version. No payment processor is integrated. If a paid tier is introduced in a future version, this policy will be updated before that happens.</p>
+
+  <h2>7. Children's Privacy</h2>
+  <p>KingVault does not knowingly collect information from children under 13, and the app is not directed at children.</p>
+
+  <h2>8. Changes to This Policy</h2>
+  <p>We may update this privacy policy occasionally. Any changes will be reflected on this page with an updated date. Continued use of KingVault after changes constitutes acceptance of the new policy.</p>
+
+  <h2>9. Contact</h2>
+  <p>If you have any questions about this privacy policy, please contact us at:</p>
+  <p><a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a></p>
+
+  <footer>
+    © 2026 KingVault — <a href="https://teamexykings.in/" target="_blank" rel="noopener">TeamExyKings</a>. All rights reserved.<br>
+    <a href="https://github.com/yashwanthramsomireddy/kingvault" target="_blank">GitHub Repo</a> ·
+    <a href="https://teamexykings.in/" target="_blank" rel="noopener">Website</a>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KingLog Privacy Policy</title>
+<meta name="description" content="How KingLog by TeamExyKings handles your data: on-device encrypted vault, optional Google Drive backup, no ads, no analytics.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<style>
+:root{--bg:#000;--card:#111;--border:#262626;--text:#fff;--muted:#a3a3a3;--teal:#fff;--blue:#7DB8FF;--gold:#FBBF24}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 64px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+header img{width:56px;height:56px;border-radius:14px}
+header a{color:inherit;text-decoration:none}
+h1{font-size:28px;margin:0;line-height:1.2}
+.sub{color:var(--muted);margin:2px 0 0;font-size:14px}
+h2{font-size:19px;margin:34px 0 8px;color:var(--teal)}
+p,li{color:#d4d4d4}
+ul{padding-left:22px}
+li{margin:6px 0}
+a{color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:18px 0}
+.card strong{color:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+code{background:#1c1c1c;padding:1px 6px;border-radius:6px;font-size:.92em}
+footer{margin-top:44px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a href="index.html"><img src="assets/icon-192.png" alt="KingLog icon"></a>
+  <div><h1>KingLog Privacy Policy</h1><p class="sub">by TeamExyKings · Last updated 18 October 2026</p></div>
+</header>
+
+<div class="card">
+<strong>In short:</strong> KingLog keeps your vault (banking, cards, IDs, WiFi, passwords), finance and fuel data <strong>on your phone</strong>. We (TeamExyKings) run no servers for it, collect nothing, show no ads and use no analytics or trackers. If you choose to, you can back up to <strong>your own Google Drive</strong>; that is the only time data leaves your phone, and it goes to your Google account, not to us.
+</div>
+
+<h2>1. Who we are</h2>
+<p>KingLog (package <code>com.teamexykings.kinglog</code>) is an Android app by TeamExyKings, developed by Yashwanth Ram Somireddy. Contact: <a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a>.</p>
+
+<h2>2. What the app stores on your phone</h2>
+<ul>
+<li><strong>Vault:</strong> the entries you type into the Banking, Cards, IDs &amp; WiFi and Passwords tabs (for example bank and card details, ID numbers, WiFi and website passwords) and the account names you group them under. Each entry is encrypted with an AES-256-GCM key held in the Android Keystore before it is saved; the key never leaves the phone.</li>
+<li><strong>Finance:</strong> the salary figures, deductions, expenses, savings and settings you type in, and the monthly snapshots you save.</li>
+<li><strong>Fuel Log:</strong> vehicles (name, type, make, model, year, fuel type, plate, VIN, insurance, notes) and fill-ups (date, odometer, litres, price, cost, station, brand, notes).</li>
+<li><strong>App lock:</strong> if you set a PIN or a pattern, only a salted PBKDF2 hash of it is kept, inside Android's encrypted preferences. The PIN or pattern itself is never stored or sent anywhere. Fingerprint / face data is handled entirely by Android; KingLog never receives it.</li>
+<li><strong>Preferences:</strong> theme and accent colours, finance mode, lock timeout, screenshot-blocking, last backup times and, if you choose one, the location of your backup folder.</li>
+</ul>
+<p>All of this lives in KingLog's private app storage. KingLog opts out of Android's automatic cloud backup and device-to-device transfer, so this data does not move unless you export or back it up yourself.</p>
+
+<h2>3. What we collect</h2>
+<p><strong>Nothing.</strong> There is no KingLog account, no developer server, no advertising, no analytics, no crash-reporting SDK and no location access. We cannot see your data. (If you install from Google Play and have usage &amp; diagnostics sharing switched on, Google may give developers anonymous crash and performance statistics through Play Console. KingLog itself contains no reporting code.)</p>
+
+<h2>4. Optional Google sign-in and Drive backup</h2>
+<p>Signing in with Google is optional; the app works fully without it as a guest. Signing in does not create a KingLog account and does not lock or tie your data to the account; it only lets KingLog back up to your Drive. If you sign in:</p>
+<ul>
+<li>KingLog asks for one Drive permission, <code>drive.appdata</code>. This gives access <strong>only to a hidden folder reserved for KingLog</strong> in your Drive. KingLog cannot see, list or change any of your other Drive files.</li>
+<li>When you tap <em>Back up Finance &amp; Fuel now</em>, KingLog uploads <code>kinglog_finance.json</code>, <code>Vehicles.csv</code> and <code>Fuel_Log.csv</code> to that folder. Backups are manual; nothing is uploaded in the background.</li>
+<li>The Vault is <strong>never</strong> part of that button. When you tap <em>Back up Vault</em> you choose a passphrase; KingLog encrypts the whole Vault on your phone with it (PBKDF2-HMAC-SHA256, 600,000 iterations, AES-256-GCM) and uploads only the encrypted file <code>kinglog_vault.enc</code>. The passphrase is never stored or sent anywhere, so <strong>neither we nor Google can open that file, and if you forget the passphrase the backup cannot be recovered</strong>.</li>
+<li>The app shows your Google name and email address on the Settings screen so you can see which account is connected. They are not sent anywhere else.</li>
+<li><strong>The Finance and Fuel backup files are not encrypted by KingLog.</strong> They are protected by your Google account's security (and by Google's own encryption at rest), like any other file in your Drive. Use a strong Google password and 2-step verification.</li>
+<li>Restore replaces the data on your phone for that module with the backup copy.</li>
+</ul>
+<p>KingLog's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements. Data from Google is used only to provide the backup and restore feature you asked for, is not transferred to anyone, is not used for ads, and is not read by humans.</p>
+
+<h2>5. Optional backup to a folder on your phone</h2>
+<p>In Settings you can pick a folder with Android's own folder picker. KingLog then creates and replaces only its four backup files there (<code>kinglog_finance.json</code>, <code>Vehicles.csv</code>, <code>Fuel_Log.csv</code> and the encrypted <code>kinglog_vault.enc</code>) when you tap a backup button, and reads them when you tap restore. Nothing is written in the background. The Finance and Fuel files are plain JSON / CSV, so anyone who can open that folder (or a cloud app syncing it) can read them; the Vault file is encrypted with your passphrase. You can make KingLog forget the folder at any time.</p>
+
+<h2>6. Exports and sharing</h2>
+<p>Export (Finance JSON / Markdown / HTML, Fuel CSVs) creates a temporary file and opens Android's share sheet; <em>you</em> choose where it goes. The temporary copy is removed the next time KingLog starts. Once you send a file to another app, that app's policy applies. The Vault has no plain-text export on purpose; to move it, use the encrypted Drive backup. Importing the JSON files from the old vault pages only reads files you pick.</p>
+<p>When you copy a Vault secret, it is placed on the Android clipboard marked as sensitive and cleared after about 60 seconds. Other apps allowed to read the clipboard could read it during that time.</p>
+
+<h2>7. Permissions</h2>
+<table>
+<tr><th>Permission</th><th>Why</th></tr>
+<tr><td><code>INTERNET</code></td><td>Only for the optional Google Drive backup / restore and for opening links you tap.</td></tr>
+<tr><td><code>USE_BIOMETRIC</code></td><td>To offer fingerprint / face unlock for the app lock.</td></tr>
+</table>
+<p>KingLog does not ask for contacts, location, camera, microphone, storage or phone permissions.</p>
+
+<h2>8. Your choices and deleting your data</h2>
+<ul>
+<li><strong>On your phone:</strong> Settings ▸ <em>Erase all data on this phone</em>, or uninstall the app, or clear its storage in Android settings.</li>
+<li><strong>In Google Drive:</strong> Settings ▸ <em>Delete cloud backup</em> removes the KingLog files. You can also revoke access any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, and delete the hidden app data from Drive ▸ Settings ▸ <em>Manage apps</em>.</li>
+<li><strong>Export:</strong> take a copy of your data before deleting, using the export options.</li>
+<li>Because we hold no data about you, there is nothing for us to access, correct or delete on our side. Email us if you have any request or question.</li>
+</ul>
+
+<h2>9. Security</h2>
+<p>Vault entries are encrypted at rest with an Android Keystore AES-256-GCM key, hidden on screen until you reveal them, excluded from search, and Vault screens always block screenshots. PIN hashing (PBKDF2-HMAC-SHA256, 120,000 iterations, random salt), Android Keystore-backed encrypted preferences for the lock, lock-out after repeated wrong PINs, auto-lock when you leave the app, a 3×3 pattern lock as an alternative to the PIN, and an optional switch to hide the app from screenshots and recent apps. Finance and Fuel data are stored in app-private storage protected by Android's sandbox and (on modern phones) device encryption; they are not separately encrypted by KingLog. No security is perfect: keep your phone locked and updated.</p>
+
+<h2>10. Children</h2>
+<p>KingLog is a general-purpose personal tracker and is not directed at children under 13. It collects no personal information from anyone.</p>
+
+<h2>11. Open source</h2>
+<p>KingLog's code is open on <a href="https://github.com/yashwanthramsomireddy/kinglog">GitHub</a>, so you can check these statements yourself.</p>
+
+<h2>12. Changes</h2>
+<p>If this policy changes, the new version will be posted here with a new "Last updated" date, and significant changes will be noted in the app's changelog.</p>
+
+<footer>© 2026 TeamExyKings · <a href="index.html">KingLog home</a> · <a href="https://github.com/yashwanthramsomireddy/kinglog/blob/main/CHANGELOG.md">Changelog</a></footer>
+</div>
+</body>
+</html>

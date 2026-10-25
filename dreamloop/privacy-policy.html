@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DreamLoop Privacy Policy</title>
-<meta name="description" content="How DreamLoop handles your data: dreams stay on your device.">
+<meta name="description" content="How DreamLoop handles your data: dreams stay on your phone, backups are encrypted.">
 <meta name="theme-color" content="#000000">
 <style>
   :root{--bg:#000;--surface:#0c0c0e;--surface2:#151518;--border:#1e1e22;--text:#f7f7f8;--muted:#a6a6af;--accent:#fff}
@@ -25,73 +25,84 @@
   th{color:var(--muted);font-weight:600}
   a{color:#fff}
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+  .ok{color:#9be3a8}
+  code{background:var(--surface2);padding:1px 6px;border-radius:6px;font-size:.9em}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 20px;margin:14px 0}
+  .card h3{margin:0 0 6px;font-size:1rem}
+  .card p{margin:0}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav><a class="brand" href="./index.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 512 512"><defs></defs><path d="M 425.7 158.0 A 196 196 0 1 1 306.7 66.7" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" fill="none"/><g transform="translate(22 -10)"><path d="M 335.4 308.3 A 108 108 0 1 1 229.0 158.2 A 92 92 0 0 0 335.4 308.3 Z" fill="#FFFFFF"/></g><path d="M 375.3 70.5 Q 375.3 100.5 405.3 100.5 Q 375.3 100.5 375.3 130.5 Q 375.3 100.5 345.3 100.5 Q 375.3 100.5 375.3 70.5 Z" fill="#FFFFFF"/><path d="M 150.0 155.0 Q 150.0 170.0 165.0 170.0 Q 150.0 170.0 150.0 185.0 Q 150.0 170.0 135.0 170.0 Q 150.0 170.0 150.0 155.0 Z" fill="#FFFFFF" opacity="0.85"/><circle cx="394" cy="352" r="6" fill="#FFFFFF" opacity="0.7"/></svg> DreamLoop</a><a href="./privacy-policy.html">Privacy</a><a href="./terms.html">Terms</a></nav>
+<nav><a class="brand" href="./index.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 512 512"><defs></defs><path d="M 425.7 158.0 A 196 196 0 1 1 306.7 66.7" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" fill="none"/><g transform="translate(22 -10)"><path d="M 335.4 308.3 A 108 108 0 1 1 229.0 158.2 A 92 92 0 0 0 335.4 308.3 Z" fill="#FFFFFF"/></g><path d="M 375.3 70.5 Q 375.3 100.5 405.3 100.5 Q 375.3 100.5 375.3 130.5 Q 375.3 100.5 345.3 100.5 Q 375.3 100.5 375.3 70.5 Z" fill="#FFFFFF"/><path d="M 150.0 155.0 Q 150.0 170.0 165.0 170.0 Q 150.0 170.0 150.0 185.0 Q 150.0 170.0 135.0 170.0 Q 150.0 170.0 150.0 155.0 Z" fill="#FFFFFF" opacity="0.85"/><circle cx="394" cy="352" r="6" fill="#FFFFFF" opacity="0.7"/></svg> DreamLoop</a><a href="./privacy-policy.html">Privacy</a><a href="./terms.html">Terms</a><a href="./child-safety.html">Child safety</a><a href="./community.html">Community</a></nav>
 <h1>Privacy Policy</h1>
-<div class="updated">Last updated: October 17, 2026 · App version 3.0</div>
-<div class="callout"><b>The short version.</b> Your dream entries are stored only on your phone. DreamLoop does not upload, read or have access to your dreams unless you ask for an AI feature on a specific entry — then that entry’s text is sent for processing and is not kept. Backups go to <i>your own</i> Google Drive, which we cannot open.</div>
+<div class="updated">Last updated: October 24, 2026 · DreamLoop 3.1</div>
+<div class="callout"><b>In short.</b> Your dreams live on your phone. We never see them unless you tap an AI button or choose to share one to Community. Backups are encrypted with a passphrase only you know. We don’t sell data and show no ads.</div>
 
 <h2>1. Who we are</h2>
-<p>DreamLoop is developed by TeamExyKings. Questions about this policy or your data: <a href="mailto:support@teamexykings.in">support@teamexykings.in</a> (developer: <a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a>).</p>
+<p>DreamLoop is made by TeamExyKings (developer: Yash). Privacy questions: <a href="mailto:support@teamexykings.in">support@teamexykings.in</a> or <a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a>.</p>
 
-<h2>2. What data we handle</h2>
+<h2>2. What we collect and why</h2>
 <table>
-<tr><th>Data</th><th>Where it lives</th><th>Why</th></tr>
-<tr><td>Dream entries (title, story, mood, place, times, clarity, flags, AI results you saved)</td><td>On your device only (local SQLite). Never uploaded to our servers.</td><td>The core journaling feature, search, statistics and on-device recurring-theme detection.</td></tr>
-<tr><td>Account: email, name and profile picture from your Google sign-in</td><td>Supabase (our backend provider)</td><td>Signing you in and attaching your credit balance to you.</td></tr>
-<tr><td>Credit balance, free-AI usage counter, purchase records (pack, amount, currency, payment reference, time)</td><td>Supabase</td><td>Delivering credits you bought, preventing duplicate or fraudulent grants, tax and accounting.</td></tr>
-<tr><td>Dream text you send for AI interpretation (only when you tap an AI button)</td><td>Passed through our server to OpenRouter and the AI model that answers. Not stored by us; usage counts (model, tokens, credits) are logged without dream text.</td><td>Generating an interpretation, a gentler ending for a nightmare, or an insight on a recurring theme.</td></tr>
-<tr><td>Payment details</td><td>Razorpay (direct-install version) or Google Play (Play Store version). We never see card, UPI or bank details.</td><td>Buying credits.</td></tr>
-<tr><td>Backup file (a JSON copy of your journal)</td><td>A “DreamLoop Backups” folder in <b>your</b> Google Drive, created with the limited <code>drive.file</code> permission — the app can only see files it created itself.</td><td>Restoring your journal on a new phone or after reinstalling. Only if you connect Drive.</td></tr>
-<tr><td>App preferences (theme, accent, reminder time, app-lock switch)</td><td>On your device only.</td><td>Personalising the app.</td></tr>
+<tr><th>Data</th><th>Where</th><th>Why</th></tr>
+<tr><td>Your dream entries</td><td>Your phone only</td><td>The journal itself, search, stats, recurring-theme detection (all on-device).</td></tr>
+<tr><td>Google account: email, name, photo</td><td>Supabase</td><td>Sign-in and your credit balance.</td></tr>
+<tr><td>Credits, free-AI counter, purchases (pack, amount, time, Google Play order ID)</td><td>Supabase</td><td>Delivering what you bought, preventing fraud, accounting.</td></tr>
+<tr><td>Dream text sent for AI (only when you tap an AI button)</td><td>Passed through our server to the AI provider; <b>not stored</b></td><td>Producing the interpretation, rewrite or insight. Only counts (model, tokens, credits) are logged.</td></tr>
+<tr><td>A dream you choose to share to Community (title, story, mood)</td><td>Supabase</td><td>Showing it anonymously to others. See section 4.</td></tr>
+<tr><td>Backup file</td><td>Your Google Drive, and/or a file on your phone</td><td>Restoring on a new phone. Encrypted before it leaves the app (section 5).</td></tr>
+<tr><td>Settings (theme, reminder, app lock)</td><td>Your phone only</td><td>Personalisation.</td></tr>
 </table>
+<p>Payments are handled by Google Play. We never see your card or UPI details.</p>
 
-<h2>3. Features that use your device</h2>
+<h2>3. What we never do</h2>
 <ul>
-<li><b>App lock</b> uses your phone’s biometric or screen-lock prompt. DreamLoop never receives your fingerprint, face or PIN.</li>
-<li><b>Morning reminder</b> is a local notification scheduled on your phone. No push server is involved.</li>
-<li><b>Recurring-theme detection</b> runs entirely on your phone; nothing is sent anywhere.</li>
-<li><b>Excel export</b> creates a file on your phone that you choose where to share.</li>
+<li>Read, store or train models on your private dreams.</li>
+<li>Sell or share your data for advertising. There are no ads and no trackers.</li>
+<li>Write dream text to server logs.</li>
 </ul>
 
-<h2>4. What we don’t do</h2>
+<h2>4. Community sharing (optional)</h2>
 <ul>
-<li>We do not store your dream content on our servers.</li>
-<li>We do not read your dreams, or use them to train models.</li>
-<li>We do not sell your data and we show no ads.</li>
-<li>We do not track you across other apps or websites.</li>
+<li>Off by default. Nothing is shared unless you tap Share on a specific dream, confirm you are 18 or older, and it passes our checks.</li>
+<li>What others see: <b>title, story, mood and month only</b>. No name, email, account ID or exact date. Plain text only — no images or links.</li>
+<li>Before anything is shown it is checked automatically (on your phone, then on our server with an AI safety check). Dreams with adult, hateful, self-harm or personal-detail content are not published and stay private.</li>
+<li>Anyone signed in can report a dream. Three reports hide it until we review it. Repeated violations switch sharing off for that account.</li>
+<li>Remove a shared dream any time: Settings → My shared dreams. Deleting your account deletes everything you shared.</li>
+<li>Once public, a dream can be seen or copied by anyone who viewed it. Share only what you are comfortable with.</li>
 </ul>
 
-<h2>5. Service providers</h2>
+<h2>5. Backups and security</h2>
 <ul>
-<li><b>Supabase</b> — authentication, credits and purchase records.</li>
-<li><b>Google</b> — sign-in, optional Drive backup, and Google Play Billing in the Play Store version.</li>
-<li><b>OpenRouter</b> and the AI model providers it routes to — on-demand AI text generation. Free models may be operated by third parties under their own terms.</li>
-<li><b>Razorpay</b> — payments in the direct-install version.</li>
-<li><b>Brevo</b> — an optional receipt email after a purchase.</li>
+<li>Backups are encrypted on your phone (AES-256-GCM, key derived from your passphrase with scrypt) before upload or saving. We and Google see only scrambled data.</li>
+<li><b>We cannot recover your passphrase.</b> If you forget it, that backup cannot be opened.</li>
+<li>The passphrase is stored only if you choose “Remember on this phone”, in your phone’s secure keystore.</li>
+<li>Screenshots and screen recording are blocked inside the app.</li>
+<li>Drive access uses the limited <code>drive.file</code> permission: the app can only see files it created.</li>
+<li>Excel export is a readable file for your own use and is not encrypted.</li>
+<li>All connections use HTTPS. Credit balances can only be changed by our server.</li>
 </ul>
-<p>Each receives only what it needs for its function.</p>
 
-<h2>6. Retention and deletion</h2>
-<p>Dream entries stay on your device until you delete them, delete the account, or uninstall the app (uninstalling erases local data unless you backed up to Drive). <b>You can delete your account inside the app:</b> Settings → Account → Delete account. This permanently deletes your account, credit balance and purchase records from our servers and erases the dreams stored on that phone. Backups in your own Google Drive are not touched — delete the “DreamLoop Backups” folder yourself, or revoke access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. If you can’t use the app, email us from your sign-in address and we will delete the account.</p>
-<p>Records that we are legally required to keep (for example, payment records held by Razorpay or Google) are retained by those providers under their own policies.</p>
+<h2>6. Service providers</h2>
+<p>Supabase (accounts, credits, shared dreams) · Google (sign-in, Drive, Play Billing) · OpenRouter and the AI model providers it routes to (AI text, safety check) · Brevo (optional purchase receipt e-mail). Each gets only what its function needs.</p>
 
-<h2>7. Security</h2>
-<p>Connections use HTTPS. The Drive access token is held in your phone’s secure keystore. Credit balances can only be changed by our server, not by the app. No system is perfectly secure, so keep your phone locked and your Google account protected.</p>
+<h2>7. Keeping and deleting data</h2>
+<ul>
+<li>Dreams stay on your phone until you delete them or uninstall the app.</li>
+<li><b>Delete your account in the app:</b> Settings → Account → Delete account. This erases your account, credits, purchase records and shared dreams from our servers and your dreams from the phone. Your own Drive backups stay in your Drive until you delete them.</li>
+<li>Records that the law requires (for example payment records held by Google) are kept by those providers.</li>
+</ul>
 
 <h2>8. Children</h2>
-<p>DreamLoop is not directed at children under 13 and we do not knowingly collect their data.</p>
+<p>DreamLoop is for people aged 13 and over. Community sharing is for adults (18+) only, and content involving minors in any sexual or unsafe way is blocked and reported. See <a href="./child-safety.html">Child safety</a>.</p>
 
 <h2>9. Your rights</h2>
-<p>You can access, correct, export (Excel export and Drive backup) and delete your data as described above. Depending on where you live you may have further rights, such as under India’s DPDP Act or the GDPR; contact us to exercise them.</p>
+<p>You can see, export and delete your data in the app. Where the law gives you more (for example India’s DPDP Act or GDPR), write to us and we will help.</p>
 
 <h2>10. Changes</h2>
-<p>If this policy changes materially we will update the date above and, where appropriate, tell you in the app.</p>
+<p>If this policy changes in a way that matters, we will update the date above and tell you in the app.</p>
 
-<footer>DreamLoop — TeamExyKings · <a href="mailto:support@teamexykings.in">support@teamexykings.in</a></footer>
+<footer>DreamLoop — TeamExyKings · <a href="mailto:support@teamexykings.in">support@teamexykings.in</a> · <a href="./privacy-policy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./child-safety.html">Child safety</a></footer>
 </div>
 </body>
 </html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KingEstate Privacy Policy</title>
+<meta name="description" content="How KingEstate by TeamExyKings handles your data: on-device encrypted vault, finance and EMI plan, encrypted backups, optional Google Drive, reminders, no ads, no analytics.">
+<meta name="theme-color" content="#07070F">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<style>
+:root{--bg:#07070F;--card:#12121e;--border:#26263a;--text:#fff;--muted:#a3a3b5;--teal:#fff;--blue:#7DB8FF;--gold:#FBBF24}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 64px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+header img{width:56px;height:56px;border-radius:14px}
+header a{color:inherit;text-decoration:none}
+h1{font-size:28px;margin:0;line-height:1.2}
+.sub{color:var(--muted);margin:2px 0 0;font-size:14px}
+h2{font-size:19px;margin:34px 0 8px;color:var(--teal)}
+h3{font-size:16px;margin:20px 0 4px;color:#d6d6e2}
+p,li{color:#d6d6e2}
+ul{padding-left:22px}
+li{margin:6px 0}
+a{color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:18px 0}
+.card strong{color:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+code{background:#1c1c2c;padding:1px 6px;border-radius:6px;font-size:.92em}
+footer{margin-top:44px;color:var(--muted);font-size:13px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a href="index.html"><img src="assets/icon-192.png" alt="KingEstate icon"></a>
+  <div><h1>KingEstate Privacy Policy</h1><p class="sub">by TeamExyKings · Last updated 25 October 2026 · applies to KingEstate 1.1 and newer</p></div>
+</header>
+
+<div class="card">
+<strong>In short:</strong> KingEstate keeps your vault (banking, cards, passwords, WiFi), finance, EMI plan and fuel data <strong>on your phone</strong>. We (TeamExyKings) run no servers for it, collect nothing, show no ads and use no analytics or trackers. Backups are made by the app itself: they are saved on your phone, and, only if you choose, in <strong>your own Google Drive</strong> or in a folder you pick. Your Finance, EMI plan and Vault backups are encrypted with a key that only you hold.
+</div>
+
+<h2>1. Who we are</h2>
+<p>KingEstate (package <code>com.teamexykings.KingEstate</code>) is an Android app by TeamExyKings, developed by Yashwanth Ram Somireddy. Contact: <a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a>. KingEstate is free, ad-free and subscription-free: it has no ads, no subscriptions and no in-app purchases.</p>
+
+<h2>2. What the app stores on your phone</h2>
+<ul>
+<li><strong>Vault:</strong> the entries you type into Banking, Cards, Passwords (which also holds Government IDs) and WiFi, for example bank and card details, ID numbers and website or WiFi passwords, plus the account names you group them under. Each entry is encrypted with an AES-256-GCM key held in the Android Keystore before it is saved. The key never leaves the phone.</li>
+<li><strong>Finance:</strong> the salary figures, deductions, expenses, savings, planned months and settings you type in. Each month and your salary settings are encrypted with the same kind of Keystore key.</li>
+<li><strong>EMI plan</strong> (in Finance): the loans, SIPs, insurance, living costs and income rows you type in or import from Excel, with bank and provider names, policy or account numbers, interest rates, amounts, dates, one-off changes, payment schedules and notes. The whole plan is encrypted as one block with the same kind of Keystore key before it is saved.</li>
+<li><strong>Fuel Log:</strong> vehicles (name, type, make, model, year, fuel type, plate, VIN, insurance, insurance end date, service due date and kilometres, notes) and fill-ups (date, odometer, litres, price, cost, station, brand, notes). The Fuel log is <strong>not encrypted</strong>; it stays inside KingEstate's private app storage.</li>
+<li><strong>App lock:</strong> if you use KingEstate's own PIN or pattern, only a salted PBKDF2 hash of it is kept, inside Android's encrypted preferences. The PIN or pattern itself is never stored or sent. If you choose to use your phone's own screen lock, Android handles it and KingEstate never sees your PIN, pattern, fingerprint or face.</li>
+<li><strong>Backup key:</strong> the recovery key (or the passphrase you chose) is kept on the phone in Android's encrypted preferences, so scheduled backups can run. It is shown only after you prove it is you, and it is never sent to us or to Google.</li>
+<li><strong>Preferences:</strong> theme and accent colours, lock timeout, backup settings and times, reminder settings and a list of reminders already shown, and, if you choose one, the location of your backup folder.</li>
+</ul>
+<p>All of this lives in KingEstate's private app storage. KingEstate opts out of Android's automatic cloud backup and device-to-device transfer, so your data does not move unless you make a backup or an export yourself.</p>
+
+<h2>3. What we collect</h2>
+<p><strong>Nothing.</strong> There is no KingEstate account, no developer server, no advertising, no analytics, no crash-reporting SDK and no location access. We cannot see your data. (If you install from Google Play and have usage and diagnostics sharing switched on, Google may give developers anonymous crash and performance statistics through Play Console. KingEstate itself contains no reporting code.)</p>
+
+<h2>4. Backups</h2>
+<h3>4.1 On your phone (always on)</h3>
+<p>Once a week, and whenever you tap <em>Back up now</em>, KingEstate saves a backup in <code>Documents/KingEstate/year/month/day</code> on your phone. A backup has five files: <code>KingEstate_finance.klb</code>, <code>KingEstate_emi.klb</code> and <code>KingEstate_vault.klb</code> (encrypted), <code>KingEstate_fuel.json</code> (plain, readable JSON) and <code>manifest.json</code> (counts and checksums, no data). KingEstate reads each file back to check it. The latest 8 backups are kept. These files stay on the phone even if you uninstall KingEstate (on Android 8 and 9 this needs the storage permission described in section 7; without it the copies stay inside KingEstate's own folder and are erased on uninstall), so anyone who can open your phone's storage can read the Fuel file; the Finance, EMI plan and Vault files cannot be read without your key. The weekly backup on the phone cannot be switched off, because it is the safety net.</p>
+
+<h3>4.2 Encryption and your recovery key</h3>
+<p>When you set up KingEstate it creates a random recovery key such as <code>KING-7F3K-9Q2M-XD84-H5RT</code> (or you choose your own passphrase). The Finance, EMI plan and Vault backup files are encrypted on your phone with that key (PBKDF2-HMAC-SHA256, 600,000 iterations, AES-256-GCM) before they are written anywhere. KingEstate asks you to save the key as a file. <strong>We cannot recover the key.</strong> If you lose both your phone and your key, the encrypted backups cannot be opened by anyone, including us and Google.</p>
+
+<h3>4.3 Google Drive (optional)</h3>
+<p>Signing in with Google is optional; the app works fully without it. Signing in does not create a KingEstate account. If you sign in:</p>
+<ul>
+<li>KingEstate asks for one Drive permission, <code>drive.appdata</code>, plus your email address and basic profile. The Drive permission gives access <strong>only to a hidden folder reserved for KingEstate</strong> in your Drive. KingEstate cannot see, list or change any of your other Drive files.</li>
+<li>KingEstate uploads the same backup files described above to that folder, weekly or monthly as you choose (Wi-Fi only by default), or when you tap <em>Back up now</em>. Nothing is uploaded unless you have connected your Google account, and disconnecting stops it. The latest 12 backups are kept.</li>
+<li>Your Google name and email address are shown in Settings so you can see which account is connected. They are not sent anywhere else.</li>
+<li>The Finance, EMI plan and Vault files in Drive are encrypted with your key before upload. The Fuel file is plain JSON and is protected by your Google account's security, like any other file in your Drive. Use a strong Google password and 2-step verification.</li>
+<li>The files count toward your own Drive storage (usually a few hundred kilobytes).</li>
+<li><strong>Disconnect</strong> and <strong>Delete Drive backups</strong> are in Settings ▸ Backup &amp; restore.</li>
+</ul>
+<p>KingEstate's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements. Data from Google is used only to provide the backup and restore feature you asked for, is not transferred to anyone, is not used for ads, and is not read by humans.</p>
+
+<h3>4.4 A folder you choose (optional)</h3>
+<p>In Settings you can pick a folder with Android's own folder picker, for example on an SD card or in a cloud-synced folder. KingEstate then writes and removes only its own <code>KingEstate</code> folder there, and reads it when you restore. If that folder is synced by another app, that app's policy applies to the files. Finance, EMI plan and Vault files are encrypted; the Fuel file is readable. You can make KingEstate forget the folder at any time.</p>
+
+<h3>4.5 Restoring</h3>
+<p>When you restore, KingEstate reads the backup, checks it, decrypts it with the key you type, shows you what is inside and only then changes anything. <em>Merge</em> adds what is missing. <em>Replace</em> makes the phone match the backup and first saves a safety copy of your current data in <code>Documents/KingEstate/_before_restore</code>.</p>
+
+<h2>5. Exports, clipboard and sharing</h2>
+<p>The Fuel log can be exported to an Excel file or a JSON file. Android's Save-as screen opens and <em>you</em> choose where the file goes (Downloads is suggested); it can also be shared from Android's share sheet. A file you save this way is your own file and is not stored inside KingEstate. These files are not encrypted. The EMI plan can also be exported to an Excel file (and imported from one). That file is <strong>not encrypted</strong> either and shows every amount, bank name and policy number in the plan, so KingEstate shows a warning and asks you to confirm with your app lock or phone lock before it is created. Finance and Vault have no plain-text export on purpose; they leave the phone only inside encrypted backups. Once you send a file to another app, that app's policy applies.</p>
+<p>When you copy a Vault secret, it is put on the Android clipboard marked as sensitive and cleared after 30 seconds. Other apps that are allowed to read the clipboard could read it during that time.</p>
+
+<h2>6. Reminders and notifications</h2>
+<p>Reminders are off until you turn them on. They work entirely on your phone: KingEstate checks your vehicle insurance end dates, service dates and kilometres and your saved cards' expiry dates once a day and when you open the app, and shows a notification. Nothing is sent to a server. On the lock screen a reminder only says that something needs your attention; names, vehicles and card details appear after you unlock.</p>
+
+<h2>7. Permissions</h2>
+<table>
+<tr><th>Permission</th><th>Why</th></tr>
+<tr><td><code>INTERNET</code></td><td>Only for the optional Google Drive backup / restore and for opening links you tap.</td></tr>
+<tr><td><code>USE_BIOMETRIC</code></td><td>To offer fingerprint / face unlock for the app lock.</td></tr>
+<tr><td><code>POST_NOTIFICATIONS</code></td><td>Only if you turn reminders on.</td></tr>
+<tr><td><code>READ_/WRITE_EXTERNAL_STORAGE</code></td><td>Android 8 and 9 only (Android 10 and newer never use it). Used only to keep your backups in your Documents folder. Asked for from Settings ▸ Backup &amp; restore. Exports use Android's Save-as screen and need no permission.</td></tr>
+</table>
+<p>Android adds a few housekeeping permissions for scheduled jobs (starting them again after a restart, keeping the phone awake briefly while a backup runs, checking the network state). KingEstate does not ask for contacts, location, camera, microphone or phone access, and on Android 10 and newer it needs no storage access at all.</p>
+
+<h2>8. Your choices and deleting your data</h2>
+<ul>
+<li><strong>On your phone:</strong> Settings ▸ <em>Erase all data on this phone</em>, or uninstall the app, or clear its storage in Android settings. Files you saved with Save-as and the files in a folder you chose are yours and are not removed by this. Backups KingEstate saved in <code>Documents/KingEstate</code> are kept or removed depending on the phone when the app's storage is cleared. Delete any you no longer want with a file manager.</li>
+<li><strong>In Google Drive:</strong> Settings ▸ Backup &amp; restore ▸ <em>Delete Drive backups</em>. You can also revoke access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and delete KingEstate's hidden app data from Drive ▸ Settings ▸ <em>Manage apps</em>.</li>
+<li>Because we hold no data about you, there is nothing for us to access, correct or delete on our side. Email us if you have any request or question.</li>
+</ul>
+
+<h2>9. Security</h2>
+<p>Vault entries, Finance numbers and the EMI plan are encrypted at rest with an Android Keystore AES-256-GCM key; secrets are hidden until you reveal them and are never searched. KingEstate's own PIN is hashed (PBKDF2-HMAC-SHA256, 120,000 iterations, random salt) and kept in Keystore-backed encrypted preferences; wrong tries cause lock-outs; the app auto-locks when you leave it. A 3×3 pattern, or your phone's own screen lock, can be used instead. In the release version, the Vault hides itself from screenshots, screen recording and the recent-apps preview, and an option extends this to the whole app. The Fuel log is not separately encrypted; it relies on Android's app sandbox and your phone's encryption. No security is perfect: keep your phone locked and updated, and keep your recovery key somewhere safe and off the phone. More in the <a href="faq.html">FAQ</a>.</p>
+
+<h2>10. Children</h2>
+<p>KingEstate is a general-purpose personal tracker and is not directed at children under 13. It collects no personal information from anyone.</p>
+
+<h2>11. Cost and ads</h2>
+<p>KingEstate is free, ad-free and subscription-free. It shows no ads, sells nothing and has no in-app purchases. Optional tips (Settings ▸ Support KingEstate) open PayPal or Razorpay in your browser; they unlock nothing and KingEstate never sees any payment details. Everything the app does with your data is described in this policy and in the <a href="faq.html">FAQ</a>. If you have a question about something that is not covered, please ask.</p>
+
+<h2>12. Changes</h2>
+<p>If this policy changes, the new version will be posted here with a new "Last updated" date, and significant changes will be noted in the app's release notes.</p>
+
+<footer>© 2026 TeamExyKings · <a href="index.html">KingEstate home</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of use</a> · <a href="mailto:yashwanthramsomireddy@gmail.com">Contact</a></footer>
+</div>
+</body>
+</html>

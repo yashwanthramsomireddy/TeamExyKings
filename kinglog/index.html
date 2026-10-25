@@ -4,31 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KingLog: Vault, Finance and Fuel Log for Android</title>
-<meta name="description" content="KingLog by TeamExyKings: a private Android app with an encrypted vault (banking, cards, IDs, WiFi, passwords), salary &amp; savings tracking and a bike/car fuel log. PIN and fingerprint lock, optional Google Drive backup, no ads, no tracking.">
-<meta name="theme-color" content="#000000">
+<meta name="description" content="KingLog by TeamExyKings: a private Android app with an encrypted vault (banking, cards, passwords, WiFi), salary and savings planning, and a bike and car fuel log. One-tap encrypted backup, app lock, no tracking. Free, ad-free and subscription-free.">
+<meta name="theme-color" content="#07070F">
 <meta property="og:title" content="KingLog: Vault, Finance and Fuel Log">
-<meta property="og:description" content="Private vault, salary, savings and fuel tracking for Android. On-device, no ads, no tracking.">
+<meta property="og:description" content="Private vault, salary planning and fuel tracking for Android. Encrypted on your phone, encrypted backups. Free, ad-free and subscription-free.">
 <meta property="og:image" content="assets/icon-512.png">
 <link rel="icon" type="image/png" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
-:root{--bg:#000;--card:#111;--border:#262626;--text:#fff;--muted:#a3a3a3;--teal:#2DD4BF;--blue:#7DB8FF;--gold:#FBBF24;--orange:#FB923C;--coral:#FB7185;--green:#34D399;--violet:#A78BFA}
+:root{--bg:#07070F;--card:#12121e;--border:#26263a;--text:#fff;--muted:#a3a3b5;--teal:#2DD4BF;--blue:#7DB8FF;--gold:#FBBF24;--violet:#A78BFA}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#1c1c1c 0,var(--bg) 60%) fixed,var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#1d1b4a 0,var(--bg) 62%) fixed,var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 a{color:var(--blue)}
 .wrap{max-width:980px;margin:0 auto;padding:0 18px}
 nav{display:flex;align-items:center;gap:14px;padding:18px 0}
 nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;text-decoration:none;color:var(--text)}
 nav .brand img{width:36px;height:36px;border-radius:10px}
-nav .links{margin-left:auto;display:flex;gap:18px;font-size:14px}
+nav .links{margin-left:auto;display:flex;gap:18px;font-size:14px;flex-wrap:wrap;justify-content:flex-end}
 nav .links a{color:var(--muted);text-decoration:none}
 nav .links a:hover{color:var(--text)}
 .hero{text-align:center;padding:52px 0 36px}
-.hero img{width:128px;height:128px;border-radius:30px;box-shadow:0 18px 60px rgba(255,255,255,.10)}
+.hero img{width:128px;height:128px;border-radius:30px;box-shadow:0 18px 60px rgba(120,100,255,.25)}
 h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:22px 0 12px;letter-spacing:-.5px}
-h1 span{background:linear-gradient(90deg,#fff,#a3a3a3);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{max-width:620px;margin:0 auto;color:var(--muted);font-size:18px}
+h1 span{background:linear-gradient(90deg,var(--teal),var(--gold),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:18px}
 .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:28px 0 8px}
 .btn{display:inline-block;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid var(--border);color:var(--text);background:var(--card)}
 .btn.primary{background:#fff;color:#000;border:0}
@@ -39,7 +39,7 @@ h1 span{background:linear-gradient(90deg,#fff,#a3a3a3);-webkit-background-clip:t
 .card.vault h3{color:var(--violet)}
 .card.fin h3{color:var(--teal)}
 .card.fuel h3{color:var(--gold)}
-.card ul{margin:10px 0 0;padding-left:20px;color:#d4d4d4}
+.card ul{margin:10px 0 0;padding-left:20px;color:#d6d6e2}
 .card li{margin:5px 0}
 h2{font-size:26px;margin:54px 0 6px;text-align:center}
 .sub{text-align:center;color:var(--muted);margin:0 0 22px}
@@ -47,7 +47,11 @@ h2{font-size:26px;margin:54px 0 6px;text-align:center}
 .feat div{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
 .feat b{display:block;margin-bottom:4px}
 .feat p{margin:0;color:var(--muted);font-size:14px}
-.honest{border-color:#404040}
+.honest{border-color:#46466a}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0;padding:0;list-style:none}
+.steps li{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px 16px 54px;position:relative;color:#d6d6e2;font-size:15px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:14px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--violet));color:#07070F;font-weight:800;text-align:center;line-height:26px;font-size:14px}
+.steps b{display:block;color:var(--text);margin-bottom:2px}
 footer{margin:64px 0 36px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center}
 footer a{color:var(--muted)}
 </style>
@@ -56,74 +60,87 @@ footer a{color:var(--muted)}
 <div class="wrap">
 <nav>
   <a class="brand" href="#"><img src="assets/icon-192.png" alt="">KingLog</a>
-  <div class="links"><a href="#features">Features</a><a href="privacy-policy.html">Privacy</a><a href="https://github.com/yashwanthramsomireddy/kinglog">GitHub</a></div>
+  <div class="links"><a href="#features">Features</a><a href="#backups">Backups</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy</a></div>
 </nav>
 
 <section class="hero">
-  <img src="assets/icon-512.png" alt="KingLog crown icon with a fuel drop">
+  <img src="assets/icon-512.png" alt="KingLog icon: a crown in teal, amber and violet with a keyhole">
   <h1>Your secrets, your money and your miles.<br><span>One private app.</span></h1>
-  <p class="lead">KingLog keeps your banking, card, ID, WiFi and password vaults, your salary and savings, and your bike and car fuel, behind a PIN or pattern and fingerprint lock. Your data stays on your phone. No ads, no tracking.</p>
+  <p class="lead">KingLog keeps your banking, card, password and WiFi vault, your salary and savings plan, and your bike and car fuel log behind your own lock. Your data stays on your phone, backups are encrypted, and the app is free, ad-free and subscription-free, with no tracking.</p>
   <div class="cta">
-    <a class="btn primary" href="https://github.com/yashwanthramsomireddy/kinglog">View on GitHub</a>
+    <a class="btn primary" href="faq.html">Read the FAQ</a>
     <a class="btn" href="privacy-policy.html">Privacy policy</a>
   </div>
-  <p class="note">Version 1.0.0, in testing. Google Play release coming soon.</p>
+  <p class="note">Version 1.2.1, in testing. Google Play release coming soon. Android 8 or newer.</p>
 </section>
 
-<section class="grid">
+<section class="grid" id="features">
   <div class="card vault">
     <h3>Vault</h3>
-    <p style="margin:0;color:var(--muted)">Four private vaults, encrypted on your phone.</p>
+    <p style="margin:0;color:var(--muted)">Banking, Cards, Passwords and WiFi, encrypted on your phone.</p>
     <ul>
-      <li>Banking, Cards, IDs &amp; WiFi and Passwords tabs</li>
-      <li>Entries encrypted with a key kept in Android Keystore</li>
-      <li>Secrets hidden, copy auto-clears, no screenshots</li>
-      <li>Import your old vault JSON files</li>
-      <li>Optional Drive backup encrypted with your passphrase</li>
+      <li>Entries encrypted with a key kept in the Android Keystore</li>
+      <li>Secrets hidden, copied passwords clear after 30 seconds</li>
+      <li>Password generator, card-expiry warnings, WiFi QR code</li>
+      <li>Favourites, categories, search that never reads secrets</li>
+      <li>Government IDs kept safely in Passwords</li>
     </ul>
   </div>
   <div class="card fin">
     <h3>Finance</h3>
-    <p style="margin:0;color:var(--muted)">Know exactly what lands in the bank and what you keep.</p>
+    <p style="margin:0;color:var(--muted)">Know what lands in the bank and what you keep, month by month.</p>
     <ul>
       <li>Simple and Pro salary calculators</li>
+      <li>Plan future months, copy forward 1 to 12 months or more</li>
+      <li>Months tab with changes, yearly summary and analytics</li>
       <li>Gratuity, PVL per day and PI helpers</li>
-      <li>Monthly snapshots and savings rate</li>
-      <li>Analytics: bars, trends and spend donut</li>
-      <li>Indian ₹ formatting, export to JSON / MD / HTML</li>
+      <li><b>EMI plan:</b> loans, SIPs and bills by month, pre-close costs, Excel export and import</li>
+      <li>Numbers encrypted on your phone</li>
     </ul>
   </div>
   <div class="card fuel">
     <h3>Fuel Log</h3>
     <p style="margin:0;color:var(--muted)">Bikes and cars, every fill-up, real mileage.</p>
     <ul>
-      <li>Add bikes and cars, log fill-ups in seconds</li>
-      <li>Full-to-full mileage, cost per km, ₹ per litre</li>
+      <li>Full-to-full mileage, cost per km, price per litre</li>
       <li>Monthly spend, mileage and cost trends</li>
-      <li>Filter by bikes, cars or a single vehicle</li>
-      <li>Import and export CSV</li>
+      <li>One-click export to Excel or JSON</li>
+      <li>Insurance and service reminders (optional)</li>
+      <li>Imports your older CSV files</li>
     </ul>
   </div>
 </section>
 
-<section id="features">
+<section id="backups">
+  <h2>Backups you can trust</h2>
+  <p class="sub">One tap. Everything. Encrypted so only you can open it.</p>
+  <ol class="steps">
+    <li><b>Back up now</b>Finance, EMI plan, Fuel and Vault are saved together in a dated folder, and every file is read back and checked.</li>
+    <li><b>Your recovery key</b>KingLog makes a key like KING-7F3K-9Q2M-XD84-H5RT. Finance, EMI plan and Vault files are locked with it. Not Google, not us.</li>
+    <li><b>Safe by default</b>A weekly backup on your phone is always on. Add Google Drive or a folder of your choice if you like.</li>
+    <li><b>Restore in a minute</b>Pick a date, see what is inside, choose Merge or Replace. A safety copy is kept before any Replace.</li>
+  </ol>
+</section>
+
+<section>
   <h2>Built to be trusted</h2>
   <p class="sub">Simple promises, written down in the <a href="privacy-policy.html">privacy policy</a>.</p>
   <div class="feat">
-    <div><b>On your phone</b><p>All entries live in the app's private storage. No KingLog account or server.</p></div>
-    <div><b>PIN, pattern, biometrics</b><p>6-digit PIN or a 3×3 pattern, fingerprint / face unlock, auto-lock and lock-out after wrong tries.</p></div>
-    <div><b>Your backup, your place</b><p>Back up to a hidden KingLog-only folder in your own Google Drive, or to any folder on your phone. Sign-in is optional.</p></div>
-    <div><b>Make it yours</b><p>Pitch black by default with a white accent. Choose Black, Grey, White, System or Custom, and any accent colour.</p></div>
-    <div><b>No ads, no tracking</b><p>No analytics, no ad SDKs, no location. Only two permissions: internet and biometrics.</p></div>
-    <div><b>Open source</b><p>Read the code and check the claims on GitHub.</p></div>
-    <div class="honest"><b>Honest note</b><p>Vault entries are encrypted on the phone and the Vault Drive backup uses your passphrase (we can't recover it). Finance and Fuel Drive backups are protected by your Google account only; KingLog does not add its own encryption to those yet.</p></div>
+    <div><b>On your phone</b><p>No KingLog account, no server, no cloud database. Optional Google sign-in is only for your own Drive backup.</p></div>
+    <div><b>Your lock, your way</b><p>KingLog PIN or pattern with fingerprint / face, or simply your phone's own screen lock.</p></div>
+    <div><b>Free. Ad-free. Subscription-free.</b><p>No ads, no subscriptions, no in-app purchases. Support is optional and unlocks nothing.</p></div>
+    <div><b>No tracking</b><p>No analytics, no ad SDKs, no location, no contacts. Notifications only if you turn reminders on.</p></div>
+    <div><b>Make it yours</b><p>Pitch black by default. Choose Grey, White, System or Custom, and any accent colour.</p></div>
+    <div><b>Shortcuts</b><p>Press and hold the icon: Add fill-up, Add expense, Open Vault.</p></div>
+    <div class="honest"><b>Honest notes</b><p>If you lose both your phone and your recovery key, the encrypted backups cannot be opened by anyone, including us. The Fuel log is not encrypted: it holds vehicle and fill-up details only.</p></div>
   </div>
 </section>
 
 <footer>
   <span>© 2026 TeamExyKings</span>
+  <a href="faq.html">FAQ</a>
   <a href="privacy-policy.html">Privacy policy</a>
-  <a href="https://github.com/yashwanthramsomireddy/kinglog/blob/main/CHANGELOG.md">Changelog</a>
+  <a href="terms.html">Terms of use</a>
   <a href="mailto:yashwanthramsomireddy@gmail.com">Contact</a>
 </footer>
 </div>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KingLog FAQ: questions and answers</title>
+<meta name="description" content="Answers about KingLog by TeamExyKings: backups and the recovery key, restoring on a new phone, privacy, the Vault, Finance, the Fuel Log and reminders.">
+<meta name="theme-color" content="#07070F">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+:root{--bg:#07070F;--card:#12121e;--border:#26263a;--text:#fff;--muted:#a3a3b5;--blue:#7DB8FF;--teal:#2DD4BF;--gold:#FBBF24;--violet:#A78BFA}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1100px 520px at 50% -10%,#1d1b4a 0,var(--bg) 62%) fixed,var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:28px 18px 64px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+header img{width:56px;height:56px;border-radius:14px}
+header a{color:inherit;text-decoration:none}
+h1{font-size:28px;margin:0;line-height:1.2}
+.sub{color:var(--muted);margin:2px 0 0;font-size:14px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 4px}
+.toc a{padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);text-decoration:none;font-size:14px}
+.toc a:hover{border-color:var(--violet)}
+h2{font-size:20px;margin:38px 0 10px;scroll-margin-top:16px;background:linear-gradient(90deg,var(--teal),var(--gold),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;width:max-content;max-width:100%}
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;margin:8px 0;padding:0 16px}
+summary{cursor:pointer;padding:14px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-size:20px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details[open]{border-color:#3a3a58}
+details p{margin:0 0 12px;color:#d6d6e2}
+a{color:var(--blue)}
+.help{margin-top:40px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px}
+footer{margin-top:40px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a href="index.html"><img src="assets/icon-192.png" alt="KingLog icon"></a>
+  <div><h1>KingLog FAQ</h1><p class="sub">by TeamExyKings · the same questions and answers are inside the app (Settings → Help &amp; FAQ)</p></div>
+</header>
+
+<nav class="toc" aria-label="Sections"><a href="#s0">Getting started</a><a href="#s1">Privacy and security</a><a href="#s2">Backups</a><a href="#s3">Restoring</a><a href="#s4">Vault</a><a href="#s5">Finance</a><a href="#s6">EMI plan</a><a href="#s7">Fuel Log</a><a href="#s8">Reminders</a><a href="#s9">Help and contact</a></nav>
+
+<h2 id="s0">Getting started</h2>
+<details><summary>What is KingLog?</summary><p>KingLog is a private Android app by TeamExyKings that keeps three things in one place: a Vault (banking, cards, passwords, WiFi), Finance (salary, expenses and savings month by month, plus an EMI plan for your loans, SIPs and insurance) and a Fuel Log for your bikes and cars.</p></details>
+<details><summary>Is KingLog free? Are there ads or subscriptions?</summary><p>KingLog is free, ad-free and subscription-free. There are no ads, no subscriptions, no in-app purchases and no tracking, and nothing is locked behind a payment. If you like it, you can support the developer from Settings → Support KingLog, but that is entirely optional and unlocks nothing.</p></details>
+<details><summary>Do I need an account?</summary><p>No. KingLog has no accounts and no KingLog server. You can optionally connect your own Google account, only so KingLog can save backups in your own Google Drive.</p></details>
+<details><summary>Which phones does it work on?</summary><p>Android 8.0 or newer. That includes older phones such as the Samsung Galaxy S9, which runs Android 8 to 10. On Android 8 and 9, KingLog asks once for storage access so your backups can be kept in the Documents folder.</p></details>
+<details><summary>Does it work without internet?</summary><p>Yes, completely. The internet is used only if you connect Google Drive for backups.</p></details>
+<details><summary>What are the shortcuts when I press and hold the KingLog icon?</summary><p>Add fill-up, Add expense and Open Vault. They jump straight to that screen. If you use an app lock, you unlock first.</p></details>
+<h2 id="s1">Privacy and security</h2>
+<details><summary>Where is my data stored?</summary><p>Only on your phone, in KingLog&#x27;s private storage that other apps cannot read. KingLog has no cloud database. The only copies that leave your phone are the backups you choose to make.</p></details>
+<details><summary>Is my data encrypted on the phone?</summary><p>Vault entries, Finance numbers and your EMI plan are encrypted with a key that lives in the Android Keystore (hardware-backed on most phones) and never leaves the device. Your Fuel log is not encrypted: it holds vehicle and fill-up details only, and it stays inside KingLog&#x27;s private storage.</p></details>
+<details><summary>What does KingLog collect about me?</summary><p>Nothing. There are no analytics, no advertising IDs, no crash-reporting services and no tracking of any kind.</p></details>
+<details><summary>Which permissions does it use?</summary><p>Internet (only for the optional Google Drive backup), fingerprint / face (only for unlocking), and notifications (only if you turn reminders on). On Android 8 and 9 only, storage access, which is used just to keep your backups in the Documents folder. It never asks for contacts, location, camera or microphone. (Android itself adds a few housekeeping permissions for scheduled jobs, such as starting them again after a restart.)</p></details>
+<details><summary>How can I lock KingLog?</summary><p>Settings → App lock. You can choose KingLog&#x27;s own 6-digit PIN or pattern (with optional fingerprint or face unlock), or simply use your phone&#x27;s own screen lock. With the phone&#x27;s lock, whatever opens your phone opens KingLog and there is nothing extra to remember.</p></details>
+<details><summary>I forgot my KingLog PIN or pattern.</summary><p>On the lock screen tap “Forgot PIN” (or “Forgot pattern”) and confirm your phone&#x27;s screen lock. KingLog then removes its own lock. Your data is not deleted. Set a new lock in Settings.</p></details>
+<details><summary>Can people see my Vault in screenshots or the recent-apps screen?</summary><p>The Vault hides itself from screenshots, screen recording and the recent-apps preview in the release version of the app. Settings → Block screenshots extends this to the whole app. The test builds of KingLog allow screenshots everywhere so the screens can be documented.</p></details>
+<details><summary>What happens when I copy a password?</summary><p>KingLog marks it as sensitive so Android hides it in clipboard previews, and clears the clipboard after 30 seconds.</p></details>
+<details><summary>Do notifications show private details on my lock screen?</summary><p>No. On the lock screen a reminder only says that something needs your attention. Names, vehicles and card details appear only after you unlock your phone.</p></details>
+<h2 id="s2">Backups</h2>
+<details><summary>How do backups work?</summary><p>Tap Back up now (on Home, or Settings → Backup &amp; restore). KingLog saves Finance, your EMI plan, Fuel and Vault together in one dated folder, for example KingLog/2026/10/17. The Finance, EMI plan and Vault files are encrypted with your backup key. The Fuel file is plain, readable JSON. A file with counts and checksums goes in last, and then KingLog reads every file back and compares it, so a finished backup is known to be good.</p></details>
+<details><summary>What is the backup key (recovery key)?</summary><p>A random key like KING-7F3K-9Q2M-XD84-H5RT that KingLog creates when you set up the app. It locks your Finance, EMI plan and Vault backups so that only you can open them, not Google and not us. You need it to restore on a new phone. You can also choose your own passphrase instead.</p></details>
+<details><summary>I lost my recovery key.</summary><p>If KingLog is still installed on your phone: unlock the app and open Settings → Backup &amp; restore → Show my recovery key. If you lost the key and the phone, the encrypted Finance, EMI plan and Vault backups cannot be opened by anyone, including us. That is the price of real encryption. Your Fuel backup is readable JSON and can still be imported. This is why KingLog asks you to save the key as a file and keep a copy off your phone (email it to yourself, or put it in a password manager).</p></details>
+<details><summary>Where are my backups saved?</summary><p>Always on your phone, in Documents/KingLog. These files are created by KingLog. On most phones they stay when you uninstall KingLog, but some phones remove files an app created when its storage is cleared, so do not rely on this copy alone. Add a second copy that is yours: a folder you pick (Documents, an SD card or a cloud folder such as OneDrive; Settings → Backup &amp; restore → Safe copy in a folder) and/or a hidden folder in your own Google Drive that only KingLog can see. (On Android 8 and 9, also allow storage access in Settings → Backup &amp; restore; until you do, the phone copy stays inside KingLog&#x27;s own folder and is erased if you uninstall.)</p></details>
+<details><summary>What happens to my files if I clear KingLog&#x27;s storage or cache?</summary><p>Clear cache: nothing important. The cache only holds temporary copies made for sharing, so your data and your backups are not affected.</p><p>Clear storage (or uninstall): KingLog&#x27;s own data on the phone is erased (Vault, Finance, EMI plan, Fuel log, settings and the lock). Files that you saved yourself with Android&#x27;s Save-as screen (Fuel and EMI exports, the recovery key file) and the files in a folder you chose under Backup &amp; restore are not stored inside KingLog, so they stay. The weekly backup in Documents/KingLog was created by KingLog; many phones keep it, but some do not, so keep a second copy in a folder you chose or in Google Drive.</p><p>To get your data back: open KingLog, tap “Restore from a backup”, choose “A folder” (pick the folder you chose, or Documents) or “Google Drive”, and type your recovery key.</p></details>
+<details><summary>Why can&#x27;t I switch off the weekly backup?</summary><p>The weekly backup on your phone is a safety net, so a bad day never means lost data. It is small, quiet and always on. You decide everything else: whether to also use Google Drive, how often (weekly, monthly or off), Wi-Fi only, and whether KingLog reminds you to back up when you open it.</p></details>
+<details><summary>How many backups are kept?</summary><p>The latest 8 on your phone and the latest 12 on Google Drive or in your chosen folder. Older ones are removed automatically.</p></details>
+<details><summary>What if my phone was off or offline at the scheduled time?</summary><p>Android sometimes delays background jobs to save battery. If a backup is overdue when you open KingLog, it runs right then.</p></details>
+<details><summary>Does the Drive backup use my Google storage?</summary><p>A little. The files are small, usually a few hundred kilobytes in total, and they count toward your own Drive storage.</p></details>
+<details><summary>Can I open my backups on a computer?</summary><p>The Fuel file is plain JSON, so yes. The Finance, EMI plan and Vault files are encrypted on purpose and only open inside KingLog with your key.</p></details>
+<details><summary>Can the KingLog team read my backups?</summary><p>No. Your key never leaves your phone, and we have no server that could receive your files.</p></details>
+<details><summary>Why does the weekly backup sometimes fail?</summary><p>The most common reasons are full storage, a Google Drive permission that expired (disconnect and connect again in Settings), or a folder that was moved or deleted. The Home screen shows a plain-language message when this happens.</p></details>
+<h2 id="s3">Restoring</h2>
+<details><summary>How do I restore on a new phone?</summary><p>Install KingLog and, on the first screen, tap “Restore from a backup”. Choose where your backup is (Google Drive, or a folder), choose a date, check what is inside, type your recovery key and confirm. If the backup files are on the old phone, copy the Documents/KingLog folder to the new phone (or to Drive, a computer or a memory card) first. You can also restore later from Settings → Backup &amp; restore.</p></details>
+<details><summary>I tapped “This phone” and it found no backups.</summary><p>After you reinstall KingLog or move to a new phone, Android does not let the new copy of the app see files the old copy created, even though they are still in Documents/KingLog. Choose “A folder” instead, and pick the Documents folder (or the KingLog folder inside it). If you use Google Drive backup, choose “Google Drive” and sign in with the same account.</p></details>
+<details><summary>What is the difference between Merge and Replace?</summary><p>Merge adds what is missing and never changes anything already on the phone. Replace makes the phone match the backup. Before a Replace, KingLog saves a safety copy of your current data in Documents/KingLog/_before_restore, so you can undo it.</p></details>
+<details><summary>Can I restore only one part, for example just Fuel?</summary><p>Yes. Tick only the parts you want on the restore screen.</p></details>
+<details><summary>It says the key is wrong.</summary><p>Check each character. The key uses no I, O, 0 or 1, so those are never in it. Capital letters, small letters and dashes do not matter. A backup made with an older key needs that older key. Nothing is changed when the key is wrong.</p></details>
+<details><summary>Can I restore a backup made by KingLog 1.0?</summary><p>Yes. Choose the folder or Drive location where the old files are. Finance and Fuel come back as they are; the old Vault file asks for the passphrase you chose when you made it.</p></details>
+<details><summary>I reinstalled KingLog and my data is gone.</summary><p>Uninstalling an Android app deletes its data. Restore from your latest backup (see above). Before you uninstall or change phones, make a backup and keep your recovery key.</p></details>
+<details><summary>Why did Android ask me to uninstall before installing an update?</summary><p>Android only lets an app update itself when the new file is signed with the same key as the installed one. If that ever does not match, the old copy has to be removed first, which erases its data. Always back up before changing how KingLog was installed.</p></details>
+<h2 id="s4">Vault</h2>
+<details><summary>What can I keep in the Vault?</summary><p>Banking, Cards, Passwords and WiFi. Government IDs (Aadhaar, PAN, passport, licence and similar) are kept in Passwords under the category Government.</p></details>
+<details><summary>How do I see or copy a secret?</summary><p>Tap an entry to open its details. Secret values are hidden until you tap the eye, and each has a copy button that clears the clipboard after 30 seconds.</p></details>
+<details><summary>Is there a password generator?</summary><p>Yes. When you add or edit a password, tap the generator to make a strong one and choose its length and character types.</p></details>
+<details><summary>What does the WiFi QR code do?</summary><p>It shows a code that other phones can scan to join your WiFi, without typing the password.</p></details>
+<details><summary>Will KingLog warn me when a card expires?</summary><p>Yes. A card shows “Expires soon” or “Expired” in the list. If you turn on reminders, you also get a notification.</p></details>
+<details><summary>Why does KingLog ask me to confirm before saving changes?</summary><p>Editing a record replaces the old values and they cannot be brought back, so every edit asks first. Your latest backup still has the earlier version.</p></details>
+<details><summary>Can I import my old vault files?</summary><p>Yes: Settings → Import old Vault JSON files. Entries that already exist are skipped.</p></details>
+<h2 id="s5">Finance</h2>
+<details><summary>What are Simple and Pro mode?</summary><p>Simple mode takes your in-hand salary and your expenses. Pro mode takes the full payslip (basic, HRA, allowances, PF, tax and so on) and works out the rest.</p></details>
+<details><summary>Can I plan future months?</summary><p>Yes. Pick any month, past or future, and use “Copy from last month” or copy forward for 1, 3, 6, 12 or any number of months. Future months are marked Planned until the month arrives, and then KingLog asks you to confirm the real numbers.</p></details>
+<details><summary>Will copying forward overwrite my real numbers?</summary><p>No. Months that already have real numbers are never touched. Anything that would be overwritten asks for confirmation first.</p></details>
+<details><summary>Where can I see the whole year?</summary><p>On the Months tab, with the yearly summary and the month-to-month changes, and on the Analytics tab as charts.</p></details>
+<details><summary>Can I export my Finance data to Excel?</summary><p>Not as a plain file. Finance holds sensitive numbers, so it only leaves your phone inside encrypted backups. Your Fuel log and your EMI plan (see the EMI plan section) can be exported to Excel.</p></details>
+<h2 id="s6">EMI plan</h2>
+<details><summary>What is the EMI plan?</summary><p>A month-by-month plan of your money: what comes in (salary, other income, a food card), and what goes out (loan EMIs, SIPs and investments, insurance, living expenses). For every month it shows the total inflow, the total outflow and what is left to save. Find it in Finance → EMI plan. It is private to your phone and encrypted like the rest of Finance.</p></details>
+<details><summary>How do I add my loans, SIPs and insurance?</summary><p>Finance → EMI plan → Add (inside each block). Type the name, the amount and, for a loan, the bank, opening date, tenure, interest rate, loan amount and pre-closure charge. Everything is optional except the name; the more you add, the more KingLog can work out. You type a loan once: the plan, the grid and Pre-close all read the same row.</p></details>
+<details><summary>Can I type an amount as a sum?</summary><p>Yes. An EMI that is really two or three parts can be typed as 29017+13231+5772, and KingLog keeps the sum. Living costs can also be split into named parts, such as Milk, Maid and Water can.</p></details>
+<details><summary>How do I change one month, or from one month onwards?</summary><p>Tap the amount of a row in the Plan or the Grid. Choose “Only this month” for a one-off, or “This month and every month after” for a step, such as a SIP going up. A one-off amount is shown in the accent colour, and you can remove any change again.</p></details>
+<details><summary>What are the Plan, Grid and Pre-close views?</summary><p>Plan shows one month at a time with subtotals. Grid shows all months side by side like a spreadsheet. Pre-close shows, for every loan, what is still outstanding, the pre-closure charge and what you would pay to close it today, plus a loan-tracking table with the next EMI split into principal and interest.</p></details>
+<details><summary>How many months does the plan show?</summary><p>By default from this month until your last loan ends (at most 10 years). Change it with the menu at the top right → Months shown: 12, 24, 36 or 60 months.</p></details>
+<details><summary>Can my salary follow the Finance calculator?</summary><p>Yes. In the salary row tick “Use my Finance calculation”. Each month then uses the salary credited to your bank in your Finance month, and months you have not filled in use the amount typed in the row.</p></details>
+<details><summary>What is the food card row?</summary><p>Money such as a Pluxee or Sodexo card that can only be spent on food. Tick “This is a food card” on an income row. It is counted in the inflow, and the plan also shows “Savings without food card”, which is what you can really move to savings.</p></details>
+<details><summary>What is a payment schedule? Is it on by default?</summary><p>It lists every instalment of a loan with its principal and interest. It is off by default. Open a loan and choose Set up a schedule: either let KingLog calculate it, or enter the rows yourself (you can paste them from your bank statement or Excel). When it is on, the plan uses those exact instalments.</p></details>
+<details><summary>How accurate is the calculated schedule? Can I correct it?</summary><p>It is an estimate: equal EMIs on a reducing balance, with interest for the first partial period. Banks round and count days a little differently, so every row can be corrected. Rows you correct stay as you typed them and the others are recalculated. “Restore the default calculation” gives back the calculated numbers. If you do not know the interest rate, KingLog works it out from your EMI, tenure and loan amount.</p></details>
+<details><summary>How do I export the plan to Excel?</summary><p>Finance → EMI plan → menu → Export to Excel. The workbook follows the layout of the usual EMI sheet (planner, Pre Close and one sheet per payment schedule). The file is NOT encrypted. KingLog warns you and, if you use a phone lock or a KingLog lock, asks you to confirm it is you first. Android&#x27;s Save-as screen then opens (in Downloads) and you choose where the file goes. It is your own file: clearing KingLog&#x27;s storage or uninstalling KingLog does not remove it.</p></details>
+<details><summary>Can I import my own Excel sheet?</summary><p>Yes. Finance → EMI plan → menu → Import from Excel, and pick your .xlsx file. KingLog reads a sheet laid out like the planner (Type, Bank, Months Left and one column per month), the Pre Close sheet and any payment-schedule sheets. You see what was found first, choose which loan each schedule belongs to, and choose whether to add to your plan or replace it. Formulas are never run, and sums such as =SUM(29017+13231) are kept as sums.</p></details>
+<details><summary>Is the EMI plan included in my backups?</summary><p>Yes. It is saved with Finance, Fuel and Vault in the same dated folder and is encrypted with your backup key. On the restore screen it appears as its own part, so you can restore only the EMI plan if you want.</p></details>
+<h2 id="s7">Fuel Log</h2>
+<details><summary>How is mileage calculated?</summary><p>KingLog uses the full-to-full method. Mileage for a fill-up is the distance since your previous full tank divided by the fuel you put in since then. Partial fills are carried forward to the next full one, so the number stays accurate.</p></details>
+<details><summary>What are “Partial fill” and “Missed fill-up”?</summary><p>Tick Partial fill when you did not fill to the brim. Tick “I missed logging a fill-up before this” if you forgot to log one, so that stretch is left out of the averages instead of spoiling them.</p></details>
+<details><summary>What does “Check price” mean?</summary><p>The price per litre looks unusual (under ₹40 or over ₹200), so you may have mistyped it.</p></details>
+<details><summary>How do I export my fuel log?</summary><p>Fuel Log → Vehicles tab → Excel or JSON. Android&#x27;s Save-as screen opens (in Downloads) and you choose where the file goes. It is your own file: clearing KingLog&#x27;s storage or uninstalling KingLog does not remove it. You can share it straight away. The Excel file has the fill-ups, the vehicles and a summary in one workbook.</p></details>
+<details><summary>How do I import data?</summary><p>Fuel Log → Vehicles tab → Import. KingLog reads its own JSON files and the older Vehicles.csv and Fuel_Log.csv files, and skips fill-ups that are already there.</p></details>
+<h2 id="s8">Reminders</h2>
+<details><summary>Which reminders are there?</summary><p>Vehicle insurance ending, a service due by date or by kilometres, and a card that is expiring. All of them are off until you turn them on in Settings → Reminders, and each type can be switched off separately.</p></details>
+<details><summary>When do reminders appear?</summary><p>Insurance: 30 days, 7 days, 1 day before and on the day. Service: 7 days, 1 day before and on the day, or when you are within 200 km of the service reading. Each reminder appears once.</p></details>
+<details><summary>I turned reminders on but I get nothing.</summary><p>Check that notifications are allowed for KingLog in Android settings, and that the battery saver is not stopping background work. KingLog checks once a day, and also when you open it.</p></details>
+<h2 id="s9">Help and contact</h2>
+<details><summary>Something does not work. What should I do?</summary><p>Close KingLog completely and open it again. If it still fails, write to us and tell us what you were doing and what you saw. Please never send passwords or card numbers.</p></details>
+<details><summary>It says my data is still being upgraded.</summary><p>After updating from KingLog 1.0 the app moves your data to the new format once. It takes a moment. If the message stays, restart the app and make sure your phone has free storage.</p></details>
+<details><summary>Google sign-in fails or the window closes when I pick my account.</summary><p>KingLog shows Google&#x27;s error number under the Connect button. Check your internet connection and the date and time on your phone, update Google Play services, then try again. If the window keeps closing, tap “Trouble connecting?” in Settings → Backup &amp; restore and send us the error number; backups to your phone and to a folder keep working without Google.</p></details>
+<details><summary>Where are the privacy policy and the terms?</summary><p>In Settings → Help &amp; about (Privacy policy, Terms of use), or on the web at teamexykings.in/kinglog/privacy-policy.html and teamexykings.in/kinglog/terms.html.</p></details>
+<details><summary>How can I contact you or support the project?</summary><p>Settings → Contact support opens an email. Settings → Support KingLog has the optional donation links. Thank you!</p></details>
+
+<div class="help"><strong>Still stuck?</strong> Write to <a href="mailto:yashwanthramsomireddy@gmail.com">yashwanthramsomireddy@gmail.com</a> and tell us what you were doing and what you saw. Please never send passwords, card numbers or your recovery key.</div>
+
+<footer>
+  <span>© 2026 TeamExyKings</span>
+  <a href="index.html">KingLog home</a>
+  <a href="privacy-policy.html">Privacy policy</a>
+  <a href="terms.html">Terms of use</a>
+  <a href="mailto:yashwanthramsomireddy@gmail.com">Contact</a>
+</footer>
+</div>
+</body>
+</html>

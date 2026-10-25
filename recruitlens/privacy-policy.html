@@ -59,7 +59,7 @@
   <p>If you use the Resume Builder, the text of your own resume is sent to the AI model you pick so it can be rearranged into a template. The result is shown on your phone for you to save as a PDF or Word file. We do not keep the resume content from the Resume Builder; we keep only a usage record (date, model used, credits charged and your name) so that credits and limits can be applied.</p>
 
   <h3>Payment data</h3>
-  <p>Payments are processed by Razorpay. We do not store full card numbers or bank credentials; Razorpay handles that directly. We retain transaction records (amount, date, plan/credits purchased, Razorpay payment reference) for accounting purposes.</p>
+  <p>Paid plans and credit top-ups are bought through Google Play. Google handles your payment details; we never see or store your card number or bank credentials. When you buy, Google tells our server that the purchase is valid, and we keep a purchase record for accounting and to add (or, after a refund, take back) the credits: the product bought, amount and currency, date, Google's order reference and purchase token, and the account it belongs to. If Google refunds a purchase, we record the refund and remove the credits that came with it.</p>
 
   <h3>Data stored on your phone</h3>
   <p>The app keeps your sign-in session and your display choices (theme and accent colour) in your phone's secure storage. Signing out removes the session. We do not use cookies or advertising identifiers, and the app does not ask for access to your camera, microphone, contacts, location or photos. It reads a file only when you choose one.</p>
@@ -84,7 +84,7 @@
     <tr><td>Supabase</td><td>Database, authentication, backend hosting</td><td>All account and candidate data described above</td></tr>
     <tr><td>Google</td><td>Optional sign-in, only if you choose it</td><td>Their own sign-in page handles your credentials; they tell us your name, email address and account identifier</td></tr>
     <tr><td>OpenRouter</td><td>Routes resume text to the AI model you select for analysis</td><td>Resume text, sent to the underlying AI provider (e.g. Anthropic, OpenAI, or Google, depending on the model chosen) for the duration of that request</td></tr>
-    <tr><td>Razorpay</td><td>Payment processing</td><td>Payment details, handled directly by Razorpay</td></tr>
+    <tr><td>Google Play</td><td>Payment processing and purchase checking</td><td>Purchase and refund records for what you buy (product, amount, date, order reference and purchase token); payment details stay with Google</td></tr>
     <tr><td>Brevo</td><td>Transactional email delivery</td><td>Email address, name, and the content of the specific email being sent</td></tr>
   </table>
   <p>We do not sell your data to any third party, and we do not share it for advertising. We may disclose information where the law requires it.</p>
@@ -127,7 +127,7 @@
 
   <h2>11. Contact us</h2>
   <p>For any privacy-related questions, requests or complaints, contact TeamExyKings (Yashwanth Ram Somireddy) at:<br>
-  <strong>support@teamexykings.in</strong></p>
+  <strong>yashwanthramsomireddy@gmail.com</strong></p>
 
   <a class="back" href="./index.html">&larr; Back to RecruitLens</a>
 </body>

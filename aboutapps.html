@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamExyKings — All Apps</title>
+<meta name="robots" content="noindex">
+<style>
+  /* Embeddable cross-promo strip. No external fonts, scripts or requests (GDPR-friendly). */
+  :root{--fg:#e8e8f0;--muted:#8a8aa3;--card:rgba(255,255,255,.05);--border:rgba(255,255,255,.1);--bg:transparent}
+  @media (prefers-color-scheme: light){:root{--fg:#1b1b2a;--muted:#6a6a80;--card:rgba(0,0,0,.04);--border:rgba(0,0,0,.1)}}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--fg);overflow:hidden}
+  .wrap{padding:10px 0 12px}
+  .title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:10px}
+  .title.hide{display:none}
+  .viewport{overflow:hidden;position:relative;touch-action:pan-y;cursor:grab;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .viewport.dragging{cursor:grabbing}
+  .track{display:flex;gap:12px;width:max-content;will-change:transform;padding:4px 12px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:6px;width:84px;text-decoration:none;color:var(--fg);
+    -webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+  .icon{width:56px;height:56px;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--border);
+    display:grid;place-items:center;font-size:22px;font-weight:700;color:#fff}
+  .icon img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .name{font-size:11.5px;line-height:1.25;text-align:center;font-weight:500;max-width:84px}
+  .app:focus-visible .icon{outline:2px solid #7c8cff;outline-offset:2px}
+  .app:hover .icon{border-color:#7c8cff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title" id="title">More apps by TeamExyKings</div>
+  <div class="viewport" id="vp" aria-label="All TeamExyKings apps, swipe to browse">
+    <div class="track" id="track"></div>
+  </div>
+</div>
+
+<script>
+/* ──────────────── APP LIST — edit here only ────────────────
+   slug  : folder on teamexykings.in (also icon file: /icons/<slug>.png, 112x112+ recommended)
+   url   : Google Play (or Chrome Web Store) link. Leave null until published — the card then
+           links to its page on teamexykings.in/<slug>/ instead.
+   Device Care Plus is personal-use and intentionally NOT listed. */
+const PLAY = id => 'https://play.google.com/store/apps/details?id=' + id;
+const APPS = [
+  { slug:'king-calc',            name:'King Calc',            url:null /* TODO: PLAY('com.teamexykings.…') once live */ },
+  { slug:'king-calc-watch',      name:'King Calc Watch',      url:null },
+  { slug:'king-log',             name:'KingLog',              url:null },
+  { slug:'king-craft',           name:'King Craft',           url:null /* TODO: confirm package, e.g. PLAY('com.teamexykings.kingcraft') */ },
+  { slug:'king-estate',          name:'KingEstate',           url:null /* TODO: confirm package, e.g. PLAY('com.teamexykings.kingestate') */ },
+  { slug:'king-six',             name:'King Six',             url:null },
+  { slug:'recruit-lens',         name:'RecruitLens',          url:null },
+  { slug:'dream-loop',           name:'DreamLoop',            url:null },
+  { slug:'bookmark-tab-manager', name:'Bookmark Tab Manager', url:'https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj' }
+];
+const SITE = 'https://teamexykings.in/';
+const SPEED = 28;            // px per second, slow right-to-left
+const HUES = [215,265,150,25,340,190,45,300,100];
+
+const q = new URLSearchParams(location.search);
+if (q.get('title') === '0') document.getElementById('title').classList.add('hide');
+const current = q.get('app');                       // optional: ?app=king-calc hides the app you're already in
+
+const track = document.getElementById('track'), vp = document.getElementById('vp');
+const list = APPS.filter(a => a.slug !== current);
+
+function card(a, i, ghost) {
+  const el = document.createElement('a');
+  el.className = 'app';
+  el.href = a.url || (SITE + a.slug + '/');
+  el.target = '_blank'; el.rel = 'noopener';
+  el.draggable = false;
+  if (ghost) { el.tabIndex = -1; el.setAttribute('aria-hidden', 'true'); }
+  const ic = document.createElement('div'); ic.className = 'icon';
+  const img = new Image(); img.alt = ''; img.loading = 'lazy'; img.draggable = false;
+  img.src = SITE + 'icons/' + a.slug + '.png';
+  img.onerror = () => { img.remove(); ic.textContent = a.name.replace(/^King\s*/i,'').charAt(0).toUpperCase() || 'K';
+    ic.style.background = 'hsl(' + HUES[i % HUES.length] + ' 55% 45%)'; };
+  ic.appendChild(img);
+  const nm = document.createElement('div'); nm.className = 'name'; nm.textContent = a.name;
+  el.append(ic, nm);
+  return el;
+}
+
+// Build one set, then repeat copies until the track is at least 2x the viewport (seamless loop).
+list.forEach((a, i) => track.appendChild(card(a, i, false)));
+let setW = 0;
+function fill() {
+  while (track.children.length > list.length) track.lastChild.remove();
+  setW = track.scrollWidth + 12;                       // one set incl. gap
+  let copies = Math.max(1, Math.ceil((vp.clientWidth * 2) / setW));
+  for (let c = 0; c < copies; c++) list.forEach((a, i) => track.appendChild(card(a, i, true)));
+}
+fill();
+addEventListener('resize', fill);
+document.fonts && document.fonts.ready.then(fill);
+
+// ── motion: rAF loop, pause while pressed/hovered, drag to scroll ──
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let x = 0, last = performance.now(), paused = false, down = false, startX = 0, startOff = 0, moved = 0, hover = false;
+
+function wrap() { if (!setW) return; x = ((x % setW) + setW) % setW - setW; }   // keep x in (-setW, 0]
+function frame(t) {
+  const dt = Math.min(0.05, (t - last) / 1000); last = t;
+  if (!reduce && !paused && !down && !hover && !document.hidden) x -= SPEED * dt;
+  wrap();
+  track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+vp.addEventListener('pointerdown', e => {
+  down = true; moved = 0; startX = e.clientX; startOff = x;
+  vp.setPointerCapture && vp.setPointerCapture(e.pointerId);
+});
+vp.addEventListener('pointermove', e => {
+  if (!down) return;
+  const dx = e.clientX - startX; moved = Math.max(moved, Math.abs(dx));
+  if (moved > 6) vp.classList.add('dragging');
+  x = startOff + dx;
+});
+function release() { down = false; vp.classList.remove('dragging'); }
+vp.addEventListener('pointerup', release);
+vp.addEventListener('pointercancel', release);
+// a drag must not open a link; a plain tap/click still does
+vp.addEventListener('click', e => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
+vp.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hover = true; });
+vp.addEventListener('pointerleave', () => { hover = false; });
+vp.addEventListener('contextmenu', e => { if (e.pointerType === 'touch') e.preventDefault(); }); // long-press = pause, not menu
+</script>
+</body>
+</html>

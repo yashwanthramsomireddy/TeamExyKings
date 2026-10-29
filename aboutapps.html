@@ -39,7 +39,7 @@
 
 <script>
 /* ──────────────── APP LIST — edit here only ────────────────
-   slug  : folder on teamexykings.in (also icon file: /icons/<slug>.png, 112x112+ recommended)
+   slug  : folder on teamexykings.in (also icon file: /assets/appicons/<slug>.png, 112x112+ recommended)
    url   : Google Play (or Chrome Web Store) link. Leave null until published — the card then
            links to its page on teamexykings.in/<slug>/ instead.
    Device Care Plus is personal-use and intentionally NOT listed. */
@@ -75,7 +75,7 @@ function card(a, i, ghost) {
   if (ghost) { el.tabIndex = -1; el.setAttribute('aria-hidden', 'true'); }
   const ic = document.createElement('div'); ic.className = 'icon';
   const img = new Image(); img.alt = ''; img.loading = 'lazy'; img.draggable = false;
-  img.src = SITE + 'icons/' + a.slug + '.png';
+  img.src = SITE + 'assets/appicons/' + a.slug + '.png';
   img.onerror = () => { img.remove(); ic.textContent = a.name.replace(/^King\s*/i,'').charAt(0).toUpperCase() || 'K';
     ic.style.background = 'hsl(' + HUES[i % HUES.length] + ' 55% 45%)'; };
   ic.appendChild(img);

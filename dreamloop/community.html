@@ -44,7 +44,7 @@
 <script>
 // Public read-only key (the "anon" key is designed to be public; the database allows it to read only the safe view).
 var SUPABASE_URL = 'https://rdiktauslysiosxagvan.supabase.co';
-var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkaWt0YXVzbHlzaW9zeGFndmFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjA4OTksImV4cCI6MjEwNTQzNjg5OX0.4TvqymW7wYqVMR-p7okYYIIWujD_03zTvTMG_9vkJoc';
+var ANON_KEY = 'PASTE_SUPABASE_ANON_KEY_HERE';
 var feed = document.getElementById('feed');
 function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 fetch(SUPABASE_URL + '/rest/v1/community_dreams?select=id,title,story,mood,shared_month&limit=60', {
@@ -62,7 +62,7 @@ fetch(SUPABASE_URL + '/rest/v1/community_dreams?select=id,title,story,mood,share
 }).catch(function(){ feed.textContent = ''; feed.appendChild(el('p', '', 'Could not load dreams right now.')); });
 </script>
 
-<footer>DreamLoop — TeamExyKings · <a href="mailto:support@teamexykings.in">support@teamexykings.in</a> · <a href="./privacy-policy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./child-safety.html">Child safety</a></footer>
+<footer>DreamLoop — TeamExyKings · <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a> · <a href="./privacy-policy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./child-safety.html">Child safety</a> · <a href="./account-deletion.html">Delete account</a> · <a href="./refund-policy.html">Refunds</a></footer>
 </div>
 </body>
 </html>

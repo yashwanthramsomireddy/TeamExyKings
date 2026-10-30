@@ -1,82 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KingSix: Cricket App</title>
-<meta name="description" content="KingSix by TeamExyKings: a private Android app with an encrypted vault (banking, cards, passwords, WiFi), salary and savings planning, and a bike and car fuel log. One-tap encrypted backup, app lock, no tracking. Free, ad-free and subscription-free.">
-<meta name="theme-color" content="#07070F">
-<meta property="og:title" content="KingSix: Vault, Finance and Fuel Log">
-<meta property="og:description" content="Private vault, salary planning and fuel tracking for Android. Encrypted on your phone, encrypted backups. Free, ad-free and subscription-free.">
-<meta property="og:image" content="assets/icon-512.png">
-<link rel="icon" type="image/png" href="assets/icon-192.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>King Six — Cricket scorer</title>
 <style>
-:root{--bg:#07070F;--card:#12121e;--border:#26263a;--text:#fff;--muted:#a3a3b5;--teal:#2DD4BF;--blue:#7DB8FF;--gold:#FBBF24;--violet:#A78BFA}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#1d1b4a 0,var(--bg) 62%) fixed,var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--blue)}
-.wrap{max-width:980px;margin:0 auto;padding:0 18px}
-nav{display:flex;align-items:center;gap:14px;padding:18px 0}
-nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;text-decoration:none;color:var(--text)}
-nav .brand img{width:36px;height:36px;border-radius:10px}
-nav .links{margin-left:auto;display:flex;gap:18px;font-size:14px;flex-wrap:wrap;justify-content:flex-end}
-nav .links a{color:var(--muted);text-decoration:none}
-nav .links a:hover{color:var(--text)}
-.hero{text-align:center;padding:52px 0 36px}
-.hero img{width:128px;height:128px;border-radius:30px;box-shadow:0 18px 60px rgba(120,100,255,.25)}
-h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:22px 0 12px;letter-spacing:-.5px}
-h1 span{background:linear-gradient(90deg,var(--teal),var(--gold),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:18px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:28px 0 8px}
-.btn{display:inline-block;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid var(--border);color:var(--text);background:var(--card)}
-.btn.primary{background:#fff;color:#000;border:0}
-.note{color:var(--muted);font-size:13px;margin-top:6px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:30px 0}
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}
-.card h3{margin:0 0 6px;font-size:20px}
-.card.vault h3{color:var(--violet)}
-.card.fin h3{color:var(--teal)}
-.card.fuel h3{color:var(--gold)}
-.card ul{margin:10px 0 0;padding-left:20px;color:#d6d6e2}
-.card li{margin:5px 0}
-h2{font-size:26px;margin:54px 0 6px;text-align:center}
-.sub{text-align:center;color:var(--muted);margin:0 0 22px}
-.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.feat div{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
-.feat b{display:block;margin-bottom:4px}
-.feat p{margin:0;color:var(--muted);font-size:14px}
-.honest{border-color:#46466a}
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0;padding:0;list-style:none}
-.steps li{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 16px 16px 54px;position:relative;color:#d6d6e2;font-size:15px}
-.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:14px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--violet));color:#07070F;font-weight:800;text-align:center;line-height:26px;font-size:14px}
-.steps b{display:block;color:var(--text);margin-bottom:2px}
-footer{margin:64px 0 36px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center}
-footer a{color:var(--muted)}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:24px 20px 64px;line-height:1.6;color:#111;background:#fff}
+  h1{margin-bottom:4px} h2{margin-top:32px} .muted{color:#555}
+  @media (prefers-color-scheme:dark){body{background:#000;color:#f2f2f2}.muted{color:#aaa}a{color:#4fc3f7}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<nav>
-  <a class="brand" href="#"><img src="assets/icon-192.png" alt="">KingSix</a>
-  <div class="links"><a href="#features">Features</a><a href="#backups">Backups</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy</a></div>
-</nav>
-<section>
-  <h2>Cricket App Built to be trusted (Index build is in progress)</h2>
-  <p class="sub">Simple promises, written down in the <a href="privacy-policy.html">privacy policy</a>.</p>
-  <div class="feat">
-    <div><b>On your phone</b><p>KingSix Google account, cloud database.</p></div>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 TeamExyKings</span>
-  <a href="faq.html">FAQ</a>
-  <a href="privacy-policy.html">Privacy policy</a>
-  <a href="terms.html">Terms of use</a>
-  <a href="mailto:yashwanthramsomireddy@gmail.com">Contact</a>
-</footer>
-</div
+<h1>King Six</h1>
+<p class="muted">Score it. Share it. Own it.</p>
+<p>A ball-by-ball cricket scorer for backyard, club and street cricket, by TeamExyKings. Sign in with Google and your teams, players and scores are backed up to your account. No ads, no tracking.</p>
+<ul>
+  <li>Ball-by-ball scoring with extras, wickets, free hits, retirements, penalties and super overs</li>
+  <li>Scorecards, worm and run-rate graphs, player and team stats, series tables</li>
+  <li>Share a match with friends by a short code</li>
+  <li>Free to view; King Six Pro (yearly) to score and back up</li>
+</ul>
+<p><a href="https://play.google.com/store/apps/details?id=com.teamexykings.kingsix">Get it on Google Play</a></p>
+<h2>Policies</h2>
+<ul>
+  <li><a href="privacy-policy.html">Privacy policy</a></li>
+  <li><a href="terms-of-service.html">Terms of service</a></li>
+  <li><a href="refund-policy.html">Refund and cancellation policy</a></li>
+  <li><a href="account-deletion.html">Delete your account and data</a></li>
+</ul>
+<p>Contact: <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a> · <a href="https://teamexykings.in">teamexykings.in</a></p>
 </body>
 </html>

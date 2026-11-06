@@ -23,7 +23,7 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 29 October 2026</p>
+  <p class="updated">Last updated: 5 November 2026</p>
 
   <p>Recruit Lens ("we", "us", "our") is a resume-screening application built and operated by TeamExyKings. This policy explains what data we collect, how it's used, and the third parties involved in delivering the service. It applies to the Recruit Lens mobile app and its associated backend.</p>
 
@@ -53,7 +53,7 @@
     <li>The AI-generated analysis of that resume (score, recommendation, matched/missing skills, and similar output)</li>
     <li>Notes, status, interview details and similar information that you or your team add to a candidate</li>
   </ul>
-  <p>The original PDF or Word file is not kept: we extract the text, run the analysis, and discard the file. Resumes are uploaded by a recruiter or team acting under their own authority. If you are a candidate whose resume was uploaded by someone else, see <a href="#candidates">Section 7</a>.</p>
+  <p>The original PDF or Word file is not kept: we extract the text, run the analysis, and discard the file. If you scan a resume with a photo, the text is read from the picture on your phone itself (using Google's on-device text recognition, ML Kit). The picture is not uploaded or stored; only the text read from it is sent for analysis, exactly like the text of a PDF. Resumes are uploaded by a recruiter or team acting under their own authority. If you are a candidate whose resume was uploaded by someone else, see <a href="#candidates">Section 7</a>.</p>
 
   <h3>Resume Builder</h3>
   <p>If you use the Resume Builder, the text of your own resume is sent to the AI model you pick so it can be rearranged into a template. The result is shown on your phone for you to save as a PDF or Word file. We do not keep the resume content from the Resume Builder; we keep only a usage record (date, model used, credits charged and your name) so that credits and limits can be applied.</p>
@@ -62,7 +62,7 @@
   <p>Paid plans and credit top-ups are bought through Google Play. Google handles your payment details; we never see or store your card number or bank credentials. When you buy, Google tells our server that the purchase is valid, and we keep a purchase record for accounting and to add (or, after a refund, take back) the credits: the product bought, amount and currency, date, Google's order reference and purchase token, and the account it belongs to. If Google refunds a purchase, we record the refund and remove the credits that came with it.</p>
 
   <h3>Data stored on your phone</h3>
-  <p>The app keeps your sign-in session and your display choices (theme and accent colour) in your phone's secure storage. Signing out removes the session. We do not use cookies or advertising identifiers, and the app does not ask for access to your camera, microphone, contacts, location or photos. It reads a file only when you choose one.</p>
+  <p>The app keeps your sign-in session and your display choices (theme and accent colour) in your phone's secure storage. Signing out removes the session. We do not use cookies or advertising identifiers. The app does not ask for access to your microphone, contacts or location. It asks for the camera only when you tap "Take a photo" on the Upload screen, and Android asks you first. Gallery pictures are chosen through Android's own photo picker, so the app never gets access to your photo library. It reads a file only when you choose one.</p>
 
   <h3>Device and usage data</h3>
   <p>Standard technical data needed to operate the app (for example, error messages returned by our servers) may be recorded to diagnose and fix issues. The app contains no advertising or analytics software.</p>
@@ -102,6 +102,7 @@
     <li>If you belong to an organisation, the organisation keeps the candidate records and activity log it owns; your name in them is replaced with "Deleted user". Unused credits return to the organisation's pool.</li>
     <li>A Domain Admin must first hand the role over (or close the organisation) before the account can be deleted.</li>
   </ul>
+  <p><strong>Deleting an organisation's data.</strong> The Primary Admin or Sub Admin of an organisation can, in the app (Settings → Domain Management → Delete All Organisation Data), permanently delete every candidate record of the organisation, including resume text, analysis, earlier versions, notes and history, together with waiting scans, pending invitations and the notifications of its people. Every member except the two admins is removed and signed out. This cannot be undone and nothing can be restored afterwards, apart from a short period in our database provider's routine backups.</p>
   <p><strong>What we keep.</strong> Payment transaction records stay for as long as accounting and tax rules require, with no personal details left on them. A small anonymised stub of the account (name "Deleted user", no email or phone) stays so that those records and audit logs remain intact. Backups are overwritten by our database provider on its normal schedule.</p>
 
   <h2>6. Security</h2>

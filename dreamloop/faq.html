@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Loop FAQ</title>
+<meta name="description" content="Answers to common questions about Dream Loop: writing, voice, privacy, backup, credits and account.">
+<meta name="theme-color" content="#000000">
+<style>
+  :root{--bg:#000;--surface:#0c0c0e;--surface2:#151518;--border:#1e1e22;--text:#f7f7f8;--muted:#a6a6af;--accent:#fff}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+  nav{display:flex;gap:18px;align-items:center;margin-bottom:40px;font-size:.95rem}
+  nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--text)}
+  nav .brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:600;margin-right:auto}
+  h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:2.6rem;line-height:1.1;margin:0 0 6px}
+  .updated{color:var(--muted);font-size:.9rem;margin-bottom:36px}
+  h2{font-size:1.1rem;margin:36px 0 8px;color:var(--text);letter-spacing:.2px}
+  p,li{color:#d4d4da}
+  .callout{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 20px;margin:20px 0}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  a{color:#fff}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+  .ok{color:#9be3a8}
+  code{background:var(--surface2);padding:1px 6px;border-radius:6px;font-size:.9em}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 20px;margin:14px 0}
+  .card h3{margin:0 0 6px;font-size:1rem}
+  .card p{margin:0}
+  .search{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:1rem;margin:6px 0 14px;font-family:inherit}
+  .search:focus{outline:2px solid #444}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.9rem;cursor:pointer;font-family:inherit}
+  .chip.on{background:#fff;color:#000;border-color:#fff}
+  details{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:var(--text)}
+  details p{margin:10px 0 2px}
+  .cat{margin:28px 0 6px;color:var(--muted);font-size:.8rem;letter-spacing:1.1px;text-transform:uppercase;font-weight:600}
+  .none{color:var(--muted);text-align:center;padding:30px 0;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="brand" href="./index.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 512 512"><defs></defs><path d="M 425.7 158.0 A 196 196 0 1 1 306.7 66.7" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" fill="none"/><g transform="translate(22 -10)"><path d="M 335.4 308.3 A 108 108 0 1 1 229.0 158.2 A 92 92 0 0 0 335.4 308.3 Z" fill="#FFFFFF"/></g><path d="M 375.3 70.5 Q 375.3 100.5 405.3 100.5 Q 375.3 100.5 375.3 130.5 Q 375.3 100.5 345.3 100.5 Q 375.3 100.5 375.3 70.5 Z" fill="#FFFFFF"/><path d="M 150.0 155.0 Q 150.0 170.0 165.0 170.0 Q 150.0 170.0 150.0 185.0 Q 150.0 170.0 135.0 170.0 Q 150.0 170.0 150.0 155.0 Z" fill="#FFFFFF" opacity="0.85"/><circle cx="394" cy="352" r="6" fill="#FFFFFF" opacity="0.7"/></svg> DreamLoop</a><a href="./privacy-policy.html">Privacy</a><a href="./terms.html">Terms</a><a href="./child-safety.html">Child safety</a><a href="./faq.html">FAQ</a></nav>
+<h1>FAQ</h1>
+<div class="updated">Dream Loop · answers to common questions</div>
+<input id="q" class="search" type="search" placeholder="Search questions" aria-label="Search questions" autocomplete="off">
+<div class="chips" id="chips"><button class="chip on" data-c="">All</button><button class="chip" data-c="Getting started">Getting started</button><button class="chip" data-c="Writing &amp; voice">Writing &amp; voice</button><button class="chip" data-c="Patterns &amp; insights">Patterns &amp; insights</button><button class="chip" data-c="AI &amp; credits">AI &amp; credits</button><button class="chip" data-c="Privacy &amp; security">Privacy &amp; security</button><button class="chip" data-c="Backup &amp; restore">Backup &amp; restore</button><button class="chip" data-c="Account &amp; data">Account &amp; data</button><button class="chip" data-c="Troubleshooting">Troubleshooting</button></div>
+<div class="group" data-c="Getting started"><div class="cat">Getting started</div>
+<details><summary>What is Dream Loop?</summary><p>A private dream journal. You write (or speak) your dreams, and Dream Loop finds recurring themes on your phone and shows your streaks, moods and patterns. Gentle AI insight is optional and only runs when you ask.</p></details>
+<details><summary>Do I need an account?</summary><p>No. Tap “Try without signing in” to use the journal in guest mode: writing, search, patterns and the symbol glossary all work. AI insight, credits and Google Drive backup need a Google sign-in.</p></details>
+<details><summary>Who can use Dream Loop?</summary><p>Dream Loop is for adults aged 18 and over. You confirm this on the welcome screen before you continue.</p></details>
+<details><summary>Does it work offline?</summary><p>Yes. Writing, searching, patterns and the glossary work without internet. You only need a connection for sign-in, AI insight, purchases and Drive backup.</p></details>
+</div>
+<div class="group" data-c="Writing &amp; voice"><div class="cat">Writing &amp; voice</div>
+<details><summary>How do I add a dream?</summary><p>Tap the + button. Add a title and what happened, then choose the date, sleep and wake times, mood, place and how clearly you remember it. A title is optional: if you leave it blank, the first words of your story are used.</p></details>
+<details><summary>How do I speak my dream instead of typing?</summary><p>In “What happened?”, tap the mic icon, allow the microphone when asked, and speak. Tap the icon again to stop. Your words are added to the end of your text.</p></details>
+<details><summary>Is my voice recorded or stored?</summary><p>No. Dream Loop only receives the text. The speech-to-text is done by your phone’s own speech service (usually Google or Samsung), and Dream Loop never receives or stores the audio.</p></details>
+<details><summary>I typed a dream but didn’t save it. Is it lost?</summary><p>No. A draft is saved automatically and comes back the next time you tap +. Use Discard (next to Save) if you want to throw the draft away.</p></details>
+<details><summary>Can I edit or delete a dream later?</summary><p>Yes. Open the dream and use the pencil to edit or the bin to delete. Deleting removes it from your phone.</p></details>
+</div>
+<div class="group" data-c="Patterns &amp; insights"><div class="cat">Patterns &amp; insights</div>
+<details><summary>How are recurring dreams found?</summary><p>Entirely on your phone. Dream Loop compares the words and themes across your dreams and groups similar ones. Nothing is sent anywhere for this.</p></details>
+<details><summary>What does the free monthly interpretation include?</summary><p>Every month you get 5 free AI interpretations. Deeper readings, a gentler rewritten ending for a nightmare, and insight on a recurring theme use credits.</p></details>
+<details><summary>Are the interpretations medical advice?</summary><p>No. They are for reflection and entertainment, not predictions or medical or psychological advice. If dreams are distressing you, please talk to a health professional.</p></details>
+</div>
+<div class="group" data-c="AI &amp; credits"><div class="cat">AI &amp; credits</div>
+<details><summary>When is my dream sent to an AI?</summary><p>Only when you tap an AI button on a dream. The text of that dream is passed through our server to the AI provider to write the answer, and it is not stored.</p></details>
+<details><summary>What do credits cost?</summary><p>Deeper interpretation: 3 credits. Nightmare rewrite: 5. Recurring-theme insight: 5. Excel export: 1. The free monthly interpretation costs 0 (5 per month).</p></details>
+<details><summary>Am I charged if the AI fails?</summary><p>No. If an AI request fails you are not charged.</p></details>
+<details><summary>How do I buy credits?</summary><p>Settings → Credits, then choose a pack. Payment is handled by Google Play. Credits are one-time purchases: there is no subscription and nothing renews automatically.</p></details>
+<details><summary>I paid but my credits didn’t arrive.</summary><p>Wait a minute and reopen the Credits screen. If they are still missing, e-mail us from About → Support / Contact with your Google Play order number and we will fix it or refund you.</p></details>
+<details><summary>Do credits expire or can they be refunded?</summary><p>Credits don’t expire while your account exists. Credits already spent on a finished result can’t be refunded. Google Play’s own refund rules apply to purchases. Deleting your account forfeits remaining credits.</p></details>
+</div>
+<div class="group" data-c="Privacy &amp; security"><div class="cat">Privacy &amp; security</div>
+<details><summary>Where are my dreams stored?</summary><p>On your phone. Your dreams are never uploaded to our servers. The only times dream text leaves your phone are when you tap an AI button, or when you save your own encrypted backup.</p></details>
+<details><summary>Can I lock the app?</summary><p>Yes. Settings → Privacy &amp; reminders → App lock uses your fingerprint, face or screen lock.</p></details>
+<details><summary>Can I take screenshots?</summary><p>No. Screenshots and screen recording are blocked inside Dream Loop to protect your private entries.</p></details>
+<details><summary>Does Dream Loop show ads or track me?</summary><p>No ads, no analytics and no trackers.</p></details>
+</div>
+<div class="group" data-c="Backup &amp; restore"><div class="cat">Backup &amp; restore</div>
+<details><summary>How do I back up my dreams?</summary><p>Settings → Your data → Save encrypted backup to phone, or connect Google Drive under Backup. Both are encrypted on your phone with a passphrase only you know before they are saved or uploaded.</p></details>
+<details><summary>I forgot my backup passphrase.</summary><p>We can’t recover it and neither can Google, so that backup can’t be opened. Choose a passphrase you will remember, and consider saving it in a password manager.</p></details>
+<details><summary>How do I move my dreams to a new phone?</summary><p>On the old phone make an encrypted backup. On the new phone install Dream Loop, then use Restore from Drive or Restore from a backup file in Settings and enter your passphrase.</p></details>
+<details><summary>Will my backup survive if I clear the app’s storage or uninstall?</summary><p>A backup saved to Google Drive, or a file you saved to a folder you chose (Downloads, Files, Drive), stays where you saved it. Local dreams inside the app are erased when you clear storage or uninstall, so back up first.</p></details>
+<details><summary>Can I export my dreams to Excel?</summary><p>Yes: Settings → Your data → Export to Excel (1 credit). The Excel file is readable by anyone who opens it and is not encrypted.</p></details>
+</div>
+<div class="group" data-c="Account &amp; data"><div class="cat">Account &amp; data</div>
+<details><summary>How do I delete my account?</summary><p>Settings → Account → Delete account, then type DELETE. This erases your account, credits and purchase records from our servers and your dreams from the phone. Backups in your own Google Drive stay there until you delete them.</p></details>
+<details><summary>I can’t open the app to delete my account.</summary><p>E-mail Yashwanthramsomireddy@gmail.com from the Google account you signed in with. We delete it within 30 days and confirm by reply.</p></details>
+<details><summary>How do I contact support?</summary><p>About Dream Loop → Support / Contact opens an e-mail with your request ready to fill in.</p></details>
+</div>
+<div class="group" data-c="Troubleshooting"><div class="cat">Troubleshooting</div>
+<details><summary>The mic says voice isn’t available.</summary><p>Your phone needs a speech service. Make sure the Google app is installed and updated, and that Dream Loop has microphone permission in your phone’s settings.</p></details>
+<details><summary>The app closes right after an update.</summary><p>Update Dream Loop again from the Play Store. If it keeps closing, back up first if you can, then uninstall and reinstall, and restore from your backup.</p></details>
+<details><summary>Text or buttons look too big or cut off on my phone.</summary><p>Open Settings and turn on Compact layout. It makes text and spacing smaller on every screen.</p></details>
+<details><summary>My Drive backup or restore failed.</summary><p>Check your internet, then disconnect and reconnect Google Drive in Settings and try again. Make sure you signed in with the same Google account.</p></details>
+</div>
+<div class="none" id="none">No questions match your search.</div>
+
+<footer>DreamLoop — TeamExyKings · <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a> · <a href="./privacy-policy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./child-safety.html">Child safety</a> · <a href="./faq.html">FAQ</a> · <a href="./account-deletion.html">Delete account</a> · <a href="./refund-policy.html">Refunds</a></footer>
+</div>
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=document.getElementById('chips'),none=document.getElementById('none'),cat='';
+  function apply(){
+    var t=q.value.trim().toLowerCase(),shown=0;
+    document.querySelectorAll('.group').forEach(function(g){
+      var gOk=!cat||g.getAttribute('data-c')===cat,any=0;
+      g.querySelectorAll('details').forEach(function(d){
+        var ok=gOk&&(!t||d.textContent.toLowerCase().indexOf(t)>-1);
+        d.style.display=ok?'':'none';
+        if(ok){any++;if(t)d.open=true}else if(!t){d.open=false}
+      });
+      g.style.display=any?'':'none';shown+=any;
+    });
+    none.style.display=shown?'none':'block';
+  }
+  q.addEventListener('input',apply);
+  chips.addEventListener('click',function(e){
+    var b=e.target.closest('.chip');if(!b)return;
+    cat=b.getAttribute('data-c');
+    chips.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===b)});
+    apply();
+  });
+})();
+</script>
+</body>
+</html>

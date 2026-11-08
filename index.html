@@ -876,7 +876,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
     <div class="section-title-group">
       <div class="section-eyebrow">Current Projects</div>
       <h2>What we're building</h2>
-      <p>Free, open-source tools actively maintained by the TeamExyKings team</p>
+      <p>Free tools actively maintained by the TeamExyKings team</p>
     </div>
   </div>
   <div class="tab-bar reveal">
@@ -935,7 +935,7 @@ details[open].faq-item summary::after{transform:rotate(180deg)}
       <div class="community-card">
         <h3>💻 Code</h3>
         <p class="cc-sub">Public repos — all on GitHub</p>
-        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">All repos public · most open source</span></span><span class="lr-tag live">Live</span></a>
+        <a href="https://github.com/yashwanthramsomireddy" target="_blank" class="link-row"><span class="lr-left"><span class="lr-name">GitHub</span><span class="lr-desc">Public tools &amp; kernel sources</span></span><span class="lr-tag live">Live</span></a>
       </div>
   </div>
 </div>
@@ -1086,21 +1086,27 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 // ═══════════════════════════════ DATA ═══════════════════════════════
 const PROJECTS = [
-  // NOTE: BTM's repo currently holds only README/CHANGELOG/LICENSE, not the extension source — opensource:false until that changes
-  // NOTE: privacy policies live in per-app folders in this site repo (king-log/, king-calc/, king-calc-watch/,
-  // recruit-lens/, dream-loop/, bookmark-tab-manager/), each with its own privacy-policy.html, served at teamexykings.in/<folder>/.
-  // github "#" values are placeholders pending repo links.
-  { id:1, name:"KingLog", handle:"KingLog", desc:"Personal secure vault and logging app for Banking, Cards, IDs & WiFi, and Passwords — local-first, encrypted Drive backup. Renamed from KingVault. In development.", cat:"Mobile App", icon:"🔐", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false, privacy:"https://teamexykings.in/king-log/privacy-policy.html" },
-  { id:2, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy/QuickOff", store:null, firefoxStore:null, status:"live", opensource:true },
-  { id:4, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"https://github.com/yashwanthramsomireddy/bookmark-tab-manager", store:"https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj", firefoxStore:"https://addons.mozilla.org/en-GB/firefox/addon/bookmark-tab-manager-fx/", status:"live", opensource:false, privacy:"https://teamexykings.in/bookmark-tab-manager/privacy-policy.html" },
-  { id:5, name:"KingCalc", handle:"KingCalc", desc:"Free, open-source calculator for Android — basic, currency, units, percent and loan/EMI. No ads, no tracking. Play Store release pending.", cat:"Android Tool", icon:"🧮", github:"https://github.com/yashwanthramsomireddy/KingCalc", store:null, firefoxStore:null, status:"live", opensource:true, privacy:"https://teamexykings.in/king-calc/privacy-policy.html" },
-  { id:6, name:"King Calc Watch", handle:"KC Watch", desc:"Standalone Wear OS calculator companion for Galaxy Watch 8 Classic — basic, currency, percent and unit conversion on your wrist.", cat:"Android Tool", icon:"⌚", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false, privacy:"https://teamexykings.in/king-calc-watch/privacy-policy.html" },
-  { id:7, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"https://github.com/yashwanthramsomireddy/recruitlens", store:null, firefoxStore:null, status:"soon", opensource:true, privacy:"https://teamexykings.in/recruit-lens/privacy-policy.html" },
-  { id:8, name:"DreamLoop", handle:"DreamLoop", desc:"Dream journal app with AI-detected recurring dreams. Google sign-in, optional Drive backup — in development.", cat:"Mobile App", icon:"🌙", github:"https://github.com/yashwanthramsomireddy/dreamloop", store:null, firefoxStore:null, status:"soon", opensource:false, privacy:"https://teamexykings.in/dream-loop/privacy-policy.html" },
-  { id:9, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy/PurgeKit", store:null, firefoxStore:null, status:"live", opensource:true },
-  { id:10, name:"DebloatKit", handle:"DebloatKit", desc:"Open-source Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy/DebloatKit", store:null, firefoxStore:null, status:"live", opensource:true },
-  { id:11, name:"HR Floor Planning", handle:"HR Floor Plan", desc:"Offline, single-file HTML tool for Sterling's HR team to plan and manage seating/floor layouts.", cat:"Internal Tool", icon:"🏢", github:"#", store:null, firefoxStore:null, status:"live", opensource:false },
-  { id:12, name:"HR Salary Application", handle:"HR Salary App", desc:"Single-file HTML salary calculator tool built for Sterling's HR/BI team.", cat:"Internal Tool", icon:"💵", github:"#", store:null, firefoxStore:null, status:"live", opensource:false }
+  // Per-app web pages (privacy-policy.html, terms etc.) live in the site repo's <App-Name>/ folders (case-sensitive),
+  // served at teamexykings.in/<App-Name>/. github:"#" = private repo (no public link shown).
+  { id:1, name:"KingLog", handle:"KingLog", desc:"Personal secure vault and logging app for Banking, Cards, IDs & WiFi, and Passwords — local-first, encrypted Drive backup. Renamed from KingVault. In development.", cat:"Mobile App", icon:"🔐", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Log/privacy-policy.html" },
+  { id:2, name:"King Calc", handle:"King Calc", desc:"Free calculator for Android — basic, currency, units, percent and loan/EMI. No ads, no tracking. Play Store release pending.", cat:"Android Tool", icon:"🧮", github:"#", store:null, firefoxStore:null, status:"live", opensource:false,privacy:"https://teamexykings.in/King-Calc/privacy-policy.html" },
+  { id:3, name:"King Calc Watch", handle:"KC Watch", desc:"Standalone Wear OS calculator companion for Galaxy Watch 8 Classic — basic, currency, percent and unit conversion on your wrist.", cat:"Android Tool", icon:"⌚", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Calc-Watch/privacy-policy.html" },
+  { id:4, name:"Bookmark Tab Manager", handle:"BTM", desc:"Browser extension for Chrome and Firefox to organize and manage bookmarks across multiple tabs efficiently.", cat:"Browser Extension", icon:"🔖", github:"#", store:"https://chromewebstore.google.com/detail/bookmark-tab-manager/liamjkjiaklgnjeemocgmlmlgbgomloj", firefoxStore:"https://addons.mozilla.org/en-GB/firefox/addon/bookmark-tab-manager-fx/", status:"live", opensource:false,privacy:"https://teamexykings.in/Bookmark-Tab-Manager/privacy-policy.html" },
+  { id:5, name:"RecruitLens", handle:"RecruitLens", desc:"AI-powered resume screening mobile app built with React Native, Expo, Supabase and OpenRouter.", cat:"Mobile App", icon:"🔍", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/Recruit-Lens/privacy-policy.html" },
+  { id:6, name:"DreamLoop", handle:"DreamLoop", desc:"Dream journal app with AI-detected recurring dreams. Google sign-in, optional Drive backup — in development.", cat:"Mobile App", icon:"🌙", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/Dream-Loop/privacy-policy.html" },
+  { id:7, name:"King Craft", handle:"King Craft", desc:"Free offline PDF and photo tools for Android — everything runs on your device. In development.", cat:"Mobile App", icon:"🛠️", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Craft/privacy-policy.html" },
+  { id:8, name:"KingEstate", handle:"KingEstate", desc:"Offline property document checklist for Android — keep track of every document you need. In development.", cat:"Mobile App", icon:"🏠", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Estate/privacy-policy.html" },
+  { id:9, name:"King Info", handle:"King Info", desc:"Device info and diagnostics app for Android — hardware and system details at a glance. In development.", cat:"Mobile App", icon:"📊", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Info/privacy-policy.html" },
+  { id:10, name:"King Color Picker", handle:"King Color", desc:"Live camera color picker for Android — point at anything and grab its color. In development.", cat:"Mobile App", icon:"🎨", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Color-Picker/privacy-policy.html" },
+  { id:11, name:"King Six", handle:"King Six", desc:"Cricket scorer for Android with Google sign-in and cloud sync. In development.", cat:"Mobile App", icon:"🏏", github:"#", store:null, firefoxStore:null, status:"soon", opensource:false,privacy:"https://teamexykings.in/King-Six/privacy-policy.html" },
+  { id:12, name:"QuickOff", handle:"QuickOff", desc:"Portable power menu for Windows 10/11. Hibernate, Sleep, Shutdown, Restart, Lock and Sign Out — no install needed.", cat:"Windows Tool", icon:"⚡", github:"https://github.com/yashwanthramsomireddy/Quick-Off", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:13, name:"King Animated Desktop", handle:"King Desktop", desc:"Animated desktop pets for Windows — a web-swinging hero, a Labrador and a neon TeamExyKings badge with custom text.", cat:"Windows Tool", icon:"🐾", github:"https://github.com/yashwanthramsomireddy/King-Animated-Desktop", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:14, name:"PurgeKit", handle:"PurgeKit", desc:"Windows utility to clear cache, remove junk files, and keep software updated — all in one lightweight tool.", cat:"Windows Tool", icon:"🧹", github:"https://github.com/yashwanthramsomireddy/Purge-Kit", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:15, name:"DebloatKit", handle:"DebloatKit", desc:"Android debloater for Samsung devices. Remove pre-installed bloatware and improve device performance.", cat:"Android Tool", icon:"📱", github:"https://github.com/yashwanthramsomireddy/Debloat-Kit", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:16, name:"Samsung TV Debloat Kit", handle:"TV Debloat", desc:"Debloat tool for Samsung TVs — remove pre-installed apps and tidy up your TV.", cat:"TV Tool", icon:"📺", github:"https://github.com/yashwanthramsomireddy/Samsung-TV-Debloat-Kit", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:17, name:"Pitch Black Theme", handle:"Telegram Theme", desc:"AMOLED-black Telegram theme for Android and Desktop.", cat:"Theme", icon:"🌑", github:"https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:18, name:"HR Floor Planning", handle:"HR Floor Plan", desc:"Offline, single-file HTML tool for Sterling's HR team to plan and manage seating/floor layouts.", cat:"Internal Tool", icon:"🏢", github:"#", store:null, firefoxStore:null, status:"live", opensource:false },
+  { id:19, name:"HR Salary Application", handle:"HR Salary App", desc:"Single-file HTML salary calculator tool built for Sterling's HR/BI team.", cat:"Internal Tool", icon:"💵", github:"#", store:null, firefoxStore:null, status:"live", opensource:false }
 ];
 
 const LEGACY_ICONS = { "Note Series":"📓", "S Series":"⭐", "A Series":"🅰️", "Tab Series":"📟", "Kernels":"⚙️" };
@@ -1187,6 +1193,9 @@ const LEGACY = {
     ]},
     { device:"S7Edge", model:"SM-G900H", builds:[
       { name:"Wanted [MM]", link:"https://www.androidfilehost.com/?fid=745425885120724959" }
+    ]},
+    { device:"S5", model:"G900H", builds:[
+      { name:"Wanted Kernel — Source ↗", link:"https://github.com/yashwanthramsomireddy/Wanted_Kernel" }
     ]}
   ]
 };
@@ -1652,7 +1661,7 @@ function makeProjectCardHTML(p) {
       <span class="status-badge ${p.status==='live'?'status-live':'status-soon'}">${p.status==='live'?'Live':'Soon'}</span>
     </div>
     <p class="pc-desc">${p.desc}</p>
-    <div class="pc-tags"><span class="pc-tag">${p.cat}</span><span class="pc-tag">Free</span>${p.opensource?'<span class="pc-tag">Open Source</span>':''}</div>
+    <div class="pc-tags"><span class="pc-tag">${p.cat}</span><span class="pc-tag">Free</span></div>
     <div class="pc-links">${links.join('')}</div>
   </div>`;
 }

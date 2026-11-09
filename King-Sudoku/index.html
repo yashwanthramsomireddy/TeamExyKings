@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>King Sudoku &mdash; Free Offline Sudoku | TeamExyKings</title>
+<meta name="description" content="King Sudoku is a free, offline, ad-free Sudoku app with notes, hints, daily puzzles and stats. No ads, no subscription, no sign-in." />
+<style>
+  :root { --accent: #F59E0B; --bg: #000000; --surface: #0A0A0A; --card: #141414; --text: #FFFFFF; --muted: #B3B3B3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 64px 24px 32px; text-align: center; }
+  header h1 { font-size: 2.4rem; margin: 0 0 8px; }
+  header p { color: var(--muted); max-width: 560px; margin: 0 auto; }
+  .accent { color: var(--accent); }
+  main { max-width: 960px; margin: 0 auto; padding: 0 24px 64px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; }
+  .card { background: var(--card); border-radius: 16px; padding: 20px; border: 1px solid rgba(245,158,11,0.15); }
+  .card h3 { margin-top: 0; color: var(--accent); font-size: 1.05rem; }
+  .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0; }
+  footer { text-align: center; padding: 32px 24px; color: var(--muted); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .badge { display: inline-block; background: rgba(245,158,11,0.12); color: var(--accent); border-radius: 999px; padding: 6px 16px; font-size: 0.8rem; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <span class="badge">Free Forever &middot; No Ads &middot; Fully Offline</span>
+  <h1>King <span class="accent">Sudoku</span></h1>
+  <p>A clean, fast, fully offline Sudoku app with notes, hints, a daily puzzle, and stats &amp; streaks &mdash; from TeamExyKings.</p>
+</header>
+<main>
+  <div class="grid">
+    <div class="card">
+      <h3>Four Difficulty Levels</h3>
+      <p>Easy, Medium, Hard and Expert, graded by the techniques a puzzle actually needs &mdash; not just clue count.</p>
+    </div>
+    <div class="card">
+      <h3>Daily Puzzle</h3>
+      <p>Generated fresh every day, entirely on your device. No download, no internet required.</p>
+    </div>
+    <div class="card">
+      <h3>Notes &amp; Hints</h3>
+      <p>Full pencil-mark support, undo, mistake highlighting, and hints that explain the technique used.</p>
+    </div>
+    <div class="card">
+      <h3>Stats &amp; Streaks</h3>
+      <p>Track games played and won per difficulty, best times, and your daily-puzzle streak.</p>
+    </div>
+    <div class="card">
+      <h3>Private by Design</h3>
+      <p>No accounts, no analytics, no tracking. Your progress stays on your device.</p>
+    </div>
+    <div class="card">
+      <h3>Local Backup &amp; Restore</h3>
+      <p>Export everything to a single JSON file whenever you like, and restore it on any device.</p>
+    </div>
+  </div>
+</main>
+<footer>
+  &copy; <span id="year"></span> TeamExyKings &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms-of-service.html">Terms of Use</a>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

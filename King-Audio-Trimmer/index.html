@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>King Audio Trimmer — Free offline audio trimmer for Android</title>
+<meta name="description" content="Trim any audio file on your phone. Waveform editor, fade in/out, M4A and WAV export. Free forever, no ads, no tracking, works offline.">
+<style>
+  :root { --accent:#A855F7; --bg:#000; --card:#0d0d0d; --line:#2a2a2a; --muted:#a3a3a3; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:#fff; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  main { max-width:760px; margin:0 auto; padding:40px 20px 60px; }
+  header { text-align:center; margin-bottom:36px; }
+  .icon { width:132px; height:132px; margin:0 auto 18px; border-radius:30px; overflow:hidden; animation:glow 2.6s ease-in-out infinite alternate; }
+  @keyframes glow { from { box-shadow:0 0 14px rgba(168,85,247,.25); } to { box-shadow:0 0 42px rgba(168,85,247,.7); } }
+  h1 { margin:0 0 6px; font-size:2rem; }
+  .tag { color:var(--muted); margin:0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:20px 22px; margin:14px 0; }
+  h2 { margin:0 0 8px; font-size:1.15rem; color:var(--accent); }
+  ul { margin:0; padding-left:20px; }
+  li { margin:4px 0; }
+  .pills { display:flex; flex-direction:column; gap:10px; margin-top:26px; }
+  .pills a { display:block; text-align:center; background:#1a1a1a; color:#fff; text-decoration:none; padding:14px; border-radius:999px; font-weight:600; }
+  .pills a:hover { background:#242424; }
+  footer { text-align:center; color:var(--muted); font-size:.9rem; margin-top:34px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="132" viewBox="0 0 512 512" role="img" aria-label="King Audio Trimmer icon">
+<defs>
+<linearGradient id="ibars" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="412">
+  <stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#EC4899"/></linearGradient>
+<linearGradient id="bd" gradientUnits="userSpaceOnUse" x1="28" y1="28" x2="484" y2="484">
+  <stop offset="0" stop-color="#A855F7"/><stop offset="0.5" stop-color="#EC4899"/><stop offset="1" stop-color="#A855F7"/></linearGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="11"/></filter>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+<radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#A855F7" stop-opacity="0.20"/><stop offset="1" stop-color="#A855F7" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="512" height="512" fill="#000"/>
+<circle cx="256" cy="256" r="230" fill="url(#halo)"/>
+<rect x="28" y="28" width="456" height="456" rx="118" fill="none" stroke="url(#bd)" stroke-width="10" filter="url(#glow)" opacity="0.75"/><rect x="28" y="28" width="456" height="456" rx="118" fill="none" stroke="url(#bd)" stroke-width="3"/>
+<g filter="url(#soft)" opacity="0.55"><rect x="144" y="124" width="224" height="264" rx="30" fill="#A855F7" opacity="0.10"/>
+<rect x="90.0" y="236.0" width="12" height="40" rx="6.0" fill="#34343D"/>
+<rect x="122.0" y="221.0" width="12" height="70" rx="6.0" fill="#34343D"/>
+<rect x="154.0" y="201.0" width="12" height="110" rx="6.0" fill="url(#ibars)"/>
+<rect x="186.0" y="171.0" width="12" height="170" rx="6.0" fill="url(#ibars)"/>
+<rect x="218.0" y="196.0" width="12" height="120" rx="6.0" fill="url(#ibars)"/>
+<rect x="250.0" y="131.0" width="12" height="250" rx="6.0" fill="url(#ibars)"/>
+<rect x="282.0" y="161.0" width="12" height="190" rx="6.0" fill="url(#ibars)"/>
+<rect x="314.0" y="208.0" width="12" height="96" rx="6.0" fill="url(#ibars)"/>
+<rect x="346.0" y="181.0" width="12" height="150" rx="6.0" fill="url(#ibars)"/>
+<rect x="378.0" y="214.0" width="12" height="84" rx="6.0" fill="#34343D"/>
+<rect x="410.0" y="234.0" width="12" height="44" rx="6.0" fill="#34343D"/>
+<rect x="139.0" y="104" width="10" height="304" rx="5.0" fill="#fff"/>
+<circle cx="144" cy="104" r="19" fill="#fff"/><circle cx="144" cy="104" r="7" fill="#A855F7"/>
+<rect x="363.0" y="104" width="10" height="304" rx="5.0" fill="#fff"/>
+<circle cx="368" cy="408" r="19" fill="#fff"/><circle cx="368" cy="408" r="7" fill="#A855F7"/></g>
+<rect x="144" y="124" width="224" height="264" rx="30" fill="#A855F7" opacity="0.10"/>
+<rect x="90.0" y="236.0" width="12" height="40" rx="6.0" fill="#34343D"/>
+<rect x="122.0" y="221.0" width="12" height="70" rx="6.0" fill="#34343D"/>
+<rect x="154.0" y="201.0" width="12" height="110" rx="6.0" fill="url(#ibars)"/>
+<rect x="186.0" y="171.0" width="12" height="170" rx="6.0" fill="url(#ibars)"/>
+<rect x="218.0" y="196.0" width="12" height="120" rx="6.0" fill="url(#ibars)"/>
+<rect x="250.0" y="131.0" width="12" height="250" rx="6.0" fill="url(#ibars)"/>
+<rect x="282.0" y="161.0" width="12" height="190" rx="6.0" fill="url(#ibars)"/>
+<rect x="314.0" y="208.0" width="12" height="96" rx="6.0" fill="url(#ibars)"/>
+<rect x="346.0" y="181.0" width="12" height="150" rx="6.0" fill="url(#ibars)"/>
+<rect x="378.0" y="214.0" width="12" height="84" rx="6.0" fill="#34343D"/>
+<rect x="410.0" y="234.0" width="12" height="44" rx="6.0" fill="#34343D"/>
+<rect x="139.0" y="104" width="10" height="304" rx="5.0" fill="#fff"/>
+<circle cx="144" cy="104" r="19" fill="#fff"/><circle cx="144" cy="104" r="7" fill="#A855F7"/>
+<rect x="363.0" y="104" width="10" height="304" rx="5.0" fill="#fff"/>
+<circle cx="368" cy="408" r="19" fill="#fff"/><circle cx="368" cy="408" r="7" fill="#A855F7"/>
+</svg>
+    </div>
+    <h1>King Audio Trimmer</h1>
+    <p class="tag">Trim any audio file on your phone. Free forever. Works offline.</p>
+  </header>
+
+  <section class="card">
+    <h2>What it does</h2>
+    <ul>
+      <li>Pick any audio file with Android's own file picker</li>
+      <li>See the waveform, drag the start and end handles, pinch to zoom for precise cuts</li>
+      <li>Preview exactly the part you selected</li>
+      <li>Add a fade in and fade out</li>
+      <li>Save to your Music folder as M4A (AAC) or WAV with a name you choose</li>
+      <li>Lossless cut for M4A files: no re-encoding, no quality loss</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Private by design</h2>
+    <ul>
+      <li>No ads, no subscription, no account, no analytics, no tracking</li>
+      <li>No storage permission needed</li>
+      <li>Your audio never leaves your phone</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Make it yours</h2>
+    <ul>
+      <li>Pitch Black (default), White or System theme</li>
+      <li>Five font choices and an accent colour picker</li>
+      <li>Backup and restore your settings to a single file</li>
+    </ul>
+  </section>
+
+  <nav class="pills">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Use</a>
+    <a href="mailto:Yashwanthramsomireddy@gmail.com?subject=King%20Audio%20Trimmer%20Support%2FRequest">Contact Support</a>
+  </nav>
+
+  <footer>Built by Yashwanth Ram Somireddy · TeamExyKings</footer>
+</main>
+</body>
+</html>

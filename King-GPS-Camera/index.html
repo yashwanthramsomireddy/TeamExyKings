@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>King GPS Camera — TeamExyKings</title>
+<meta name="description" content="An Android camera that stamps location, coordinates, altitude and date/time directly onto your photos. Free forever, no ads, no sign-in.">
+<style>
+  :root{
+    --bg:#000; --surface:#070707; --elevated:#101010;
+    --line:#1f1f1f; --line-strong:#2e2e2e;
+    --text:#f5f5f5; --muted:#9a9a9a; --dim:#6b6b6b; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  header{padding:88px 0 60px;text-align:center;border-bottom:1px solid var(--line)}
+  .mark{
+    width:84px;height:84px;margin:0 auto 26px;border-radius:21px;
+    background:var(--bg);border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .mark svg{width:60px;height:60px}
+  h1{font-size:2.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+  .tagline{color:var(--muted);font-size:1.08rem;max-width:560px;margin:0 auto 26px}
+  .pills{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+  .pill{
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:6px 15px;font-size:.78rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted)
+  }
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.4rem;font-weight:600;margin-bottom:22px;letter-spacing:-.01em}
+  h3{font-size:1rem;font-weight:600;margin-bottom:5px}
+  p{color:var(--muted);margin-bottom:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(246px,1fr));gap:14px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:19px
+  }
+  .card p{margin:0;font-size:.9rem;color:var(--dim)}
+  ul{list-style:none;color:var(--muted)}
+  ul li{padding-left:20px;position:relative;margin-bottom:9px}
+  ul li::before{content:"";position:absolute;left:3px;top:11px;width:5px;height:5px;border-radius:50%;background:var(--dim)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--text);font-weight:600;white-space:nowrap}
+  td{color:var(--muted)}
+  .stamp-demo{
+    background:var(--elevated);border:1px solid var(--line-strong);border-radius:12px;
+    padding:16px 18px;font-size:.85rem;color:var(--muted);line-height:1.5
+  }
+  .stamp-demo .big{color:var(--white);font-size:1.05rem;font-weight:600;display:block;margin-bottom:5px}
+  footer{padding:48px 0 64px;text-align:center;color:var(--dim);font-size:.86rem}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+  footer a:hover{color:var(--white)}
+  .links{display:flex;gap:20px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+  @media(max-width:600px){h1{font-size:1.95rem}header{padding:60px 0 44px}section{padding:40px 0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark">
+      <svg viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#fff" d="M46,30 L62,30 A4,4 0 0 1 66,34 L66,40 L42,40 L42,34 A4,4 0 0 1 46,30 Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M35,38 L73,38 A7,7 0 0 1 80,45 L80,71 A7,7 0 0 1 73,78 L35,78 A7,7 0 0 1 28,71 L28,45 A7,7 0 0 1 35,38 Z M38,44 L70,44 A4,4 0 0 1 74,48 L74,68 A4,4 0 0 1 70,72 L38,72 A4,4 0 0 1 34,68 L34,48 A4,4 0 0 1 38,44 Z M54,47 C49.03,47 45,51.03 45,56 C45,62.75 54,69 54,69 C54,69 63,62.75 63,56 C63,51.03 58.97,47 54,47 Z M50.6,56 A3.4,3.4 0 1 1 57.4,56 A3.4,3.4 0 1 1 50.6,56 Z M37.2,49.4 A2.3,2.3 0 1 1 41.8,49.4 A2.3,2.3 0 1 1 37.2,49.4 Z"/>
+      </svg>
+    </div>
+    <h1>King GPS Camera</h1>
+    <p class="tagline">
+      A camera that writes where and when a photo was taken into the photo
+      itself — so the proof travels with the picture.
+    </p>
+    <div class="pills">
+      <span class="pill">Free forever</span>
+      <span class="pill">No ads</span>
+      <span class="pill">No subscription</span>
+      <span class="pill">No sign-in</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What lands on your photo</h2>
+    <div class="stamp-demo">
+      <span class="big">Chennai, Tamil Nadu, India</span>
+      Tidel Park, Rajiv Gandhi IT Expressway, Taramani, Chennai 600113<br>
+      Lat 12.989372°&nbsp;&nbsp;Long 80.249558°<br>
+      Alt 14 m&nbsp;&nbsp;&nbsp;±4 m<br>
+      Thursday, 12 Nov 2026 06:10 PM GMT +05:30
+    </div>
+    <p style="margin-top:16px">
+      Every line above can be switched off on its own, and you can add a line of
+      your own text — a site name, a job number, an inspector's initials.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Built for work in the field</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Burned in, not bolted on</h3>
+        <p>The stamp is painted into the pixels at capture. It survives WhatsApp, email, printing and pasting into a report, and it cannot be peeled off afterwards.</p>
+      </div>
+      <div class="card">
+        <h3>Four templates</h3>
+        <p>Classic, Detailed, Compact and Minimal — each positionable in any of the four corners, with adjustable text size and backdrop.</p>
+      </div>
+      <div class="card">
+        <h3>A preview you can trust</h3>
+        <p>The viewfinder overlay is drawn by the same code that writes the saved file. What you line up is what you get.</p>
+      </div>
+      <div class="card">
+        <h3>EXIF as well</h3>
+        <p>Coordinates, altitude and timestamps are written into the file's metadata too, so maps and photo managers can place the shot.</p>
+      </div>
+      <div class="card">
+        <h3>Formats to suit the job</h3>
+        <p>Decimal degrees or degrees-minutes-seconds. Metric or imperial. Five date layouts and a 12- or 24-hour clock.</p>
+      </div>
+      <div class="card">
+        <h3>Your gallery, your files</h3>
+        <p>Photos go straight to Pictures / King GPS Camera, visible to every gallery and file manager on the phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Who it is for</h2>
+    <ul>
+      <li>Site engineers and construction supervisors recording progress</li>
+      <li>Surveyors and inspectors who need a defensible record</li>
+      <li>Property and real-estate agents documenting a listing</li>
+      <li>Field service and maintenance teams closing out a job</li>
+      <li>Anyone who simply wants to remember where a photo was taken</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Permissions, plainly</h2>
+    <table>
+      <tr>
+        <th>Camera</th>
+        <td>Taking the photo. Required.</td>
+      </tr>
+      <tr>
+        <th>Location</th>
+        <td>The coordinates printed on the photo. Optional — decline it and the app still works as a date-and-time stamp camera.</td>
+      </tr>
+      <tr>
+        <th>Internet</th>
+        <td>One job only: turning coordinates into a readable street address through Android's own geocoder. Switch off the place name and address in Settings and the app never touches the network.</td>
+      </tr>
+      <tr>
+        <th>Storage</th>
+        <td>Saving into your gallery on Android 8 and 9. Not requested on Android 10 and above.</td>
+      </tr>
+    </table>
+    <p style="margin-top:18px">
+      No analytics. No crash reporting. No advertising. No account. Your photos
+      never leave your phone unless you share them yourself.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="terms-of-service.html">Terms of use</a>
+      <a href="https://teamexykings.in">TeamExyKings</a>
+    </div>
+    <p style="color:var(--dim)">
+      King GPS Camera is part of the King Ecosystem by TeamExyKings.<br>
+      Built by Yashwanth Ram Somireddy · Yashwanthramsomireddy@gmail.com
+    </p>
+    <p style="color:var(--dim);margin-top:14px;font-size:.8rem">
+      © 2026 TeamExyKings. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

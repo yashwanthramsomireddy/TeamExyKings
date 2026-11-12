@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Compass — Compass, bubble level and inclinometer</title>
+<meta name="description" content="King Compass is a free Android compass, bubble level and inclinometer from TeamExyKings. No ads, no tracking, no login, works offline.">
+<meta name="theme-color" content="#000000">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#000;--surface:#070707;--elevated:#0d0d0d;
+    --border:#1f1f1f;--border-strong:#2e2e2e;
+    --text:#fff;--text-2:#a1a1aa;--text-3:#71717a;
+  }
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{padding:72px 0 48px;text-align:center}
+  .badge{
+    width:116px;height:116px;margin:0 auto 26px;border-radius:32px;
+    background:var(--elevated);display:flex;align-items:center;justify-content:center;
+  }
+  .badge-inner{
+    width:90px;height:90px;border-radius:26px;background:#000;
+    border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;
+  }
+  h1{font-size:40px;line-height:1.15;letter-spacing:-.5px;font-weight:700}
+  .tag{color:var(--text-2);font-size:17px;margin-top:12px}
+  .pills{color:var(--text-3);font-size:14px;margin-top:10px;letter-spacing:.3px}
+  .cta{
+    display:inline-block;margin-top:28px;padding:14px 30px;border-radius:16px;
+    background:#fff;color:#000;font-weight:600;text-decoration:none;font-size:15px;
+  }
+  .cta:hover{opacity:.9}
+  section{padding:34px 0;border-top:1px solid var(--border)}
+  h2{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-3);margin-bottom:20px;font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px}
+  .card h3{font-size:16px;margin-bottom:7px;font-weight:600}
+  .card p{color:var(--text-2);font-size:14px}
+  ul{list-style:none}
+  li{color:var(--text-2);font-size:14.5px;padding:7px 0 7px 20px;position:relative}
+  li::before{content:"·";position:absolute;left:4px;color:var(--text-3)}
+  .note{color:var(--text-3);font-size:13.5px;margin-top:16px}
+  footer{padding:40px 0 56px;border-top:1px solid var(--border);text-align:center;color:var(--text-3);font-size:13.5px}
+  footer a{color:var(--text-2);text-decoration:none;margin:0 9px}
+  footer a:hover{color:#fff}
+  @media(max-width:600px){header{padding:52px 0 36px}h1{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="badge">
+      <div class="badge-inner">
+        <svg width="56" height="56" viewBox="0 0 108 108" fill="none" aria-hidden="true">
+          <path fill="#fff" fill-rule="evenodd" d="M54,19 a35,35 0 1,0 0.1,0 z M54,23.5 a30.5,30.5 0 1,0 0.1,0 z"/>
+          <path fill="#fff" d="M53,10 h2 v7 h-2 z M53,91 h2 v7 h-2 z M10,53 h7 v2 h-7 z M91,53 h7 v2 h-7 z"/>
+          <path fill="#fff" d="M54,28 L59.5,48.5 L54,54 L48.5,48.5 Z"/>
+          <path fill="#fff" fill-opacity=".45" d="M54,80 L48.5,59.5 L54,54 L59.5,59.5 Z"/>
+          <path fill="#fff" fill-opacity=".45" d="M28,54 L48.5,48.5 L54,54 L48.5,59.5 Z M80,54 L59.5,59.5 L54,54 L59.5,48.5 Z"/>
+          <circle cx="54" cy="54" r="4" fill="#000"/>
+        </svg>
+      </div>
+    </div>
+    <h1>King Compass</h1>
+    <p class="tag">A compass, a bubble level and an inclinometer, in one pitch-black app.</p>
+    <p class="pills">Free forever · No ads · No tracking · No login</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.teamexykings.kingcompass">Get it on Google Play</a>
+  </header>
+
+  <section>
+    <h2>Three tools</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Compass</h3>
+        <p>Heading in degrees with the cardinal point, on a dial you can set to rotate the card or just the needle. Live magnetic field strength and sensor accuracy are shown alongside, so you know when to trust the reading.</p>
+      </div>
+      <div class="card">
+        <h3>Bubble level</h3>
+        <p>A two-axis spirit level with pitch and roll to a tenth of a degree. Calibrate it against any surface you know is flat to cancel out a case or an off-square sensor.</p>
+      </div>
+      <div class="card">
+        <h3>Inclinometer</h3>
+        <p>Slope angle from horizontal, with grade percentage and roof pitch in x:12. Hold freezes the reading so you can take the phone off an awkward surface and read it after.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Calibration, explained</h2>
+    <ul>
+      <li>A step-by-step guide built into the app, with an animated figure-8 to follow.</li>
+      <li>Live accuracy and field-strength readouts so you can see the calibration take effect.</li>
+      <li>Plain-language notes on why a compass drifts and what to do when it still reads wrong.</li>
+    </ul>
+    <p class="note">Earth's magnetic field runs roughly 25–65 µT. If the app reports something far outside that, metal or a magnet nearby is the cause, not the phone.</p>
+  </section>
+
+  <section>
+    <h2>Built to stay out of the way</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>No permissions worth the name</h3>
+        <p>Vibration only, for the haptic tick, and you can switch that off. No location, no camera, no storage, no internet.</p>
+      </div>
+      <div class="card">
+        <h3>Entirely offline</h3>
+        <p>Every reading comes from your phone's own sensors. Nothing is uploaded, because the app has no way to reach a network.</p>
+      </div>
+      <div class="card">
+        <h3>True AMOLED black</h3>
+        <p>Pitch black with a white accent. On an OLED screen a black pixel is switched off, which matters for a tool you leave open.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <ul>
+      <li>Headings are magnetic north. True north would need your location, and the app asks for no permissions.</li>
+      <li>Hold the phone flat for an accurate heading — error grows quickly past about 25° of tilt.</li>
+      <li>A few budget phones ship without a magnetometer. The compass says so, and the level and inclinometer carry on working.</li>
+      <li>Android 7.0 (API 24) and above.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Built by Yashwanth Ram Somireddy · A TeamExyKings product</p>
+    <p style="margin-top:14px">
+      <a href="privacy-policy.html">Privacy policy</a>·
+      <a href="terms-of-service.html">Terms of use</a>·
+      <a href="https://teamexykings.in">TeamExyKings</a>·
+      <a href="mailto:Yashwanthramsomireddy@gmail.com">Contact</a>
+    </p>
+    <p style="margin-top:16px">© 2026 TeamExyKings. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>

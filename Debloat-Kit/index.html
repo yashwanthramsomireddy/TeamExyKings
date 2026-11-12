@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DebloatKit — Samsung Galaxy Debloater for Windows</title>
+<meta name="description" content="Disable or uninstall bloatware on Samsung Galaxy phones over ADB — no root, fully reversible, with a Core-app safety net and automatic backups. Free for Windows.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="DebloatKit — Samsung Galaxy Debloater for Windows">
+<meta property="og:description" content="Disable or uninstall bloatware on Samsung Galaxy phones over ADB — no root, fully reversible, with a Core-app safety net and automatic backups. Free for Windows.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/logo_32.png">
+<style>
+:root{--bg:#0a0a0a;--card:#111312;--card2:#161918;--line:#232826;--text:#e8ece9;--muted:#9aa5a0;--dim:#6b7570;--acc:#00e676;--acc2:#00b85c;--warn:#ffab00;--red:#ff5252;--ink:#04120a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700;font-size:17px}
+.brand img{width:30px;height:30px;border-radius:7px}
+.brand span{color:var(--acc)}
+.brand small{color:var(--dim);font-weight:500;font-size:12px;margin-left:2px}
+.links{display:flex;gap:18px;font-size:14px;flex-wrap:wrap;justify-content:flex-end}
+.links a{color:var(--muted)}.links a:hover,.links a.on{color:var(--acc);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:9px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px);text-decoration:none}
+.btn.p{background:var(--acc);color:var(--ink)}.btn.p:hover{background:#33ff94}
+.btn.g{background:var(--card);color:var(--text);border-color:var(--line)}.btn.g:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding:76px 0 56px;text-align:center}
+.hero img.logo{width:104px;height:104px;border-radius:24px;box-shadow:0 0 0 1px var(--line),0 18px 60px rgba(0,230,118,.14)}
+.tag{display:inline-block;margin-top:22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);border:1px solid #0c4a2a;background:#07170e;padding:5px 12px;border-radius:99px}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:14px 0 14px;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--acc)}
+.lead{max-width:640px;margin:0 auto 28px;color:var(--muted);font-size:18px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.meta{margin-top:18px;color:var(--dim);font-size:13px}
+section{padding:54px 0;border-top:1px solid var(--line)}
+h2{font-size:28px;letter-spacing:-.01em;margin-bottom:8px}
+h2 + p.sub{color:var(--muted);margin-bottom:30px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{font-size:16px;margin-bottom:6px}.card h3 i{font-style:normal;margin-right:8px}
+.card p{color:var(--muted);font-size:14.5px}
+.steps{counter-reset:s;display:grid;gap:12px}
+.step{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;align-items:flex-start}
+.step:before{counter-increment:s;content:counter(s);flex:0 0 32px;height:32px;border-radius:50%;background:var(--acc);color:var(--ink);font-weight:800;display:grid;place-items:center;font-size:14px}
+.step b{display:block}.step span{color:var(--muted);font-size:14.5px}
+.mock{background:#0d0f0e;border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:520px;margin:0 auto;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.mock .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#101312;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.mock .dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.mock .tabs{display:flex;gap:4px;padding:8px 10px;font-size:12px}
+.mock .tabs span{padding:5px 10px;border-radius:6px;color:var(--dim)}.mock .tabs .a{background:var(--acc);color:var(--ink);font-weight:700}
+.mock .hd{background:var(--acc);color:var(--ink);font-weight:700;font-size:12px;padding:5px 12px;margin-top:4px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #161a18;font-size:13px}
+.row .l{display:flex;gap:10px;align-items:center}
+.cb{width:14px;height:14px;border:1px solid var(--dim);border-radius:3px;flex:0 0 14px}.cb.on{background:var(--acc);border-color:var(--acc)}
+.row small{display:block;color:var(--dim);font-family:Consolas,monospace;font-size:11px}
+.row .r{text-align:right;font-size:11px;font-weight:700}.safe{color:var(--acc)}.rec{color:#69f0ae}.cau{color:var(--warn)}.core{color:var(--red)}
+.mock .foot{display:flex;gap:6px;padding:10px}
+.mock .foot span{flex:1;text-align:center;font-size:11.5px;font-weight:700;padding:8px 4px;border-radius:6px;background:#161918}
+.risk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.risk .card b{display:block;margin-bottom:4px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600;list-style:none}.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";float:right;color:var(--acc);font-size:20px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{color:var(--muted);margin-top:10px;font-size:15px}
+.note{background:#1a1405;border:1px solid #4d3a00;color:#ffd666;border-radius:10px;padding:14px 18px;font-size:14.5px;margin-top:18px}
+.legal{padding:48px 0 70px}
+.legal h1{font-size:clamp(30px,5vw,42px);margin:0 0 6px}
+.legal .upd{color:var(--dim);font-size:14px;margin-bottom:30px}
+.legal h2{font-size:21px;margin:34px 0 10px;color:var(--text);padding-top:6px}
+.legal h2 span{color:var(--acc);margin-right:6px}
+.legal p,.legal li{color:#c3ccc7;font-size:15.5px}
+.legal p{margin-bottom:12px}.legal ul{margin:0 0 14px 22px}.legal li{margin-bottom:6px}
+.legal .box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:16px 18px;margin:16px 0}
+.legal .box p:last-child{margin:0}
+.legal table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:14.5px}
+.legal th,.legal td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.legal th{background:var(--card2);color:var(--text)}.legal td{color:#c3ccc7}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px}
+.toc b{display:block;margin-bottom:6px}.toc ol{margin-left:20px;columns:2;column-gap:30px}.toc li{font-size:14.5px;margin-bottom:3px}
+@media(max-width:600px){.brand small,.links a:nth-child(-n+3){display:none}.links{gap:16px;font-size:14px}.legal table,.legal tbody,.legal tr,.legal td{display:block;width:100%}.legal tr:first-child{display:none}.legal tr{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;padding:6px 0}.legal td{border:0;padding:4px 12px}.legal td:first-child{color:var(--text);font-weight:700}.toc ol{columns:1}.links{gap:12px;font-size:13px}.hero{padding-top:48px}}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--dim);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between}
+footer p{max-width:560px}
+footer .fl{display:flex;gap:18px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="brand" href="index.html"><img src="assets/logo_64.png" alt="DebloatKit logo"><div>Debloat<span>Kit</span> <small>v2.0</small></div></a>
+<div class="links">
+<a href="index.html#features">Features</a>
+<a href="index.html#how">How it works</a>
+<a href="index.html#faq">FAQ</a>
+<a href="privacy-policy.html">Privacy</a>
+<a href="terms-of-service.html">Terms</a>
+</div></div></nav>
+
+<header class="hero"><div class="wrap">
+<img class="logo" src="assets/debloatkit_logo.png" alt="DebloatKit logo">
+<div><span class="tag">Windows · ADB · No root</span></div>
+<h1>Clean your Galaxy.<br><em>Keep full control.</em></h1>
+<p class="lead">DebloatKit finds the bloat on your Samsung Galaxy phone, rates how safe each app is to remove, and disables or uninstalls it for your user profile — then brings it back with one click if you change your mind.</p>
+<div class="cta">
+<a class="btn p" href="https://github.com/yashwanthramsomireddy/Debloat-Kit/releases/latest">⬇ Download for Windows</a>
+<a class="btn g" href="https://github.com/yashwanthramsomireddy/Debloat-Kit">View on GitHub</a>
+</div>
+<p class="meta">v2.0 · Windows 10 / 11 · Free · Works with Samsung Galaxy devices</p>
+</div></header>
+
+<section id="preview"><div class="wrap">
+<h2>Everything in one portrait window</h2>
+<p class="sub">Four package tabs, a safety rating on every app, and nothing is ticked until you tick it.</p>
+<div class="mock" aria-label="DebloatKit window preview (illustration)">
+<div class="bar"><span class="dot"></span> Galaxy S22 Ultra · Android 14 · One UI 6.1 <span style="margin-left:auto">🔋 76%</span></div>
+<div class="tabs"><span class="a">System</span><span>Core</span><span>User</span><span>3rd Party</span><span>Log</span><span>Settings</span></div>
+<div class="hd">⚙ Samsung Bloat · 3</div>
+<div class="row"><div class="l"><i class="cb on"></i><div>Bixby Voice<small>com.samsung.android.bixby.agent</small></div></div><div class="r safe">Safe<br><span style="color:var(--dim)">Enabled</span></div></div>
+<div class="row"><div class="l"><i class="cb on"></i><div>AR Zone<small>com.samsung.android.arzone</small></div></div><div class="r safe">Safe<br><span style="color:var(--dim)">Enabled</span></div></div>
+<div class="row"><div class="l"><i class="cb"></i><div>Customization Service<small>com.samsung.android.rubin.app</small></div></div><div class="r rec">Recommended<br><span style="color:var(--dim)">Enabled</span></div></div>
+<div class="hd">⚙ Google Apps · 2</div>
+<div class="row"><div class="l"><i class="cb"></i><div>Digital Wellbeing<small>com.google.android.apps.wellbeing</small></div></div><div class="r cau">Caution<br><span style="color:var(--dim)">Disabled</span></div></div>
+<div class="foot"><span style="color:var(--warn)">⏸ Disable</span><span style="color:var(--red)">🗑 Uninstall</span><span style="color:var(--acc)">↩ Re-enable</span></div>
+</div>
+<p class="meta" style="text-align:center">Illustration — your device list will differ.</p>
+</div></section>
+
+<section id="features"><div class="wrap">
+<h2>Built to be safe first</h2>
+<p class="sub">Debloating should never feel like a gamble. Every action is scoped to your user profile and can be undone.</p>
+<div class="grid">
+<div class="card"><h3><i>🔌</i>No root needed</h3><p>Uses Android's standard ADB interface and <code>--user 0</code> operations only. Nothing on the system partition is modified.</p></div>
+<div class="card"><h3><i>🛡️</i>Safety ratings</h3><p>Every known package is rated Safe, Recommended, Caution, Locked or Core, with a plain-English description of what it does.</p></div>
+<div class="card"><h3><i>⛔</i>Core-app guard</h3><p>Critical system apps live in their own tab, never bulk-selected, and ask for an explicit confirmation one by one.</p></div>
+<div class="card"><h3><i>↩️</i>One-click re-enable</h3><p>Restores disabled <em>and</em> uninstalled apps while your phone is connected. Smart restore picks the right command for each app.</p></div>
+<div class="card"><h3><i>💾</i>Automatic backups</h3><p>A JSON snapshot of package states is saved before every action, plus a Panic Restore button to re-enable everything from the latest backup.</p></div>
+<div class="card"><h3><i>⚡</i>Fast single scan</h3><p>One batched ADB call loads System, User and 3rd-party apps and sorts them into tabs. Tab switching is instant, even with 500+ packages.</p></div>
+<div class="card"><h3><i>📱</i>Era-aware</h3><p>Detects your Android / One UI version and only shows packages that apply to your device generation, from legacy TouchWiz to the newest One UI.</p></div>
+<div class="card"><h3><i>🔐</i>Handles locked apps</h3><p>On One UI builds that block the normal command, DebloatKit automatically falls back to the user-0 refresh method.</p></div>
+<div class="card"><h3><i>🎨</i>Four themes</h3><p>Green, Blue, Purple and White — switch instantly without restarting.</p></div>
+</div></div></section>
+
+<section id="how"><div class="wrap">
+<h2>How it works</h2>
+<p class="sub">From a fresh phone to a cleaner phone in a few minutes.</p>
+<div class="steps">
+<div class="step"><div><b>Turn on USB debugging</b><span>Settings → About phone → Software information → tap Build number 7 times. Then Settings → Developer options → USB debugging → ON.</span></div></div>
+<div class="step"><div><b>Connect and allow</b><span>Plug in via USB and tap <b style="display:inline">Allow</b> on the phone when asked. DebloatKit detects your Galaxy automatically.</span></div></div>
+<div class="step"><div><b>Scan</b><span>Click Scan once. Your apps are sorted into System, Core, User and 3rd Party tabs. Nothing is pre-selected.</span></div></div>
+<div class="step"><div><b>Select and apply</b><span>Tick what you don't need, then Disable or Uninstall. A backup is saved first.</span></div></div>
+<div class="step"><div><b>Changed your mind?</b><span>Select the apps and press Re-enable Selected — or use Panic Restore in Settings.</span></div></div>
+<div class="step"><div><b>Turn USB debugging off</b><span>When you're done, switch USB debugging back off in Developer options and unplug the cable.</span></div></div>
+</div>
+<div class="note">⚠ Leave USB debugging off when you're not using it. It is a developer feature and gives a connected computer elevated access to your phone.</div>
+</div></section>
+
+<section id="safety"><div class="wrap">
+<h2>What the ratings mean</h2>
+<p class="sub">A rating is guidance based on community knowledge. It is not a guarantee for every phone, carrier build or firmware.</p>
+<div class="risk">
+<div class="card"><b class="safe">Safe</b><p>Non-essential bloat, telemetry or promotional apps.</p></div>
+<div class="card"><b class="rec">Recommended</b><p>Commonly removed, with a small benefit such as fixing a known issue.</p></div>
+<div class="card"><b class="cau">Caution</b><p>May remove a feature you use. Read the description first.</p></div>
+<div class="card"><b style="color:#ffab00">Locked</b><p>Blocked on newer One UI builds; uses the user-0 refresh method.</p></div>
+<div class="card"><b class="core">Core</b><p>Framework or security component. Separate tab, per-app confirmation.</p></div>
+<div class="card"><b style="color:var(--muted)">Keep</b><p>Protected and cannot be selected.</p></div>
+</div></div></section>
+
+<section id="faq" class="faq"><div class="wrap">
+<h2>FAQ</h2>
+<p class="sub">Short answers to the usual questions.</p>
+<details><summary>Do I need to root my phone?</summary><p>No. DebloatKit only uses ADB shell commands that act on your user profile (<code>--user 0</code>). No root and no bootloader unlock.</p></details>
+<details><summary>Is it really reversible?</summary><p>Disabled apps are re-enabled with <code>pm enable</code>. Uninstalled apps are brought back with <code>pm install-existing --user 0</code>, because the original APK stays in the system partition. A factory reset also restores everything.</p></details>
+<details><summary>Will it affect my warranty or Samsung Knox?</summary><p>DebloatKit doesn't root, flash or modify the system partition. Policies differ between regions and carriers though, and we can't speak for the manufacturer, so check your own warranty terms before making changes.</p></details>
+<details><summary>Which phones does it support?</summary><p>Samsung Galaxy phones and tablets from Android 5.0 to current One UI releases. The package list is split into three generations — legacy TouchWiz, One UI 1–5.1 and One UI 6 onward. Other brands aren't supported.</p></details>
+<details><summary>An app I removed broke something. What now?</summary><p>Open the tab, tick the app and press Re-enable Selected. If you're not sure which app it was, use Panic Restore in Settings to re-enable everything from the latest backup.</p></details>
+<details><summary>Does DebloatKit collect any data?</summary><p>No. It has no accounts, analytics or telemetry and makes no network connections of its own. See the <a href="privacy-policy.html">Privacy Policy</a>.</p></details>
+<details><summary>Windows says "unknown publisher" or SmartScreen warns me.</summary><p>The installer isn't code-signed, so Windows may show a warning for new downloads. Download only from the <a href="https://github.com/yashwanthramsomireddy/Debloat-Kit/releases/latest">official GitHub releases page</a>.</p></details>
+<details><summary>Do I need to install ADB separately?</summary><p>Yes — install Google's Platform Tools and make sure <code>adb</code> is on your PATH, or point DebloatKit at <code>adb.exe</code> in Settings → ADB Configuration. The Test ADB button tells you whether it works.</p></details>
+</div></section>
+
+<section id="support"><div class="wrap" style="text-align:center">
+<h2>Support DebloatKit</h2>
+<p class="sub" style="margin-left:auto;margin-right:auto">DebloatKit is free to use. If it saved you time and you'd like to say thanks, a small tip is always appreciated — never required.</p>
+<div class="cta">
+<a class="btn g" href="https://paypal.me/yash92duster" rel="noopener">💙 PayPal</a>
+<a class="btn g" href="https://rzp.io/rzp/nsogoeD" rel="noopener">🟦 Razorpay (₹)</a>
+</div>
+<p class="meta">Payments are handled entirely by PayPal / Razorpay. See <a href="terms-of-service.html#donations">Terms §8</a>.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Credits</h2>
+<p class="sub" style="margin-bottom:0"><b style="color:var(--text)">XDA Community</b> — package safety knowledge from the XDA forums and Samsung debloat threads.<br>
+<b style="color:var(--text)">Google Research</b> — Android / AOSP ADB and <code>pm</code> documentation.</p>
+</div></section>
+
+<footer><div class="wrap">
+<p><b style="color:var(--text)">DebloatKit v2.0</b> by <a href="https://teamexykings.in">TeamExyKings</a> · Chennai, India.<br>
+Independent tool, not affiliated with, endorsed by, or connected to Samsung Electronics Co., Ltd. Samsung and Galaxy are trademarks of their respective owner.</p>
+<div class="fl">
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="terms-of-service.html">Terms of Service</a>
+<a href="https://github.com/yashwanthramsomireddy/Debloat-Kit">GitHub</a>
+<a href="mailto:Yashwanthramsomireddy@gmail.com">Contact</a>
+</div></div>
+<div class="wrap" style="margin-top:14px"><p>© 2026 TeamExyKings · Released under the MIT License.</p></div>
+</footer>
+</body></html>

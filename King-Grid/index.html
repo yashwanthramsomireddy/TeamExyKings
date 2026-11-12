@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Grid — Split any photo into a perfect grid</title>
+<meta name="description" content="King Grid splits a photo into 3x3, 2x2 or 2x3 tiles and saves them to your gallery numbered in posting order. Free forever, no ads, no tracking, fully offline.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="King Grid — Split any photo into a perfect grid">
+<meta property="og:description" content="Split a photo into numbered grid tiles for Instagram. Free, offline, no ads.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#000; --surface:#0a0a0a; --elevated:#141414;
+    --line:#262626; --fg:#fff; --muted:#a0a0a0; --dim:#6b6b6b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{padding:72px 0 48px;text-align:center}
+  .mark{
+    width:104px;height:104px;margin:0 auto 26px;border-radius:28px;
+    background:var(--elevated);display:flex;align-items:center;justify-content:center;
+  }
+  .mark svg{width:62px;height:62px}
+  h1{font-size:2.6rem;letter-spacing:-.03em;line-height:1.15}
+  .tagline{color:var(--muted);font-size:1.12rem;margin-top:14px}
+  .pills{margin-top:18px;color:var(--dim);font-size:.92rem}
+  .cta{
+    display:inline-block;margin-top:30px;padding:14px 30px;border-radius:14px;
+    background:#fff;color:#000;text-decoration:none;font-weight:600;
+  }
+  .cta.ghost{background:transparent;color:#fff;border:1px solid var(--line);margin-left:10px}
+  section{padding:40px 0;border-top:1px solid var(--line)}
+  h2{font-size:1.35rem;letter-spacing:-.01em;margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .card{border:1px solid var(--line);border-radius:16px;padding:18px}
+  .card h3{font-size:1rem;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.93rem}
+  ol{padding-left:20px;color:var(--muted)}
+  ol li{margin-bottom:10px}
+  ol li b{color:var(--fg)}
+  .faq{border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px}
+  .faq h3{font-size:1rem;margin-bottom:6px}
+  .faq p{color:var(--muted);font-size:.93rem}
+  footer{padding:44px 0 60px;border-top:1px solid var(--line);text-align:center;color:var(--dim);font-size:.9rem}
+  footer a{color:var(--muted);text-decoration:none;margin:0 10px}
+  footer a:hover{color:#fff}
+  @media(max-width:520px){h1{font-size:2rem}header{padding:52px 0 36px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark">
+      <svg viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="27" y="27" width="54" height="54" rx="7" stroke="#fff" stroke-width="3"/>
+        <path d="M45 27V81M63 27V81M27 45H81M27 63H81" stroke="#fff" stroke-width="3"/>
+        <rect x="46.5" y="46.5" width="15" height="15" fill="#fff"/>
+      </svg>
+    </div>
+    <h1>King Grid</h1>
+    <p class="tagline">Split any photo into a perfect grid.</p>
+    <p class="pills">Free forever &middot; No ads &middot; No tracking &middot; Works offline</p>
+    <a class="cta" href="#how">How it works</a>
+    <a class="cta ghost" href="privacy-policy.html">Privacy</a>
+  </header>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Ten layouts</h3>
+        <p>3&times;3, 2&times;2, 2&times;3 and more. Pick a layout and the preview shows exactly how the photo will be cut.</p>
+      </div>
+      <div class="card">
+        <h3>Numbered in posting order</h3>
+        <p>Every tile is numbered in the preview and in its filename, so you never lose track of which one goes up next.</p>
+      </div>
+      <div class="card">
+        <h3>Carousel or feed grid</h3>
+        <p>Carousel numbers left to right. Feed grid reverses the order so posting 1, 2, 3&hellip; rebuilds the picture on your profile.</p>
+      </div>
+      <div class="card">
+        <h3>Full resolution</h3>
+        <p>Tiles are cut from the original file, not from a preview, so a 12 MP photo gives crisp 1200&nbsp;px tiles.</p>
+      </div>
+      <div class="card">
+        <h3>Straight to your gallery</h3>
+        <p>Tiles land in Pictures/KingGrid, each split in its own dated folder, ready to share from any app.</p>
+      </div>
+      <div class="card">
+        <h3>No permissions needed</h3>
+        <p>King Grid uses the system photo picker and the system gallery, so it never asks for access to your photo library.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <ol>
+      <li><b>Pick a photo.</b> Any photo on your device. Nothing is uploaded.</li>
+      <li><b>Choose a layout.</b> The preview numbers each tile the way you will post it.</li>
+      <li><b>Save the tiles.</b> All of them go to your gallery in one tap, in order.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+
+    <div class="faq">
+      <h3>Why is part of my photo cut off?</h3>
+      <p>With Square tiles on, the photo is centre-cropped so every tile is a perfect square, which is what a profile grid needs. Turn Square tiles off to use the whole photo.</p>
+    </div>
+
+    <div class="faq">
+      <h3>Carousel or feed grid &mdash; which do I need?</h3>
+      <p>Carousel for a multi-image post. Feed grid for a profile grid: a profile fills newest first, so the numbering is reversed and posting 1 to 9 assembles the picture correctly.</p>
+    </div>
+
+    <div class="faq">
+      <h3>Are the numbers printed on the images?</h3>
+      <p>No. The numbers appear only in the preview. Saved tiles are clean; the number lives in the filename.</p>
+    </div>
+
+    <div class="faq">
+      <h3>Is anything uploaded?</h3>
+      <p>Never. There is no account, no analytics and no network code. Photos are read, split and saved entirely on your device.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <a href="https://teamexykings.in/">TeamExyKings</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="terms-of-service.html">Terms of use</a>
+      <a href="mailto:Yashwanthramsomireddy@gmail.com">Support</a>
+    </p>
+    <p style="margin-top:16px">&copy; 2026 Yashwanth Ram Somireddy &middot; TeamExyKings. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>

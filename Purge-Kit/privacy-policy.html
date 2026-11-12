@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy — PurgeKit</title>
+<meta name="description" content="PurgeKit collects no personal data. Learn what stays on your PC and which network requests the app makes.">
+<meta name="theme-color" content="#0b0b0d">
+<style>
+:root{--bg:#0b0b0d;--card:#141417;--line:#26262b;--text:#ececf0;--dim:#9a9aa5;--acc:#ff8a2a;--acc2:#ffb066}
+@media (prefers-color-scheme: light){:root{--bg:#f7f6f4;--card:#fff;--line:#e4e1dc;--text:#1b1b1f;--dim:#62626c;--acc:#d9620a;--acc2:#b84f05}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.brand{font-weight:700;font-size:18px;color:var(--text);display:flex;align-items:center;gap:8px}
+.brand i{font-style:normal;color:var(--acc)}
+nav a{color:var(--dim);margin-left:18px;font-size:14px}nav a:hover,nav a.on{color:var(--text);text-decoration:none}
+.hero{padding:64px 0 36px;text-align:center}
+.hero h1{font-size:clamp(34px,7vw,54px);margin:0 0 10px;letter-spacing:-.02em}
+.hero h1 span{color:var(--acc)}
+.hero p.lead{color:var(--dim);font-size:18px;max-width:600px;margin:0 auto 26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line);color:var(--text);margin:4px}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#111}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:10px 0 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;color:var(--dim);font-size:14.5px}
+h2{font-size:24px;margin:44px 0 12px;letter-spacing:-.01em}
+h2 small{color:var(--dim);font-weight:400;font-size:14px}
+.doc h1{font-size:34px;margin:44px 0 4px;letter-spacing:-.02em}
+.doc .meta{color:var(--dim);font-size:14px;margin-bottom:26px}
+.doc h2{font-size:20px;margin:34px 0 8px;padding-top:6px}
+.doc p,.doc li{color:var(--text)}.doc li{margin:4px 0}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:14px 18px;margin:18px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--dim);font-weight:600}
+code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0 40px;color:var(--dim);font-size:14px;text-align:center}
+footer a{color:var(--dim);margin:0 8px}footer a:hover{color:var(--text)}
+.steps{counter-reset:s;padding:0;list-style:none}.steps li{counter-increment:s;position:relative;padding:0 0 12px 42px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#111;font-weight:700;font-size:14px;display:grid;place-items:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><i>&#9679;</i> PurgeKit</a>
+<nav><a href="index.html">Home</a><a href="privacy-policy.html" class=on>Privacy</a><a href="terms-of-service.html">Terms</a><a href="https://github.com/yashwanthramsomireddy/Purge-Kit">GitHub</a></nav>
+</div></header>
+
+<main class="wrap doc">
+<h1>Privacy Policy</h1>
+<div class="meta">PurgeKit for Windows &middot; TeamExyKings &middot; Last updated: 12 November 2026</div>
+
+<div class="note"><strong>Summary:</strong> PurgeKit does not collect, sell or share your personal data. It has no accounts, no ads and no analytics. Everything it scans, removes and logs stays on your computer.</div>
+
+<h2>1. Who we are</h2>
+<p>PurgeKit is a Windows cleaning application made by TeamExyKings (&ldquo;we&rdquo;, &ldquo;us&rdquo;). Contact: <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a>.</p>
+
+<h2>2. Data we collect</h2>
+<p>We do not collect any data from you. We run no servers for PurgeKit, so there is nowhere for your data to be sent to us.</p>
+
+<h2>3. Data stored on your computer</h2>
+<table>
+<tr><th>What</th><th>Where</th><th>Why</th></tr>
+<tr><td>Cleaning logs (tasks run, times, space freed, Windows user and PC name in the header)</td><td><code>Downloads\PurgeKit\Logs\</code></td><td>So you can review what a run did. Delete them any time.</td></tr>
+<tr><td>Settings (theme, language, mode, whitelist, schedule)</td><td>Local app settings files on your PC</td><td>To remember your choices.</td></tr>
+<tr><td>Installers downloaded by the Software Updater</td><td><code>Downloads\PurgeKit\Installers\</code></td><td>So you can run the official installer.</td></tr>
+</table>
+<p><strong>Logs can contain your Windows user name and PC name.</strong> If you share a log (for example in a bug report), look through it first and remove anything you do not want public.</p>
+
+<h2>4. Network connections PurgeKit makes</h2>
+<p>PurgeKit works offline for cleaning. It contacts the internet only for the following, and sends no personal data of its own:</p>
+<ul>
+<li><strong>Update check &mdash; GitHub.</strong> The app asks the GitHub Releases API whether a newer version exists, and downloads it only when you choose to. GitHub receives your IP address and the app&rsquo;s name and version, as with any web request, and handles them under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub&rsquo;s privacy statement</a>.</li>
+<li><strong>Donation region &mdash; ipapi.co.</strong> When you open the About tab, the app asks <code>ipapi.co</code> for your country code, only to decide whether to show &#8377; (Razorpay) or $ (PayPal) first. This request exposes your IP address to that service (<a href="https://ipapi.co/privacy/">its privacy policy</a>). The result is used once and is not stored.</li>
+<li><strong>Software Updater &mdash; winget and vendors.</strong> The updater runs Windows Package Manager (<code>winget</code>) on your PC to list outdated apps and finds each app&rsquo;s official installer link. Downloads come straight from the software vendor and are governed by their policies.</li>
+<li><strong>Links you click.</strong> GitHub, PayPal and Razorpay (donations) open in your browser. Those sites have their own policies, and we never see your payment details.</li>
+</ul>
+
+<h2>5. What PurgeKit reads and deletes</h2>
+<p>To clean, PurgeKit looks at the temporary and cache folders listed in the app, and can empty the Recycle Bin and run Windows cleanup commands when you select those tasks. It does not read the contents of your documents, and it does not upload any file list or scan result anywhere. Deleted files are permanently removed; see the <a href="terms-of-service.html">Terms of Service</a>.</p>
+
+<h2>6. Permissions</h2>
+<p>PurgeKit requests administrator rights so it can clean system locations. The installer can add Start Menu and Desktop shortcuts and a &ldquo;Run PurgeKit Cleaner&rdquo; entry on the Recycle Bin right-click menu; uninstalling removes them.</p>
+
+<h2>7. Children</h2>
+<p>PurgeKit is a general utility and does not knowingly collect data from anyone, including children.</p>
+
+<h2>8. Retention and deletion</h2>
+<p>Since we hold no data, there is nothing for us to delete. To remove local data, uninstall PurgeKit and delete the <code>Downloads\PurgeKit</code> folder.</p>
+
+<h2>9. Changes</h2>
+<p>If this policy changes, the new version will be published on this page with an updated date.</p>
+
+<h2>10. Contact</h2>
+<p>Questions about privacy: <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a>.</p>
+</main>
+<footer><div class="wrap">
+<div><a href="index.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="https://github.com/yashwanthramsomireddy/Purge-Kit/releases">Releases</a></div>
+<p>&copy; 2026 TeamExyKings &middot; <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a></p>
+</div></footer>
+</body></html>

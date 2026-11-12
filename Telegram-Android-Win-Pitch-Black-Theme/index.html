@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamExyKings Pitch Black Theme — True AMOLED Black for Telegram</title>
+<meta name="description" content="A pure AMOLED pitch-black (#000000) theme for Telegram Desktop and Android, with white text. Free to use, by TeamExyKings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --panel:#0d0d0d;
+    --panel2:#141414;
+    --line:#1f1f1f;
+    --text:#ffffff;
+    --muted:#9a9a9a;
+    --muted2:#6b6b6b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{font-family:'Space Grotesk',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{font-weight:700;font-size:1.05rem;letter-spacing:0.02em;display:flex;align-items:center;gap:8px;}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:#ffffff;display:inline-block;}
+  .navlinks{display:flex;gap:28px;font-size:0.9rem;color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+
+  .hero{padding:96px 0 72px;text-align:center;}
+  .badge{
+    display:inline-block;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:24px;
+  }
+  .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:700;line-height:1.15;margin-bottom:18px;}
+  .hero h1 .accent{color:var(--muted);}
+  .hero p{font-size:1.05rem;color:var(--muted);max-width:560px;margin:0 auto 36px;}
+
+  .swatch-row{display:flex;justify-content:center;gap:10px;margin-bottom:40px;}
+  .swatch{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);}
+
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    padding:13px 26px;border-radius:10px;font-weight:600;font-size:0.92rem;
+    border:1px solid var(--line);transition:all .15s ease;
+  }
+  .btn-primary{background:#ffffff;color:#000000;border-color:#ffffff;}
+  .btn-primary:hover{background:#e6e6e6;}
+  .btn-ghost{background:transparent;color:var(--text);}
+  .btn-ghost:hover{background:var(--panel2);}
+
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .section-title{font-size:1.6rem;font-weight:700;margin-bottom:8px;}
+  .section-sub{color:var(--muted);margin-bottom:36px;font-size:0.95rem;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;
+  }
+  .card .icon{font-size:1.3rem;margin-bottom:12px;display:block;}
+  .card h3{font-size:1rem;font-weight:600;margin-bottom:6px;}
+  .card p{font-size:0.88rem;color:var(--muted);}
+
+  .download-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .download-card + .download-card{margin-top:14px;}
+  .download-card .meta h3{font-size:1.05rem;font-weight:600;margin-bottom:4px;}
+  .download-card .meta p{font-size:0.85rem;color:var(--muted2);}
+
+  ol.steps{list-style:none;counter-reset:step;}
+  ol.steps li{
+    counter-increment:step;position:relative;padding-left:44px;margin-bottom:18px;font-size:0.93rem;color:var(--muted);
+  }
+  ol.steps li::before{
+    content:counter(step);position:absolute;left:0;top:0;
+    width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:var(--text);font-weight:600;
+  }
+  ol.steps strong{color:var(--text);}
+
+  .notice{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;font-size:0.85rem;color:var(--muted);
+  }
+  .notice strong{color:var(--text);}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-links{display:flex;gap:22px;font-size:0.85rem;color:var(--muted);flex-wrap:wrap;}
+  .footer-links a:hover{color:var(--text);}
+  .copyright{font-size:0.8rem;color:var(--muted2);}
+
+  @media (max-width:560px){
+    .download-card{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand"><span class="dot"></span>TeamExyKings Pitch Black Theme</div>
+      <div class="navlinks">
+        <a href="#install">Install</a>
+        <a href="#about">About</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-of-service.html">Terms</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <span class="badge">Free &middot; MIT Licensed &middot; Desktop + Android</span>
+    <h1>True AMOLED Black.<br><span class="accent">Not just another dark mode.</span></h1>
+    <p>A pure pitch-black (#000000) theme for Telegram, with crisp white text and no wasted pixels. Built for both Telegram Desktop and Telegram for Android.</p>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#000000;"></div>
+      <div class="swatch" style="background:#0d0d0d;"></div>
+      <div class="swatch" style="background:#ffffff;"></div>
+      <div class="swatch" style="background:#808080;"></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#install">Get the Theme</a>
+      <a class="btn btn-ghost" href="https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="section-title">Built for OLED screens</h2>
+    <p class="section-sub">Every surface is checked for true black — not a dark grey standing in for it.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#9679;</span>
+        <h3>Pure #000000</h3>
+        <p>Every background — chat list, bubbles, menus, compose bar — set to true black, not a dark grey tint.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9675;</span>
+        <h3>White text throughout</h3>
+        <p>Primary text and icons stay a crisp #ffffff for contrast, with grey reserved only for secondary text.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9670;</span>
+        <h3>Desktop + Android</h3>
+        <p>One consistent look across Telegram Desktop (Windows / macOS / Linux) and Telegram for Android.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9634;</span>
+        <h3>True-black wallpaper</h3>
+        <p>The Desktop theme bundles a solid black chat wallpaper, so it never falls back to Telegram's default pattern.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9733;</span>
+        <h3>Free, MIT licensed</h3>
+        <p>Free to use, modify, and redistribute — including in your own repositories or theme channels.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9888;</span>
+        <h3>Independent theme</h3>
+        <p>Not affiliated with or endorsed by Telegram. No Telegram logos or branding are used anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2 class="section-title">Download</h2>
+    <p class="section-sub">Pick your platform. Both are plain theme files — nothing to install, no permissions requested.</p>
+
+    <div class="download-card">
+      <div class="meta">
+        <h3>Telegram Desktop</h3>
+        <p>Windows, macOS, Linux &middot; .tdesktop-theme</p>
+      </div>
+      <a class="btn btn-primary" href="https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme/raw/main/Desktop/TeamExyKings%20Pitch%20Black%20Theme.tdesktop-theme" target="_blank" rel="noopener">Download</a>
+    </div>
+    <div class="download-card">
+      <div class="meta">
+        <h3>Telegram for Android</h3>
+        <p>.attheme</p>
+      </div>
+      <a class="btn btn-primary" href="https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme/raw/main/Android/TeamExyKings%20Pitch%20Black%20Theme.attheme" target="_blank" rel="noopener">Download</a>
+    </div>
+
+    <h2 class="section-title" style="margin-top:56px;">How to apply it</h2>
+    <h3 style="font-size:1rem;margin-bottom:14px;color:var(--muted);">Telegram Desktop</h3>
+    <ol class="steps">
+      <li>Download the <strong>.tdesktop-theme</strong> file above and send it to yourself (e.g. Saved Messages), or open it from your downloads folder.</li>
+      <li>Click the file inside Telegram Desktop.</li>
+      <li>In the <strong>Theme Preview</strong> window, click <strong>Apply This Theme</strong>, then <strong>Keep Changes</strong>.</li>
+    </ol>
+    <h3 style="font-size:1rem;margin:28px 0 14px;color:var(--muted);">Telegram for Android</h3>
+    <ol class="steps">
+      <li>Download the <strong>.attheme</strong> file above and send it to yourself (e.g. Saved Messages), or open it from your downloads folder.</li>
+      <li>Tap the file to open the theme preview.</li>
+      <li>Tap <strong>Apply</strong>.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="section-title">About</h2>
+    <p class="section-sub">A few things worth knowing before you apply it.</p>
+    <div class="notice">
+      <strong>Independent, unofficial theme.</strong> This theme is not made by, affiliated with, or endorsed by Telegram or Telegram FZ-LLC. No Telegram logos, icons, or branding are used anywhere in this theme or on this page. All colors and assets here are original to TeamExyKings.
+      <br><br>
+      Released under the <strong>MIT License</strong> — free to use, modify, and redistribute, with attribution appreciated but not required. See the full <a href="https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme/blob/main/LICENSE" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;">license text</a> for details.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-links">
+        <a href="https://github.com/yashwanthramsomireddy/Telegram-Android-Win-Pitch-Black-Theme" target="_blank" rel="noopener">GitHub</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="https://teamexykings.in" target="_blank" rel="noopener">TeamExyKings</a>
+        <a href="mailto:yashwanthramsomireddy@gmail.com">Contact</a>
+      </div>
+      <div class="copyright">&copy; 2026 TeamExyKings</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

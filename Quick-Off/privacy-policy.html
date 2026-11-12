@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — QuickOff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--surface:#111111;--raised:#1A1A1A;--border:#252220;
+  --amber:#F59E0B;--amber-hi:#FCD34D;--amber-lo:#92600A;--amber-dim:#3D2A04;
+  --text:#EDE8DF;--muted:#6B6258;--sub:#9A8F83;
+  --font-d:'Barlow Condensed',sans-serif;
+  --font-b:'DM Sans',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.6;min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,.92);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{width:32px;height:32px;background:var(--amber);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#000;font-family:var(--font-d)}
+.nav-name{font-family:var(--font-d);font-size:20px;font-weight:700;letter-spacing:.5px;color:var(--text)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--sub);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--amber)}
+.nav-back{color:var(--sub);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--amber)}
+
+/* PAGE */
+.page{padding:96px 24px 80px;max-width:760px;margin:0 auto}
+.page-header{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.page-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.page-title{font-family:var(--font-d);font-size:clamp(36px,5vw,56px);font-weight:800;line-height:1.1;color:var(--text);margin-bottom:14px}
+.page-meta{font-size:13px;color:var(--muted)}
+.page-meta span{color:var(--sub)}
+
+/* CONTENT */
+.section{margin-bottom:44px}
+.section h2{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.section p{font-size:15px;color:var(--sub);line-height:1.75;margin-bottom:14px}
+.section p:last-child{margin-bottom:0}
+.section ul{list-style:none;padding:0;margin-bottom:14px}
+.section ul li{font-size:15px;color:var(--sub);line-height:1.75;padding-left:20px;position:relative;margin-bottom:6px}
+.section ul li::before{content:'·';position:absolute;left:0;color:var(--amber);font-size:18px;line-height:1.5}
+.highlight-box{background:var(--amber-dim);border:1px solid var(--amber-lo);border-radius:10px;padding:20px 24px;margin-bottom:28px}
+.highlight-box p{font-size:14px;color:var(--text);margin:0;line-height:1.6}
+.highlight-box strong{color:var(--amber)}
+.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-top:40px}
+.contact-box h3{font-family:var(--font-d);font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px}
+.contact-box p{font-size:14px;color:var(--sub);margin-bottom:8px}
+.contact-box a{color:var(--amber);text-decoration:none}
+.contact-box a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:24px;text-align:center;font-size:12px;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--amber)}
+
+@media(max-width:640px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">⚡</div>
+    <span class="nav-name">QuickOff</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="terms-of-service.html">Terms</a></li>
+  </ul>
+  <a class="nav-back" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <p class="page-label">Legal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">QuickOff &nbsp;·&nbsp; <span>Effective Date: 1 January 2025</span></p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Short version:</strong> QuickOff does not collect, store, or transmit any personal data. It is a fully offline Windows utility. It never connects to the internet and never shares anything with anyone.</p>
+  </div>
+
+  <div class="section">
+    <h2>1. About QuickOff</h2>
+    <p>QuickOff is a free Windows shutdown utility developed and maintained by TeamExyKings. It is designed to provide quick access to Windows power actions (shutdown, restart, sleep, hibernate, lock, and log off) from the system tray.</p>
+    <p>QuickOff is published under the TeamExyKings brand. For questions about this policy, please use the contact details at the bottom of this page.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Information We Collect</h2>
+    <p>We collect no information whatsoever. QuickOff does not:</p>
+    <ul>
+      <li>Collect any personal information about you</li>
+      <li>Collect usage statistics, analytics, or telemetry</li>
+      <li>Read, access, or store any files on your computer</li>
+      <li>Connect to the internet or any external server</li>
+      <li>Create or use user accounts</li>
+      <li>Set or read browser cookies</li>
+      <li>Use tracking technologies of any kind</li>
+    </ul>
+    <p>QuickOff stores only your chosen settings (such as autostart preference and default action) locally on your own device using the Windows registry or a local configuration file. These settings never leave your computer.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. No Internet Connection</h2>
+    <p>QuickOff is a fully offline application. It does not make any network requests at any time — not during installation, not while running, and not when performing power actions. You can use QuickOff on a computer with no internet connection and all functionality will work identically.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Local Data Storage</h2>
+    <p>QuickOff may store a small configuration file on your device to remember your preferences between sessions. This data includes only application settings such as:</p>
+    <ul>
+      <li>Your preferred default power action</li>
+      <li>Autostart on Windows login preference</li>
+      <li>Hotkey configuration (if any)</li>
+      <li>UI theme preference</li>
+    </ul>
+    <p>This configuration data is stored locally and is never transmitted, shared, or accessible to anyone other than you on your own device. Uninstalling QuickOff removes this data.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Third-Party Services</h2>
+    <p>QuickOff does not integrate with, communicate with, or rely on any third-party services. No data is shared with third parties because no data is collected in the first place.</p>
+    <p>If you download QuickOff from GitHub, GitHub's own privacy policy applies to that download interaction. QuickOff itself has no involvement in that process once installed.</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Children's Privacy</h2>
+    <p>QuickOff does not collect any personal information from anyone, including children. As a result, it complies fully with children's privacy regulations by design.</p>
+  </div>
+
+  <div class="section">
+    <h2>7. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. As QuickOff collects no data, any changes are unlikely to affect you in a meaningful way.</p>
+    <p>We encourage you to review this page periodically to stay informed.</p>
+  </div>
+
+  <div class="section">
+    <h2>8. Your Rights</h2>
+    <p>Because QuickOff collects no personal data, there is no personal data to access, correct, export, or delete. If you have any privacy-related questions or concerns, you are welcome to contact us at the address below.</p>
+  </div>
+
+  <div class="contact-box">
+    <h3>Contact Us</h3>
+    <p>If you have any questions about this Privacy Policy, please contact:</p>
+    <p><strong>TeamExyKings</strong></p>
+    <p>Email: <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a></p>
+    <p>Website: <a href="https://teamexykings.in" target="_blank" rel="noopener">teamexykings.in</a></p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2024 TeamExyKings. All rights reserved.</span><br/><br/>
+  <a href="index.html">Home</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="terms-of-service.html">Terms of Service</a>
+</footer>
+
+</body>
+</html>

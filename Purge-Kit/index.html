@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PurgeKit — Free Windows Temp & Cache Cleaner</title>
+<meta name="description" content="PurgeKit by TeamExyKings: a free Windows cleaner for temporary files, browser and app caches, with a built-in software updater.">
+<meta name="theme-color" content="#0b0b0d">
+<style>
+:root{--bg:#0b0b0d;--card:#141417;--line:#26262b;--text:#ececf0;--dim:#9a9aa5;--acc:#ff8a2a;--acc2:#ffb066}
+@media (prefers-color-scheme: light){:root{--bg:#f7f6f4;--card:#fff;--line:#e4e1dc;--text:#1b1b1f;--dim:#62626c;--acc:#d9620a;--acc2:#b84f05}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.brand{font-weight:700;font-size:18px;color:var(--text);display:flex;align-items:center;gap:8px}
+.brand i{font-style:normal;color:var(--acc)}
+nav a{color:var(--dim);margin-left:18px;font-size:14px}nav a:hover,nav a.on{color:var(--text);text-decoration:none}
+.hero{padding:64px 0 36px;text-align:center}
+.hero h1{font-size:clamp(34px,7vw,54px);margin:0 0 10px;letter-spacing:-.02em}
+.hero h1 span{color:var(--acc)}
+.hero p.lead{color:var(--dim);font-size:18px;max-width:600px;margin:0 auto 26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line);color:var(--text);margin:4px}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#111}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:10px 0 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;color:var(--dim);font-size:14.5px}
+h2{font-size:24px;margin:44px 0 12px;letter-spacing:-.01em}
+h2 small{color:var(--dim);font-weight:400;font-size:14px}
+.doc h1{font-size:34px;margin:44px 0 4px;letter-spacing:-.02em}
+.doc .meta{color:var(--dim);font-size:14px;margin-bottom:26px}
+.doc h2{font-size:20px;margin:34px 0 8px;padding-top:6px}
+.doc p,.doc li{color:var(--text)}.doc li{margin:4px 0}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:14px 18px;margin:18px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--dim);font-weight:600}
+code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0 40px;color:var(--dim);font-size:14px;text-align:center}
+footer a{color:var(--dim);margin:0 8px}footer a:hover{color:var(--text)}
+.steps{counter-reset:s;padding:0;list-style:none}.steps li{counter-increment:s;position:relative;padding:0 0 12px 42px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#111;font-weight:700;font-size:14px;display:grid;place-items:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><i>&#9679;</i> PurgeKit</a>
+<nav><a href="index.html" class=on>Home</a><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="https://github.com/yashwanthramsomireddy/Purge-Kit">GitHub</a></nav>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+<h1>Purge<span>Kit</span></h1>
+<p class="lead">A free Windows cleaner for temporary files, browser and app caches &mdash; with a software updater built in. Clear, transparent, no ads.</p>
+<a class="btn pri" href="https://github.com/yashwanthramsomireddy/Purge-Kit/releases/latest">Download for Windows</a>
+<a class="btn" href="https://github.com/yashwanthramsomireddy/Purge-Kit">View on GitHub</a>
+<p style="color:var(--dim);font-size:13.5px;margin-top:14px">Windows 10 / 11 &middot; Free &middot; No ads &middot; No account</p>
+</section>
+
+<h2>What it does</h2>
+<div class="grid">
+<div class="card"><h3>140+ cleaning tasks</h3><p>System, user, browser and third-party app caches (games, chat apps, Adobe, media, dev tools) across 11 phases.</p></div>
+<div class="card"><h3>You choose what goes</h3><p>Safe defaults are pre-selected. Every task can be toggled, and a whitelist protects folders you want kept.</p></div>
+<div class="card"><h3>Silent mode</h3><p>Right-click the Recycle Bin and choose <em>Run PurgeKit Cleaner</em>. A tray icon shows progress and an optional stop.</p></div>
+<div class="card"><h3>Software Updater</h3><p>Finds outdated apps through winget and downloads the official installer. You run it &mdash; nothing installs silently.</p></div>
+<div class="card"><h3>Full log of every run</h3><p>See each task, its time and how much space it freed. Logs stay on your PC.</p></div>
+<div class="card"><h3>Safe by design</h3><p>No task runs longer than 120 seconds, you can cancel any time, and settings lock while a purge is running.</p></div>
+</div>
+
+<h2>Get started</h2>
+<ol class="steps">
+<li>Download <code>Setup_PurgeKit</code> from the <a href="https://github.com/yashwanthramsomireddy/Purge-Kit/releases/latest">latest release</a>.</li>
+<li>Run the installer and pick a folder (the default is fine).</li>
+<li>Open PurgeKit, review the Junk Scan results, then press <strong>Purge</strong>.</li>
+</ol>
+<div class="note"><strong>Administrator rights:</strong> PurgeKit asks for administrator permission because many system cache locations can only be cleaned that way.</div>
+
+<h2>Your privacy <small>in short</small></h2>
+<p>PurgeKit has no accounts, no analytics and no tracking. What it scans and removes stays on your PC. Read the full <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-service.html">Terms of Service</a>.</p>
+
+<h2>Support &amp; feedback</h2>
+<p>Found a bug or have an idea? <a href="https://github.com/yashwanthramsomireddy/Purge-Kit/issues">Open an issue on GitHub</a> or email <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a>. PurgeKit is built by <strong>TeamExyKings</strong> and stays free &mdash; donations are welcome inside the app but never required.</p>
+</main>
+<footer><div class="wrap">
+<div><a href="index.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="https://github.com/yashwanthramsomireddy/Purge-Kit/releases">Releases</a></div>
+<p>&copy; 2026 TeamExyKings &middot; <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a></p>
+</div></footer>
+</body></html>

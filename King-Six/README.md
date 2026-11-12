@@ -1,20 +1,17 @@
 # King Six
 
 **Score it. Share it. Own it.**
-A ball-by-ball cricket scorer for backyard, club and street cricket. Google sign-in, cloud backup, no ads, no tracking.
+A ball-by-ball cricket scorer for backyard, club and street cricket. Google sign-in, all data on your phone, no ads, no tracking.
 
 By **TeamExyKings** · built by Yashwanth Ram Somireddy · https://teamexykings.in
-Package `com.teamexykings.kingsix` · version **1.6.1 (versionCode 14)** · PRIVATE repository, no public licence file.
+Package `com.teamexykings.kingsix` · version **1.8.0 (versionCode 17)** · PRIVATE repository, no public licence file.
 
-## What is new in v1.2 (1.2.1 is the current build) (login + cloud + yearly Pro)
-- **Mandatory Google sign-in** (Credential Manager) exchanged with Supabase Auth. Internet is needed to sign in, subscribe, open shared matches and delete the account; scoring works offline once signed in.
-- **Cloud first, offline cache:** Supabase holds the master copy; the phone keeps a Room cache and syncs by fingerprint diff (pull, then push) after every change, on reconnect and on app start. Deletes upload as markers.
-- **Free = view only. Pro (yearly, Rs 500 placeholder) = score, create, back up.** Enforced in the UI (friendly dialog) and, for real, on the server by row-level security.
-- **Subscription verified by the server** (Edge Function `verify-subscription` checks Google Play); the phone cannot grant itself Pro. Optional `play-rtdn` keeps renewals/cancellations current.
-- **Share a match by code** (Pro creates, anyone signed in views). Built-in **sample match** so a new Free user has something to see.
-- Existing data created before subscribing uploads on the first Pro sync.
-- Account section in Settings (sync status, Sync now, sign out with unsynced warning, delete account). In-app renewal reminder in the last 7 days. Monthly plan removed.
-- Backend, SQL, functions and secrets tracker live in `../king-six-supabase` (kept out of this repo).
+## How it works (1.8.0)
+- **Mandatory Google sign-in** (Credential Manager) exchanged with Supabase Auth. Internet is needed to sign in, subscribe and delete the account; scoring works offline.
+- **All cricket data lives on the phone** in the app's Room (SQLite) database. Supabase holds only the account and the subscription record. Cloud sync and match codes were removed from the app.
+- **Free = everything for scoring:** teams, players, series, matches, all graphs and stats, share as text, image, PDF or CSV. **Pro (yearly, Rs 500) = backups to Google Drive and phone storage (incl. automatic monthly copy) and export of the whole profile to Excel.** Restoring a backup file is free.
+- **Subscription verified by the server** (Edge Function `verify-subscription` checks Google Play); `play-rtdn` keeps renewals current. After the paid year: 7-day grace week, then Free.
+- Backend, SQL, functions and secrets tracker live in `docs/supabase` (secrets never in zips).
 
 ## Local setup (cloud settings)
 Create `local.properties` in this folder (it is git-ignored, never commit it):

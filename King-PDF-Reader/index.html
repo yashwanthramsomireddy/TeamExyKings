@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>King PDF Reader — TeamExyKings</title>
+<meta name="description" content="King PDF Reader — a lightweight, pitch-black PDF reader for Android. Works offline, no ads, no sign-in, free forever." />
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0e0e0e;
+    --surface-2: #161616;
+    --border: #242424;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --dim: #6b6b6b;
+    --accent: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+  header { padding: 64px 0 40px; text-align: center; }
+  .mark {
+    width: 92px; height: 92px; margin: 0 auto 22px;
+    border: 1px solid var(--border); border-radius: 24px;
+    background: #000; display: flex; align-items: center; justify-content: center;
+  }
+  .mark svg { width: 62px; height: 62px; }
+  h1 { font-size: 2.1rem; margin: 0 0 10px; letter-spacing: -0.5px; }
+  .tagline { color: var(--muted); font-size: 1.05rem; margin: 0 auto; max-width: 560px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 26px 0 0; }
+  .chip {
+    border: 1px solid var(--border); background: var(--surface);
+    border-radius: 999px; padding: 7px 15px; font-size: 0.82rem; color: var(--muted);
+  }
+  .cta { margin: 32px 0 0; }
+  .btn {
+    display: inline-block; background: var(--accent); color: #000;
+    padding: 13px 28px; border-radius: 999px; text-decoration: none;
+    font-weight: 600; font-size: 0.95rem;
+  }
+  .btn:hover { opacity: 0.88; }
+  section { padding: 40px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.3rem; margin: 0 0 20px; letter-spacing: -0.2px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 18px; padding: 20px;
+  }
+  .card h3 { margin: 0 0 7px; font-size: 1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li {
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+    color: var(--muted); font-size: 0.93rem;
+  }
+  ul.plain li:last-child { border-bottom: 0; }
+  ul.plain strong { color: var(--text); font-weight: 600; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a {
+    border: 1px solid var(--border); background: var(--surface-2);
+    border-radius: 999px; padding: 10px 20px; color: var(--text);
+    text-decoration: none; font-size: 0.88rem;
+  }
+  .links a:hover { border-color: var(--muted); }
+  footer {
+    padding: 36px 0 56px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--dim); font-size: 0.84rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  @media (max-width: 560px) {
+    header { padding: 44px 0 30px; }
+    h1 { font-size: 1.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="mark">
+      <svg viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M38,20 L62,20 L78,36 L78,82 A6,6 0 0 1 72,88 L38,88 A6,6 0 0 1 32,82 L32,26 A6,6 0 0 1 38,20 Z"
+              stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M62,20 L62,36 L78,36" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M43,60 L67,60" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <path d="M43,70 L67,70" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <path d="M43,80 L57,80" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <path d="M37,8 L59,8 L59,51 L48,41 L37,51 Z" fill="#000"/>
+        <path d="M42,13 L54,13 L54,44 L48,37.5 L42,44 Z" fill="#fff"/>
+      </svg>
+    </div>
+    <h1>King PDF Reader</h1>
+    <p class="tagline">
+      A lightweight, pitch-black PDF reader for Android. Opens a document and gets out of
+      the way — no ads, no sign-in, no internet permission at all.
+    </p>
+    <div class="chips">
+      <span class="chip">Free forever</span>
+      <span class="chip">Works offline</span>
+      <span class="chip">No ads</span>
+      <span class="chip">No sign-in</span>
+      <span class="chip">AMOLED pitch black</span>
+    </div>
+    <div class="cta">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.teamexykings.kingpdfreader">Get it on Google Play</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Smooth continuous reading</h3>
+        <p>Scroll straight through a document. Pages render as you reach them and stay cached, so going back is instant.</p>
+      </div>
+      <div class="card">
+        <h3>Zoom that stays sharp</h3>
+        <p>Pinch or double-tap to zoom up to 500%. Pages are re-rendered at each zoom step instead of being stretched, so text never turns blocky.</p>
+      </div>
+      <div class="card">
+        <h3>Night mode</h3>
+        <p>Invert the page for dark-room reading. On an AMOLED screen that is kinder on the eyes and lighter on the battery.</p>
+      </div>
+      <div class="card">
+        <h3>Bookmarks</h3>
+        <p>Save any page, give it a name, and jump back to it from the bookmarks list.</p>
+      </div>
+      <div class="card">
+        <h3>Recent files</h3>
+        <p>Every document you open is remembered along with the page you reached. Pin the ones you keep coming back to.</p>
+      </div>
+      <div class="card">
+        <h3>Fit width or fit page</h3>
+        <p>Fill the screen width for text, or fit the whole page for slides and scanned forms.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Privacy, in one line</h2>
+    <ul class="plain">
+      <li><strong>No internet permission.</strong> The app does not request it, so it cannot send anything anywhere.</li>
+      <li><strong>No accounts.</strong> Nothing to sign up for and nothing to sign in to.</li>
+      <li><strong>No ads, no trackers, no analytics.</strong> None are bundled.</li>
+      <li><strong>Your files stay yours.</strong> PDFs are read where they already are and never copied, uploaded or modified.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <ul class="plain">
+      <li>Encrypted, password-protected PDFs cannot be opened — the app uses Android's own PDF engine, which does not support them.</li>
+      <li>This app reads PDFs. Editing, filling forms, signing and OCR live in <strong>King Craft</strong>, a separate app in the same family.</li>
+      <li>Settings, recent files and bookmarks can be backed up to a JSON file and restored on another device.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Links</h2>
+    <div class="links">
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="terms-of-service.html">Terms of use</a>
+      <a href="https://teamexykings.in/">TeamExyKings</a>
+      <a href="mailto:Yashwanthramsomireddy@gmail.com">Support</a>
+    </div>
+  </section>
+
+  <footer>
+    King PDF Reader &middot; built by Yashwanth Ram Somireddy<br />
+    &copy; TeamExyKings &middot; <a href="https://teamexykings.in/">teamexykings.in</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

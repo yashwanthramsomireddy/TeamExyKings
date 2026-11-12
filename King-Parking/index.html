@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Parking — Never lose your car again | TeamExyKings</title>
+<meta name="description" content="King Parking saves where you parked: GPS position, a photo of the bay and a note. Fully offline, free forever, no ads, no tracking.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="King Parking — Never lose your car again">
+<meta property="og:description" content="Save your parking spot with GPS, a bay photo and a note. Fully offline. Free forever.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' fill='%23000'/><path fill='%23fff' fill-rule='evenodd' d='M12 1.6C7.86 1.6 4.5 4.96 4.5 9.1c0 5.6 7.5 13.3 7.5 13.3s7.5-7.7 7.5-13.3c0-4.14-3.36-7.5-7.5-7.5zM9 4.6h3.4a2.6 2.6 0 0 1 0 5.2h-1.8V13H9zM10.6 6.2h1.8a1.4 1.4 0 0 1 0 2.8h-1.8z'/></svg>">
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0b0b0b;
+    --card: #101010;
+    --line: #242424;
+    --text: #ffffff;
+    --muted: #9e9e9e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+  header { padding: 64px 0 40px; text-align: center; }
+  .mark {
+    width: 92px; height: 92px; margin: 0 auto 22px;
+    border-radius: 24px; background: #000;
+    border: 1px solid #262626;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 44px rgba(255,255,255,0.10);
+  }
+  .mark svg { width: 54px; height: 54px; }
+  h1 { font-size: 2.3rem; letter-spacing: -0.02em; font-weight: 800; }
+  .tagline { color: var(--muted); font-size: 1.05rem; margin-top: 10px; }
+  .badges { margin-top: 18px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; font-size: 0.82rem; color: var(--muted);
+  }
+  section { padding: 34px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; }
+  h3 { font-size: 1.02rem; font-weight: 650; margin-bottom: 6px; }
+  p { color: var(--muted); }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 18px;
+  }
+  .card p { font-size: 0.93rem; }
+  ol, ul { color: var(--muted); padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 11px 22px; color: var(--text); font-size: 0.92rem; font-weight: 600;
+  }
+  .btn.primary { background: #ffffff; color: #000000; border-color: #ffffff; }
+  footer {
+    padding: 38px 0 60px; border-top: 1px solid var(--line);
+    text-align: center; color: var(--muted); font-size: 0.86rem;
+  }
+  footer a { color: var(--text); text-decoration: none; }
+  @media (max-width: 560px) { h1 { font-size: 1.85rem; } header { padding: 46px 0 30px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#ffffff" fill-rule="evenodd" d="M12 1.6C7.86 1.6 4.5 4.96 4.5 9.1c0 5.6 7.5 13.3 7.5 13.3s7.5-7.7 7.5-13.3c0-4.14-3.36-7.5-7.5-7.5zM9 4.6h3.4a2.6 2.6 0 0 1 0 5.2h-1.8V13H9zM10.6 6.2h1.8a1.4 1.4 0 0 1 0 2.8h-1.8z"/>
+      </svg>
+    </div>
+    <h1>King Parking</h1>
+    <p class="tagline">Never lose your car again. Save the spot, walk straight back to it.</p>
+    <div class="badges">
+      <span class="badge">Free forever</span>
+      <span class="badge">No ads</span>
+      <span class="badge">No tracking</span>
+      <span class="badge">Fully offline</span>
+      <span class="badge">No sign-in</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Saves the exact position</h3>
+        <p>One tap stores the GPS coordinates of your vehicle, with the accuracy of the fix shown so you know what to expect.</p>
+      </div>
+      <div class="card">
+        <h3>Bay photo and note</h3>
+        <p>Snap the pillar number or the row you parked in and add a note. GPS cannot tell you which floor you are on — a photo can.</p>
+      </div>
+      <div class="card">
+        <h3>Walk back</h3>
+        <p>Hands the position to your maps app with walking directions, or just drops a pin so you can see where it is.</p>
+      </div>
+      <div class="card">
+        <h3>More than one vehicle</h3>
+        <p>Save as many spots as you like — the car, the bike, a friend's vehicle. Each one is listed with how long it has been parked.</p>
+      </div>
+      <div class="card">
+        <h3>History</h3>
+        <p>Cleared spots move to a history list, so a car park you use often is one tap away from being saved again.</p>
+      </div>
+      <div class="card">
+        <h3>Backup in your hands</h3>
+        <p>Write a single JSON file whenever you want and restore it on another phone. Nothing is uploaded anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <ol>
+      <li>Park, open King Parking and tap <strong>Save parking spot</strong>.</li>
+      <li>Wait a moment for the GPS fix, then add a level or bay, a note and a photo if you want them.</li>
+      <li>When you come back, open the spot and tap <strong>Walk back to my vehicle</strong>.</li>
+      <li>Tap <strong>I found my vehicle</strong> to clear it.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Privacy in one line</h2>
+    <p>King Parking ships without the internet permission. Your positions, photos and notes stay in the app's private storage on your phone, and nothing is ever collected, uploaded or shared.</p>
+    <div class="links">
+      <a class="btn" href="privacy-policy.html">Privacy policy</a>
+      <a class="btn" href="terms-of-service.html">Terms of use</a>
+      <a class="btn primary" href="https://teamexykings.in/">TeamExyKings</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Permissions it asks for</h2>
+    <ul>
+      <li><strong>Location</strong> — read only while you save a spot or refresh a distance. There is no background location access.</li>
+      <li><strong>Camera</strong> — only when you choose to take a bay photo. Photos are stored privately and never appear in your gallery.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>Questions, bugs or ideas: <a href="mailto:Yashwanthramsomireddy@gmail.com" style="color:#fff">Yashwanthramsomireddy@gmail.com</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <p>King Parking — a <a href="https://teamexykings.in/">TeamExyKings</a> product, built by Yashwanth Ram Somireddy.</p>
+  <p style="margin-top:6px">&copy; 2026 TeamExyKings. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

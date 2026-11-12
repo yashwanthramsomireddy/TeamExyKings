@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>King Travel — Packing checklist app | TeamExyKings</title>
+<meta name="description" content="King Travel is a free offline packing checklist app for Android. Create trip templates, tick items as you pack, reset and reuse. No ads, no tracking, no account.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='black'/><g fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M40 34 L40 28 Q40 25 43 25 L57 25 Q60 25 60 28 L60 34'/><rect x='27' y='34' width='46' height='43' rx='6'/><path d='M38 55 L46 64 L62 45'/></g></svg>">
+<style>
+  :root{
+    --bg:#000;
+    --panel:#0b0b0b;
+    --line:#1f1f1f;
+    --text:#fff;
+    --muted:#9a9a9a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  header{padding:72px 0 56px;text-align:center;border-bottom:1px solid var(--line)}
+  .logo{
+    width:96px;height:96px;margin:0 auto 24px;border-radius:26px;
+    background:#000;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  h1{font-size:40px;letter-spacing:-1px;font-weight:700}
+  .tag{color:var(--muted);margin-top:10px;font-size:17px}
+  .pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px;color:var(--muted)}
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin-bottom:22px;font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+  .card h3{font-size:16px;margin-bottom:7px;font-weight:600}
+  .card p{color:var(--muted);font-size:14.5px}
+  ul{list-style:none}
+  ul li{color:var(--muted);padding:9px 0 9px 24px;position:relative;font-size:15px}
+  ul li::before{content:"";position:absolute;left:4px;top:18px;width:7px;height:7px;border-radius:50%;background:#fff;opacity:.5}
+  .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .btn{
+    display:inline-block;border:1px solid var(--line);border-radius:14px;
+    padding:13px 22px;color:#fff;text-decoration:none;font-size:15px;font-weight:600;
+  }
+  .btn.primary{background:#fff;color:#000;border-color:#fff}
+  footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13.5px}
+  footer a{color:var(--muted)}
+  a{color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <svg width="52" height="52" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 34 L40 28 Q40 25 43 25 L57 25 Q60 25 60 28 L60 34"/>
+        <rect x="27" y="34" width="46" height="43" rx="6"/>
+        <path d="M38 55 L46 64 L62 45"/>
+      </svg>
+    </div>
+    <h1>King Travel</h1>
+    <p class="tag">Pack once, tick it off, reset it for the next trip.</p>
+    <div class="pills">
+      <span class="pill">Free forever</span>
+      <span class="pill">No ads</span>
+      <span class="pill">No tracking</span>
+      <span class="pill">Works offline</span>
+      <span class="pill">No account</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Trip templates</h3>
+        <p>Start from Beach holiday, Business trip, Weekend getaway, International, Family, Trek or Pilgrimage — or from a blank list.</p>
+      </div>
+      <div class="card">
+        <h3>Tick as you pack</h3>
+        <p>Items are grouped by category with a live progress bar, so you always know what is still left in the pile.</p>
+      </div>
+      <div class="card">
+        <h3>Reset and reuse</h3>
+        <p>One tap unticks the whole list and keeps the items, ready for the next trip without building it again.</p>
+      </div>
+      <div class="card">
+        <h3>Your own items</h3>
+        <p>Add anything with a quantity and category, edit or remove it later, or pull extra items in from another template.</p>
+      </div>
+      <div class="card">
+        <h3>Many trips at once</h3>
+        <p>Keep a separate checklist per trip, archive the ones that are done, and duplicate a list you want to reuse as-is.</p>
+      </div>
+      <div class="card">
+        <h3>Backup in JSON</h3>
+        <p>Export every trip to a plain JSON file and restore it on another phone — merge it in or replace what is there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Privacy in one line</h2>
+    <ul>
+      <li>Everything you enter stays in the app's private storage on your device.</li>
+      <li>No sign-in, no cloud sync, no analytics and no advertising SDKs.</li>
+      <li>No permissions are requested, and the app does not use the internet.</li>
+      <li>Backup files go only where you choose to save them.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Links</h2>
+    <div class="links">
+      <a class="btn primary" href="https://teamexykings.in/">TeamExyKings</a>
+      <a class="btn" href="privacy-policy.html">Privacy policy</a>
+      <a class="btn" href="terms-of-service.html">Terms of use</a>
+      <a class="btn" href="mailto:Yashwanthramsomireddy@gmail.com">Support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>King Travel — a TeamExyKings product, built by Yashwanth Ram Somireddy.</p>
+    <p style="margin-top:6px">&copy; 2026 TeamExyKings. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

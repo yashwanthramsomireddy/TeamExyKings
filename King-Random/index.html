@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Random — Random numbers, dice, coin, wheel and shuffle</title>
+<meta name="description" content="King Random is a free offline Android app for random numbers, dice rolls, coin flips, a decision spin wheel and a list shuffler. No ads, no tracking, no sign-in.">
+<meta name="theme-color" content="#000000">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#000; --card:#050505; --elev:#0d0d0d;
+    --line:#1f1f1f; --line-soft:#141414;
+    --fg:#fff; --mut:#9ca3af; --dim:#6b7280;
+  }
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  header{text-align:center;padding:72px 0 44px}
+  .icon{
+    width:108px;height:108px;margin:0 auto 24px;border-radius:28px;
+    background:var(--elev);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .icon svg{width:62px;height:62px}
+  h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  .tag{color:var(--mut);font-size:1.08rem}
+  .badges{margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{
+    border:1px solid var(--line);background:var(--card);
+    padding:7px 14px;border-radius:999px;font-size:.82rem;color:var(--mut)
+  }
+  section{padding:40px 0;border-top:1px solid var(--line-soft)}
+  h2{font-size:1.35rem;font-weight:700;margin-bottom:20px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+  .card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:22px
+  }
+  .card h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+  .card p{color:var(--mut);font-size:.93rem}
+  ul{list-style:none;display:grid;gap:10px}
+  li{color:var(--mut);padding-left:22px;position:relative;font-size:.96rem}
+  li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--dim)}
+  .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .links a{
+    display:inline-block;padding:13px 22px;border-radius:14px;
+    text-decoration:none;font-weight:600;font-size:.94rem;
+    border:1px solid var(--line);color:var(--fg);background:var(--card)
+  }
+  .links a.primary{background:#fff;color:#000;border-color:#fff}
+  footer{
+    padding:40px 0 60px;border-top:1px solid var(--line-soft);
+    text-align:center;color:var(--dim);font-size:.86rem
+  }
+  footer a{color:var(--mut);text-decoration:none}
+  @media(max-width:600px){h1{font-size:2rem}header{padding:52px 0 32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="icon">
+      <svg viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
+        <path d="M39,28 L69,28 A11,11 0 0 1 80,39 L80,69 A11,11 0 0 1 69,80 L39,80 A11,11 0 0 1 28,69 L28,39 A11,11 0 0 1 39,28 Z"
+              fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="40.6" cy="41" r="4.6" fill="#fff"/>
+        <circle cx="67.4" cy="41" r="4.6" fill="#fff"/>
+        <circle cx="54" cy="54" r="4.6" fill="#fff"/>
+        <circle cx="40.6" cy="67" r="4.6" fill="#fff"/>
+        <circle cx="67.4" cy="67" r="4.6" fill="#fff"/>
+      </svg>
+    </div>
+    <h1>King Random</h1>
+    <p class="tag">Numbers, dice, coin, wheel and shuffle — in one small app.</p>
+    <div class="badges">
+      <span class="badge">Free forever</span>
+      <span class="badge">No ads</span>
+      <span class="badge">No tracking</span>
+      <span class="badge">Works offline</span>
+      <span class="badge">No sign-in</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Five tools</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Random number</h3>
+        <p>Any range you type, including negatives. Draw up to 1000 numbers at once, with or
+           without repeats, sorted or in draw order.</p>
+      </div>
+      <div class="card">
+        <h3>Dice roller</h3>
+        <p>D4, D6, D8, D10, D12, D20 and D100 one tap away, or type any custom number of sides.
+           Roll up to ten dice and see the total.</p>
+      </div>
+      <div class="card">
+        <h3>Coin flip</h3>
+        <p>A proper flip animation, single or multi-flip, with lifetime heads/tails counts,
+           current streak and best streak.</p>
+      </div>
+      <div class="card">
+        <h3>Spin wheel</h3>
+        <p>Build wheels of your own options and let one decide. Keep several wheels, and
+           optionally remove the winner after each spin for raffle-style draws.</p>
+      </div>
+      <div class="card">
+        <h3>List shuffler</h3>
+        <p>Paste a list and shuffle it, draw a few names at random, or split everyone into
+           balanced teams. Save lists you reuse.</p>
+      </div>
+      <div class="card">
+        <h3>History &amp; backup</h3>
+        <p>Every result is kept locally so you can check what came up. Back everything up to a
+           single JSON file whenever you want.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Built the way the rest of the King apps are</h2>
+    <ul>
+      <li>Pitch-black AMOLED theme with a white accent, plus dark, light and system options</li>
+      <li>No internet permission at all — nothing can leave your device</li>
+      <li>No analytics, no advertising identifiers, no crash-reporting services</li>
+      <li>Native Kotlin and Jetpack Compose, built for recent Android versions</li>
+      <li>Haptics and animations you can switch off</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Legal</h2>
+    <div class="links">
+      <a class="primary" href="https://teamexykings.in">TeamExyKings</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="terms-of-service.html">Terms of use</a>
+      <a href="mailto:Yashwanthramsomireddy@gmail.com">Support</a>
+    </div>
+  </section>
+
+  <footer>
+    King Random — a <a href="https://teamexykings.in">TeamExyKings</a> product,
+    built by Yashwanth Ram Somireddy.<br>
+    &copy; 2026 TeamExyKings. All rights reserved.
+  </footer>
+
+</div>
+</body>
+</html>

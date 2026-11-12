@@ -14,8 +14,6 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .wrap{max-width:760px;margin:0 auto;padding:28px 18px 64px}
 header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
-header img{width:56px;height:56px;border-radius:14px}
-header a{color:inherit;text-decoration:none}
 h1{font-size:28px;margin:0;line-height:1.2}
 .sub{color:var(--muted);margin:2px 0 0;font-size:14px}
 h2{font-size:19px;margin:34px 0 8px;color:var(--teal)}
@@ -37,7 +35,6 @@ footer a{color:var(--muted)}
 <body>
 <div class="wrap">
 <header>
-  <a href="index.html"><img src="assets/icon-192.png" alt="King Log icon"></a>
   <div><h1>King Log Privacy Policy</h1><p class="sub">by TeamExyKings · Last updated 5 November 2026 · applies to King Log 1.3 and newer</p></div>
 </header>
 
@@ -56,7 +53,7 @@ footer a{color:var(--muted)}
 <li><strong>Fuel Log:</strong> vehicles (name, type, make, model, year, fuel type, plate, VIN, insurance, insurance end date, service due date and kilometres, notes) and fill-ups (date, odometer, litres, price, cost, station, brand, notes). The Fuel log is <strong>not encrypted</strong>; it stays inside King Log's private app storage.</li>
 <li><strong>App lock:</strong> if you use King Log's own PIN or pattern, only a salted PBKDF2 hash of it is kept, inside Android's encrypted preferences. The PIN or pattern itself is never stored or sent. If you choose to use your phone's own screen lock, Android handles it and King Log never sees your PIN, pattern, fingerprint or face.</li>
 <li><strong>Backup key:</strong> the recovery key (or the passphrase you chose) is kept on the phone in Android's encrypted preferences, so scheduled backups can run. It is shown only after you prove it is you, and it is never sent to us or to Google.</li>
-<li><strong>Preferences:</strong> theme, accent colours and layout (Default or Compact), lock timeout, backup settings and times, reminder settings and a list of reminders already shown, and, if you choose one, the location of your backup folder.</li>
+<li><strong>Preferences:</strong> theme, accent colours and layout (Compact or Roomy), lock timeout, backup settings and times, reminder settings and a list of reminders already shown, and, if you choose one, the location of your backup folder.</li>
 </ul>
 <p>All of this lives in King Log's private app storage. King Log opts out of Android's automatic cloud backup and device-to-device transfer, so your data does not move unless you make a backup or an export yourself.</p>
 

@@ -4,15 +4,17 @@ All notable changes to King Calc are documented here. Older released versions ar
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project follows [Semantic Versioning](https://semver.org/).
 
-## [4.9.0] (versionCode 39) - next build
-
-### Changed
-- Calculator header: the four quick-access icons reordered to FAQ, About, History, Settings — Settings now sits in the top-right corner
+## [6.3.0] (versionCode 61)
 
 ### Added
-- Export icon (PDF or image) on Loan/EMI, Chit Fund and Split bill, shown once there's data to export — shares a branded report (header, footer, generated date) through the system share sheet
-- Changelog button in About, between Terms of use and Credits — shows every version ever released, newest first
-- Rate us button in About, between Support/Contact and Share King Calc — opens the Play Store listing directly
+- King Calc now checks Google Play for a newer version: the About screen shows a highlighted "An update is available" card with an "Update on Google Play" button whenever one's live, and the Calculator (Home) screen shows a one-time popup (Update / Later) the first time it notices — dismissing it either way means it won't show again until an even newer version appears
+- "More TeamExyKings apps" button added to the About screen (right after Share King Calc), opening the TeamExyKings developer page on Google Play
+- Pressing Back on the Calculator screen now asks "Exit App?" with No, Stay / Yes, Exit, instead of closing the app immediately
+- Compare tab (Gold/Silver) now also shows 22K and 18K gold cards, alongside the existing 24K gold and silver cards
+- Gold and Silver cost calculators now have a separate "Wastage charges %" field (default 0%, since not every shop charges it) alongside the existing Making charges and GST fields — raising it increases the estimated store price the same way Making charges does
 
-### Fixed
-- Keyboard opening then immediately closing when tapping into a number field (BMI and other screens) — caused by the app's own status-bar/navigation-bar theme colors fighting with Android's own edge-to-edge handling; removed the now-redundant native theme flags so Android owns that transition cleanly
+### Changed
+- Gold Shop Price tab: "Per gram (18K)" is now bold, matching the existing 22K/24K rows
+
+### Notes
+- The update check uses Google's own Play In-App Updates library, so King Calc still makes no internet request for it — it can only detect an update when installed through Google Play (including closed testing); a sideloaded build quietly shows nothing

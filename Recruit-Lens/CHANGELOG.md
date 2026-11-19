@@ -3,9 +3,11 @@ TeamExyKings
 
 ---
 
-## v1.98 (black pop-ups, FAQ and About icons, Supabase temp folder; app version 2.0.2, versionCode 24)
-- **Pop-ups:** every pop-up (confirmations, errors, Credits, colour picker, seat allocation) is now pitch black (AMOLED) with a 1 px white outline instead of the grey Android default. Buttons are outlined in white, the main action is filled white, destructive actions are red. In the Light theme the pop-ups are white with a black outline. The screens that used the system dialog now use one shared pop-up (`src/components/AppAlert.tsx`, colours in `src/constants/dialogTheme.js`).
-- **Tab bar:** new **FAQ** (?) and **About** (i) icons next to Settings. They stay inside Settings as before.
-- **About:** the six policy buttons and Visit Website use the `https://teamexykings.in/Recruit-Lens/` pages; Visit Website opens `https://teamexykings.in/`.
-- **Supabase folder:** one-off and diagnostic SQL (demo CAMS organisation, remove-admin, Play review account, reset, diagnostics) now lives in `supabase/temp/` with a README of what each file does and when to run it. Numbered migrations and Edge Functions stay at the top.
-- No database, Edge Function or SQL change.
+## v2.05 (update notice, Play profile button, exit confirmation; app version 3.0.6, versionCode 32)
+- **Update notice:** a small Android module (`modules/play-update-check`) asks Google Play whether a newer version exists. If so, About shows an "An update is available" card with an **Update on Google Play** button, and the home screen shows a popup (Update / Later) once per version. Both buttons count as seen; a still newer version shows it once more. Only works for a copy installed from Google Play (a sideloaded build quietly shows nothing). Nothing is sent to our servers.
+- **More apps button:** About, after Share, opens our Google Play developer page.
+- **Exit confirmation:** back on the home screen asks "Exit App?" (No, Stay / Yes, Exit) instead of closing the app.
+- **Payments:** `verify-play-purchase` v1.3 also rejects a purchase whose product id Google reports differently from the one sent. Redeploy that function.
+- **Docs:** privacy policy (update check row, date), Credits, FAQ.
+- **Tests:** `tests/updateNotice.test.mjs`, `tests/homeExitUpdate.test.mjs`.
+- Everything in 3.0.5 (v2.04) and earlier is included.

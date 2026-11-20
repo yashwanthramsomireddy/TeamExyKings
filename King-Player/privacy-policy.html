@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — King Player | TeamExyKings</title>
+<meta name="description" content="Privacy policy for King Player, the offline music and video player for Android by TeamExyKings.">
+<link rel="canonical" href="https://teamexykings.in/King-Player/privacy-policy.html">
+<style>
+  :root{--bg:#000;--surface:#0a0a0a;--line:#262626;--text:#fff;--muted:#9e9e9e;--dim:#6b6b6b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{padding:60px 0 28px;border-bottom:1px solid var(--line)}
+  h1{font-size:2rem;font-weight:700;letter-spacing:-.02em}
+  .meta{color:var(--dim);margin-top:8px;font-size:.9rem}
+  main{padding:34px 0 10px}
+  h2{font-size:1.2rem;font-weight:600;margin:32px 0 10px}
+  p{color:var(--muted);margin-bottom:12px}
+  ul{color:var(--muted);margin:0 0 14px 20px}
+  li{margin-bottom:7px}
+  strong{color:var(--text)}
+  .callout{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:20px 0}
+  .callout p:last-child{margin-bottom:0}
+  a{color:#fff}
+  footer{padding:36px 0 56px;border-top:1px solid var(--line);margin-top:40px;color:var(--dim);font-size:.88rem;text-align:center}
+  footer a{color:var(--muted);text-decoration:none;margin:0 9px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="meta">King Player · TeamExyKings · Last updated 20 November 2026</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="callout">
+    <p><strong>The short version.</strong> King Player does not collect, store or transmit any personal data. There is no account, no analytics, no advertising and no crash reporting. Everything the app reads stays on your device. The one thing it asks the outside world is whether the Google Play Store has a newer version of the app — and even that question is handled by the Play Store app, not by King Player.</p>
+  </div>
+
+  <h2>1. Who this covers</h2>
+  <p>This policy applies to the King Player Android application (<strong>com.teamexykings.kingplayer</strong>), published by Yashwanth Ram Somireddy under the TeamExyKings brand.</p>
+
+  <h2>2. Data we collect</h2>
+  <p><strong>None.</strong> King Player has no servers, no backend and no third-party SDKs. It does not ask for your name, email address, phone number, location or any other personal information, and it has no mechanism to send data anywhere.</p>
+
+  <h2>3. What the app reads on your device</h2>
+  <ul>
+    <li><strong>Your audio and video files.</strong> The app queries Android's MediaStore to list the media already stored on your device so it can play it. Files are read for playback only. They are never copied, modified, uploaded or shared.</li>
+    <li><strong>Your settings and playlists.</strong> Preferences such as sort order, equalizer values, gesture toggles and the playlists you create are saved in the app's own private storage on the device.</li>
+  </ul>
+  <p>All of this remains on the device and is removed when you uninstall the app.</p>
+
+  <h2>4. Permissions and why they exist</h2>
+  <ul>
+    <li><strong>Read audio files</strong> (<code>READ_MEDIA_AUDIO</code>) and <strong>read video files</strong> (<code>READ_MEDIA_VIDEO</code>), or <strong>read storage</strong> (<code>READ_EXTERNAL_STORAGE</code>) on Android 12 and below — to find and play the media on your device. Without these the app has nothing to list.</li>
+    <li><strong>Foreground service</strong> and <strong>media playback service</strong> — to keep playing when the screen is off or another app is in front.</li>
+    <li><strong>Notifications</strong> — to show the playback notification with play, pause, previous and next.</li>
+    <li><strong>Wake lock</strong> — to stop the system suspending playback mid-track.</li>
+    <li>The home-screen widget reads only what is already playing and stores nothing of its own.</li>
+    <li><strong>Microphone</strong> (<code>RECORD_AUDIO</code>) — <strong>optional and off by default.</strong> Android's audio Visualizer API requires this permission even when an app only reads the levels of its own playback. It is used solely to drive the audio-reactive mode of the corner visualizer. The app is never asked for it unless you turn that mode on in Settings, no audio is recorded, nothing is written to storage, and nothing is transmitted. Leaving it off loses nothing but the beat-matched pulse; the animation still runs on a time-based curve.</li>
+  </ul>
+
+  <h2>5. Internet access and the update check</h2>
+  <p>King Player does not declare the <code>INTERNET</code> permission and makes no network requests of its own. Links in the About screen — the website, this policy, the terms, the Play Store listing and the support email — open in your browser or mail app, outside King Player.</p>
+  <p>The app does check whether a newer version has been published, using Google&rsquo;s Play In-App Updates library. That check is a request to the Google Play Store app already installed on your device, over on-device inter-process communication; the Play Store makes any network connection, under Google&rsquo;s own privacy policy. King Player sends nothing about you, receives only a version number, and stores only that number so the same update is not announced twice. If the app was not installed from Google Play the check simply returns nothing. Downloading an update always happens in the Play Store, at a moment you choose.</p>
+
+  <h2>6. Children</h2>
+  <p>King Player is suitable for all ages. Because it collects no data whatsoever, it collects no data from children either.</p>
+
+  <h2>7. Third parties</h2>
+  <p>The app bundles only libraries that run on the device: AndroidX (including Jetpack Compose and Media3/ExoPlayer), Kotlin and Coil. The one exception is Google&rsquo;s Play In-App Updates library, which exists solely to ask the Play Store app about new versions, as described in section 5. None of them transmit anything about you on the app&rsquo;s behalf.</p>
+
+  <h2>8. Backup</h2>
+  <p>If you have Android's own backup feature enabled, your King Player settings and playlists may be included in that backup by Google, under Google's terms. This is a system feature, not something King Player sends anywhere itself. You can disable it in your device's backup settings.</p>
+
+  <h2>9. Your rights</h2>
+  <p>Since no personal data is collected, there is nothing to request, correct, export or delete. Uninstalling the app removes its settings and playlists from the device. Your media files are untouched by the uninstall.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>If this policy ever changes, the updated version will be published on this page with a new date. Any change that affects what the app does will also be noted in the app's changelog.</p>
+
+  <h2>11. Contact</h2>
+  <p>Questions about this policy or the app: <a href="mailto:Yashwanthramsomireddy@gmail.com">Yashwanthramsomireddy@gmail.com</a></p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <a href="index.html">King Player</a>
+      <a href="https://teamexykings.in/">TeamExyKings</a>
+      <a href="terms-of-service.html">Terms of use</a>
+    </p>
+    <p style="margin-top:12px">© 2026 TeamExyKings. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
